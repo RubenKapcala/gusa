@@ -1,0 +1,522 @@
+<resources>
+    <string name="app_name">gusa2</string>
+
+    <string name="paginaCargando">PÁGINA DE CARGANDO INÚTIL</string>
+    <string name="actualizando">ACTUALIZANDO</string>
+    <string name="cargandoInicial">INSTALACIÓN INICIAL</string>
+
+    //--------------------------------------------------------------------------
+    //-------------------------------Mapas--------------------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="nombreMapa1" translatable="false">Casa de Gusa picante</string>
+    <string name="descripcion1" translatable="false">¿POR QUÉ COMPLICARSE LA VIDA SI LO QUE QUIERO ES JUGAR? UN TABLERO CON UN POCO DE TODO Y BASTANTE EQUILIBRADO.</string>
+    <string name="nombreMapa2" translatable="false">Casa de Gusa</string>
+    <string name="descripcion2" translatable="false">COMO \"CASA GUSA PICANTE\" PERO SIN PRUEBAS PICANTES… MÁS ABURRIDO VAMOS. PERO ESO NO EVITARÁ COGERNOS UN BUEN CIEGO. UN TABLERO CON UN POCO DE TODO Y BASTANTE EQUILIBRADO.</string>
+    <string name="nombreMapa3" translatable="false">Sin tonterías</string>
+    <string name="descripcion3">UN MODO DE JUEGO PARA LOS MÁS VALIENTES… MUCHOS RETOS PICANTES Y MUCHO BEBER.</string>
+
+
+
+    //--------------------------------------------------------------------------
+    //-------------------------------Retos--------------------------------------
+    //--------------------------------------------------------------------------
+
+    //-----------------------
+    //Reto sorpresa
+    //-----------------------
+
+    <string name="chicosTambien" translatable="false">Pensándolo mejor los chicos también.</string>
+    <string name="chicasTambien" translatable="false">Pensándolo mejor las chicas también.</string>
+    <string name="tambienBebes" translatable="false">Pensándolo mejor tú también los bebes.</string>
+    <string name="tambienTu" translatable="false">Pensándolo mejor tú también lo haces.</string>
+    <string name="tambienTodos" translatable="false">Pensándolo mejor lo haréis todos.</string>
+    <string name="soloTu" translatable="false">Pensándolo mejor solo tú.</string>
+    <string name="etiquetarGusa" translatable="false">Si etiquetas a gusa_juego_para_fiestas mandas beber 6 tragos repartidos como quieras.</string>
+
+    //-----------------------
+    //Reto de prenda
+    //-----------------------
+
+    <string name="RetoPrenda" translatable="false">Jejeje. Pierdes una prenda.</string>
+
+    //-----------------------
+    //Retos de beber
+    //-----------------------
+
+    <string name="RetoBeberMuyBajo1_1" translatable="false">Bebe 1 traguito, es la prueba más simple y cursi del juego.</string>
+    <string name="RetoBeberMuyBajo1_2" translatable="false">Bebe otro traguito, ya la prueba se va poniendo seria.</string>
+    <string name="RetoBeberMuyBajo1_3" translatable="false">Y otros 3 más ¡A la mierda!</string>
+    <string name="RetoBeberMuyBajo2" translatable="false">Bebe 2 traguitos. Y ya está, es lo que hay.</string>
+    <string name="RetoBeberMuyBajo3_1" translatable="false">Mandas beber 1 trago. Es solo 1 pero cuidado con los amigos rencorosos.</string>
+    <string name="RetoBeberMuyBajo3_2_1" translatable="false">Ese amigo manda beber 5 tragos a quien quiera.</string>
+    <string name="RetoBeberMuyBajo3_2_2" translatable="false">Ese amigo bebe otros 3, estos ya de mi parte.</string>
+    <string name="RetoBeberMuyBajo4" translatable="false">Mandas beber 2 tragos pero a una única persona.</string>
+    <string name="RetoBeberMuyBajo5" translatable="false">Bebes 1 trago, mandas beber otro y pierdes 1 punto.</string>
+    <string name="RetoBeberMuyBajo6_1" translatable="false">¡¡¡¡GUUUUUUUUSA!!!!\n\Bebe el último en decir Gusa.</string>
+    <string name="RetoBeberMuyBajo6_2_1" translatable="false">Otra vez\n\¡¡¡¡GUUUUUUUUSA!!!!\n\Bebe el último en decir Gusa.</string>
+    <string name="RetoBeberMuyBajo6_2_2" translatable="false">Otra vez\n\¡¡¡¡GUUUUUUUUSA!!!!\n\Bebe el primero en decir Gusa.</string>
+    <string name="RetoBeberMuyBajo7" translatable="false">Bebe 2 tragos.</string>
+    <string name="RetoBeberMuyBajo8" translatable="false">Manda beber 2 tragos.</string>
+    <string name="RetoBeberMuyBajo9" translatable="false">El que más puntos tiene y tú bebéis 2 tragos. Si eres tú el que más puntos tiene bebes 3.</string>
+    <string name="RetoBeberMuyBajo10" translatable="false">Repartes 2 tragos.</string>
+    <string name="RetoBeberMuyBajo11" translatable="false">Apuéstate a cara o cruz dos tragos con el jugador que quieras.</string>
+    <string name="RetoBeberMuyBajo13" translatable="false">Bebes 2 tragos y pierdes 2 puntos.</string>
+    <string name="RetoBeberMuyBajo14" translatable="false">Pierdes 3 puntos pero mandas beber 3 tragos repartidos como elijas.</string>
+    <string name="RetoBeberMuyBajo16" translatable="false">Canta algo. Si tus supuestos \"amigos\" deciden que desafinas tendrás que beber 3 tragos para afinar esa voz.</string>
+    <string name="RetoBeberMuyBajo17" translatable="false">Mete un hielo en tu espalda o bebe 3 tragos y pierdes 5 puntos.</string>
+    <string name="RetoBeberMuyBajo18" translatable="false">El que más puntos tiene bebe 3 tragos. Tú pierdes 3 puntos.</string>
+    <string name="RetoBeberMuyBajo19" translatable="false">El que más puntos tiene bebe 2 tragos. Tú pierdes 2 puntos.</string>
+    <string name="RetoBeberMuyBajo20" translatable="false">El que más puntos tiene bebe 1 trago. Tú pierdes 1 punto.</string>
+    <string name="RetoBeberMuyBajo22" translatable="false">Bebes 2 tragos y ganas 4 puntos.</string>
+    <string name="RetoBeberMuyBajo26" translatable="false">Te dibujan algo en el brazo, bebes 1 trago y pierdes 2 puntos.</string>
+    <string name="RetoBeberMuyBajo27" translatable="false">Te dibujan algo en la pierna, bebes 1 trago y pierdes 2 puntos.</string>
+    <string name="RetoBeberMuyBajo28" translatable="false">Coge a un jugador a caballito y da vueltas alrededor de los jugadores. Por cada vuelta el resto de jugadores bebe 1 trago (maximo 3).</string>
+    <string name="RetoBeberMuyBajo29" translatable="false">Cómete algo (o haz como que comes) y fuese lo mas delicioso que has probado. Bebes 2 tragos para que no se te atragante.</string>
+    <string name="RetoBeberMuyBajo30" translatable="false">Bebe 1 trago sin usar las manos(ni pajita), grábalo.</string>
+    <string name="RetoBeberMuyBajo31" translatable="false">Apuesta 1, 2 o 3 tragos y tira un dado. Si aciertas el resultado el resto bebe esos tragos, si fallas los bebes tú.</string>
+    <string name="RetoBeberMuyBajo32" translatable="false">Apuesta 1 trago y saca una carta. Si la aciertas mandas beber 10 tragos repartidos como elijas. Tienes 3 intentos.</string>
+    <string name="RetoBeberMuyBajo33" translatable="false">Apuesta 2 tragos y saca una carta. Si aciertas la carta el resto bebe 7 tragos. Tienes 2 intentos.</string>
+    <string name="RetoBeberMuyBajo34" translatable="false">Apuesta 1, 2 o 3 tragos y tira una moneda. Si aciertas mandas beber esa cantidad de tragos a un jugador.</string>
+    <string name="RetoBeberMuyBajo40" translatable="false">Reta a un jugador a piedra, papel o tijera al mejor de 3. El perdedor bebe 2 tragos.</string>
+
+
+    <string name="RetoBeberBajo6_1" translatable="false">¡¡¡¡GUUUUUUUUSA!!!!\n\Bebe 5 el último en decir Gusa.</string>
+    <string name="RetoBeberBajo6_2_1" translatable="false">Otra vez\n\¡¡¡¡GUUUUUUUUSA!!!!\n\Bebe otros 3 el último en decir Gusa.</string>
+    <string name="RetoBeberBajo6_2_2" translatable="false">Otra vez\n\¡¡¡¡GUUUUUUUUSA!!!!\n\Bebe otros 3 el primero en decir Gusa.</string>
+    <string name="RetoBeberBajo9" translatable="false">El que más puntos tiene y tú bebéis 4 tragos. Si eres tú el que más puntos tiene bebes 6.</string>
+    <string name="RetoBeberBajo10" translatable="false">Repartes 5 tragos.</string>
+    <string name="RetoBeberBajo11" translatable="false">Apuéstate a cara o cruz 5 tragos con el jugador que quieras.</string>
+    <string name="RetoBeberBajo12" translatable="false">Cada jugador bebe 1 trago, tú bebes uno extra.</string>
+    <string name="RetoBeberBajo13" translatable="false">Bebes 4 tragos y pierdes 2 puntos.</string>
+    <string name="RetoBeberBajo15" translatable="false">Haz reir a algún jugador en menos de 30 sagundos. Si lo consigues cada persona que se ría bebe 5 tragos, pero si no se ríen los bebes tú.</string>
+    <string name="RetoBeberBajo17" translatable="false">Mete un hielo en tu espalda o bebe 5 tragos y pierdes 5 puntos.</string>
+    <string name="RetoBeberBajo21" translatable="false">Bebes 4 tragos y ganas 2 punto.</string>
+    <string name="RetoBeberBajo22" translatable="false">Bebes 6 tragos y ganas 4 puntos.</string>
+    <string name="RetoBeberBajo23" translatable="false">Cada jugador bebe un trago.</string>
+    <string name="RetoBeberBajo24" translatable="false">Las chicas beben 2 tragos.</string>
+    <string name="RetoBeberBajo25" translatable="false">Los chicos beben 2 tragos.</string>
+    <string name="RetoBeberBajo26" translatable="false">Te dibujan algo en el brazo, bebes 3 tragos y pierdes 2 puntos.</string>
+    <string name="RetoBeberBajo27" translatable="false">Te dibujan algo en la pierna, bebes 3 tragos y pierdes 2 puntos.</string>
+    <string name="RetoBeberBajo31" translatable="false">Apuesta 4, 5 o 6 tragos y tira un dado. Si aciertasel resultado el resto bebe esos tragos, si fallas los bebes tú.</string>
+    <string name="RetoBeberBajo32" translatable="false">Apuesta 4 trago y saca una carta. Si la aciertas mandas beber 10 tragos repartidos como elijas. Tienes 6 intentos.</string>
+    <string name="RetoBeberBajo33" translatable="false">Apuesta 5 tragos y saca una carta. Si aciertas la carta el resto bebe 7 tragos. Tienes 4 intentos.</string>
+    <string name="RetoBeberBajo34" translatable="false">Apuesta 4, 5 o 6 tragos y tira una moneda. Si aciertas mandas beber esa cantidad de tragos a un jugador.</string>
+    <string name="RetoBeberBajo35" translatable="false">El siguiente jugador que diga la letra A bebe 5 tragos.</string>
+    <string name="RetoBeberBajo36" translatable="false">El siguiente jugador que diga la letra E bebe 5 tragos.</string>
+    <string name="RetoBeberBajo37" translatable="false">El siguiente jugador que diga la letra I bebe 5 tragos.</string>
+    <string name="RetoBeberBajo38" translatable="false">El siguiente jugador que diga la letra O bebe 5 tragos.</string>
+    <string name="RetoBeberBajo39" translatable="false">El siguiente jugador que diga la letra U bebe 5 tragos.</string>
+    <string name="RetoBeberBajo40_1" translatable="false">Reta a un jugador a piedra, papel o tijera al mejor de 3. El perdedor bebe 3 tragos.</string>
+    <string name="RetoBeberBajo40_2" translatable="false">El ganador bebe 5 para celebrarlo.</string>
+    <string name="RetoBeberBajo41" translatable="false">Las personas más altas que tú beben 2 tragos.</string>
+    <string name="RetoBeberBajo42" translatable="false">Las personas más bajas que tú beben 2 tragos.</string>
+    <string name="RetoBeberBajo43_1" translatable="false">Descarga el Gusa si no lo tienes y valóralo en Play Store.</string>
+    <string name="RetoBeberBajo43_2" translatable="false">Manda beber una cantidad de tragos igual al número de estrellas que hayas dado.</string>
+
+
+    <string name="RetoBeberMedio1" translatable="false">Las chicas beben 4 tragos.</string>
+    <string name="RetoBeberMedio2" translatable="false">Reta a un pulso al jugador con más puntos, si eres tú elige al jugador que retas. El que pierda bebe 6 tragos.</string>
+    <string name="RetoBeberMedio3" translatable="false">El último en tocarte bebe 6 tragos.</string>
+    <string name="RetoBeberMedio5_1" translatable="false">Bebes 6 tragos, y aún podría haber sido peor.</string>
+    <string name="RetoBeberMedio5_2" translatable="false">Bebes otros 3. ¿Ves como podía ser peor?.</string>
+    <string name="RetoBeberMedio6" translatable="false">Bebes 5 tragos. Si te acabas el vaso con esos tragos el resto bebe 2.</string>
+    <string name="RetoBeberMedio7" translatable="false">Los que tengan una prenda amarilla beben 3 tragos</string>
+    <string name="RetoBeberMedio8" translatable="false">Los que tengan una prenda roja beben 3 tragos.</string>
+    <string name="RetoBeberMedio9" translatable="false">Los que tengan una prenda verde beben 3 tragos.</string>
+    <string name="RetoBeberMedio10" translatable="false">Los que tengan una prenda azul beben 3 tragos.</string>
+    <string name="RetoBeberMedio11_1" translatable="false">Elige un número del 1 al 5. Todos bebéis esa cantidad de tragos.</string>
+    <string name="RetoBeberMedio11_2_1" translatable="false">Si elegiste 1 bebes 3 más por blando.</string>
+    <string name="RetoBeberMedio11_2_2" translatable="false">Si elegiste 2 bebes 3 más por blando.</string>
+    <string name="RetoBeberMedio11_2_3" translatable="false">Si elegiste 3 bebes 3 más, porque me da la gana, no me apetece pensar el por qué.</string>
+    <string name="RetoBeberMedio11_2_4" translatable="false">Si elegiste 4 bebes 3 más por abusón.</string>
+    <string name="RetoBeberMedio11_2_5" translatable="false">Si elegiste 5 bebes 3 más por abusón.</string>
+    <string name="RetoBeberMedio12" translatable="false">Acábate tu vaso. Si lo haces ganas 10 puntos.</string>
+    <string name="RetoBeberMedio13" translatable="false">Bebe 5 tragos y pierde 3 puntos.</string>
+    <string name="RetoBeberMedio14" translatable="false">Bebe 2 tragos por cada persona con la que te liarías del grupo.</string>
+    <string name="RetoBeberMedio15" translatable="false">Pierde 3 puntos y bebe 6 tragos.</string>
+    <string name="RetoBeberMedio16_1" translatable="false">Cierra los ojos ahora y pulsar continuar.</string>
+    <string name="RetoBeberMedio16_2" translatable="false">Di de memoria la posición de los jugadores empezando por tu derecha. Si fallas bebes 6 tragos.</string>
+    <string name="RetoBeberMedio17" translatable="false">Manda beber 2 tragos por cada jugador. Puedes repartirlos como quieras.</string>
+    <string name="RetoBeberMedio18" translatable="false">Manda beber 2 tragos por cada jugador. Puedes repartirlos como quieras pero pierdes 5 puntos. Un gran poder conlleva una gran responsabilidad.</string>
+    <string name="RetoBeberMedio19" translatable="false">Canta un trozo de canción. El de tu derecha la continúa y así hasta que alguien falle. El perdedor bebe 6 tragos.</string>
+    <string name="RetoBeberMedio20" translatable="false">De ahora en adelante a los tragos se les llamará "trogolos", el que se equivoque bebe 1 trogolo.</string>
+    <string name="RetoBeberMedio21" translatable="false">Pierde 2 puntos y todos bebéis 2 tragos.</string>
+    <string name="RetoBeberMedio22" translatable="false">Cámbiate el nombre. El que no te llame así bebe un trago.</string>
+    <string name="RetoBeberMedio23" translatable="false">Al primero que toques antes de 5 segundos bebe 4 tragos.</string>
+    <string name="RetoBeberMedio24" translatable="false">¡¡¡MALDICIÓN SOBRE UN JUGADOR!!!\n\ Elige un jugador. Tirará dados hasta que saque un número par. Beberán un trago antes de cada intento.</string>
+    <string name="RetoBeberMedio25" translatable="false">¡¡¡MALDICIÓN PARA TI!!!\n\ Tira dados hasta que saques un número par. Beberás un trago antes de cada intento.</string>
+    <string name="RetoBeberMedio26" translatable="false">Di los 2 apellidos de cada jugador. Bebe 1 trago por cada apellido que no sepas.</string>
+    <string name="RetoBeberMedio27" translatable="false">Tira un dado. Mandas beber esa cantidad de tragos.</string>
+    <string name="RetoBeberMedio28" translatable="false">Tira un dado. Bebes esa cantidad de tragos.</string>
+    <string name="RetoBeberMedio29" translatable="false">El que este menos borracho bebe 5 tragos.</string>
+    <string name="RetoBeberMedio30" translatable="false">Te dibujan algo en el brazo y bebes 5 tragos.</string>
+    <string name="RetoBeberMedio31" translatable="false">Te dibujan algo en la pierna y bebes 5 tragos.</string>
+    <string name="RetoBeberMedio32" translatable="false">Todos bebéis 3 tragos.</string>
+    <string name="RetoBeberMedio33" translatable="false">Los chicos beben 4 tragos.</string>
+    <string name="RetoBeberMedio34" translatable="false">Si tienes más 14 puntos manda beber 5 tragos repartidos como elijas.</string>
+    <string name="RetoBeberMedio35" translatable="false">Si tienes más de 20 puntos bebes 6 tragos.</string>
+    <string name="RetoBeberMedio36" translatable="false">Manda beber tragos repartidos como elijas igual a la mitad de tus puntos y ríete de ellos mientras. (Máximo 10)</string>
+    <string name="RetoBeberMedio37" translatable="false">Elige un número y tira un dado. Si aciertas mandas beber esos tragos pero si no los bebes tú.</string>
+    <string name="RetoBeberMedio38" translatable="false">Bebe un trago por cada chico que juegue.</string>
+    <string name="RetoBeberMedio39" translatable="false">Bebe un trago por cada chica que juegue.</string>
+    <string name="RetoBeberMedio40" translatable="false">Si la primera letra de tu nombre coincide con la de otro jugador cada uno bebe 6 tragos.</string>
+    <string name="RetoBeberMedio41" translatable="false">Bebe 4 tragos y erupta. Si lo haces el resto tiene que intentarlo también.</string>
+    <string name="RetoBeberMedio42" translatable="false">Deletréa tu nombre del revés. Si fallas bebes 5 tragos… Es tu nombre, podras ¿No?</string>
+    <string name="RetoBeberMedio43" translatable="false">Hasta que te vuelva a tocar hablaras con la vocal que tus \"amigos\" elijan. Si te equivocas bebes.</string>
+    <string name="RetoBeberMedio44" translatable="false">Durante una ronda bebes el dobre. Eres la diana de tus \"amigos\" ahora.</string>
+    <string name="RetoBeberMedio45" translatable="false">Cada jugador compara su mano con el jugador de la derecha. El que la tenga más pequeña bebe 2.</string>
+    <string name="RetoBeberMedio46_1" translatable="false">Bebes 6 tragos y pierde 6 puntos, y sin rechistar.</string>
+    <string name="RetoBeberMedio46_2" translatable="false">Si rechistaste bebes otros 6.</string>
+    <string name="RetoBeberMedio47" translatable="false">Cada jugador con menos puntos que tú bebe 3 tragos.</string>
+    <string name="RetoBeberMedio48" translatable="false">Bebes un trago por cada jugador con más puntos que tú.</string>
+    <string name="RetoBeberMedio49" translatable="false">Imita a un animal. Deja elegir a tus \"amigos\" que ellos tienen imaginación. Si no lo imitas bien bebes 5 tragos.</string>
+    <string name="RetoBeberMedio50" translatable="false">Enseña las últimas 10 fotos de tu cámara o bebe 7 tragos y pierdes 10 puntos.</string>
+    <string name="RetoBeberMedio51" translatable="false">Durante una ronda si te ríes bebes. No vale hacer cosquillas.</string>
+    <string name="RetoBeberMedio52" translatable="false">Da 15 vueltas. Por cada vuelta que no des bebes 1 trago. Calcula bien que te marea más. Grábalo para la posteridad.</string>
+    <string name="RetoBeberMedio53" translatable="false">Apuéstate con otro jugador 5 tragos a la tirada más alta con un dado.</string>
+    <string name="RetoBeberMedio54" translatable="false">Apuesta 1, 2 o 3 tragos y tira un dado. Si el resultado es 5 o 6 ganas y mandas beber lo apostado. Mientras ganes puedes repetir el reto.</string>
+    <string name="RetoBeberMedio55" translatable="false">Apuesta 1, 2 o 3 tragos y saca carta. Si adivinas el palo mandas beber el triple de esos tragos repartidos como elijas.</string>
+    <string name="RetoBeberMedio56" translatable="false">Apuesta cuantas caras puedes sacar en una moneda. Mandas beber 4 veces lo apostado repartido como elijas si lo consigues.</string>
+    <string name="RetoBeberMedio57" translatable="false">Di un número y tira un dado. Si aciertas mandas beber 3 veces ese número repartido como elijas pero si fallas bebes tragos igual a ese número.</string>
+    <string name="RetoBeberMedio58_1" translatable="false">Di un número del 1 al 5 y pulsa continuar.</string>
+    <string name="RetoBeberMedio58_2_1" translatable="false">Bebes esa cantidad de tragos.</string>
+    <string name="RetoBeberMedio58_2_2" translatable="false">Mandas tragos igual al doble de ese número.</string>
+    <string name="RetoBeberMedio58_2_3" translatable="false">Si elegiste 1, 2, o 3 bebes 6 tragos por miedoso.</string>
+    <string name="RetoBeberMedio58_2_4" translatable="false">Si elegiste 2, 3 o 4 todos bebéis 3 tragos.</string>
+    <string name="RetoBeberMedio58_2_5" translatable="false">Si elegiste 3, 4 o 5 bebes 6 tragos por ansias.</string>
+    <string name="RetoBeberMedio58_2_6" translatable="false">Si elegiste 1 prohibes una palabra, si no bebes 3 tragos.</string>
+    <string name="RetoBeberMedio58_2_7" translatable="false">Si elegiste 2 prohibes una palabra, si no bebes 3 tragos.</string>
+    <string name="RetoBeberMedio58_2_8" translatable="false">Si elegiste 3 prohibes una palabra, si no bebes 3 tragos.</string>
+    <string name="RetoBeberMedio58_2_9" translatable="false">Si elegiste 4 prohibes una palabra, si no bebes 3 tragos.</string>
+    <string name="RetoBeberMedio58_2_10" translatable="false">Si elegiste 5 prohibes una palabra, si no bebes 3 tragos.</string>
+    <string name="RetoBeberMedio59" translatable="false">El jugador más joven y el más mayor beben 3.</string>
+    <string name="RetoBeberMedio60" translatable="false">Bebe un trago por cada letra de tu nombre.</string>
+    <string name="RetoBeberMedio61" translatable="false">¡¡El suelo es lava!! El ultimo en dejar de tocar el suelo bebe 4 tragos.</string>
+    <string name="RetoBeberMedio62" translatable="false">Pregunta a un desconocido un número del 1 al 10 y será lo que bebas. Si no se puede saca una carta aleatoria y bebe.</string>
+    <string name="RetoBeberMedio63" translatable="false">El primer jugador de tu derecha bebe 1 trago, el siguiente bebe 2.... así hasta llegar a ti que seras el que más beba.</string>
+    <string name="RetoBeberMedio64" translatable="false">Di los dos apellidos de cada jugador, por cada apellido que aciertes ese jugador bebe un trago.</string>
+    <string name="RetoBeberMedio65" translatable="false">Las siguientes 2 personas en hacer una pregunta beben 5 tragos.</string>
+    <string name="RetoBeberMedio67" translatable="false">Mira la hora porque ya no lo prodrás volver a hacer. Tendrás que adivinar cuando han pasado exactamente 10 min. Si lo adivinas mandas 10 tragos si no bebes 5.</string>
+    <string name="RetoBeberMedio68" translatable="false">Los que no hayan bebido en la prueba anterior beben 3 tragos.</string>
+    <string name="RetoBeberMedio69" translatable="false">Elije a un compañero. Hasta que te vuelva a tocar tambien beberéis cuando le toque al otro.</string>
+    <string name="RetoBeberMedio70" translatable="false">¿Hablar todos con preguntas hasta que te vuelva a tocar?</string>
+
+
+    <string name="RetoBeberAlto1" translatable="false">Prohibe 1 palabra. El que la diga bebe.</string>
+    <string name="RetoBeberAlto2" translatable="false">¡¡¡GRAN MALDICIÓN SOBRE UN JUGADOR!!!\n\ Elige un jugador. Tirará dados hasta que saque un 6. Beberán un trago antes de cada intento.</string>
+    <string name="RetoBeberAlto3" translatable="false">¡¡¡GRAN MALDICIÓN PARA TI!!!\n\ Tira dados hasta que saques un 6. Beberás un trago antes de cada intento.</string>
+    <string name="RetoBeberAlto5" translatable="false">Todos bebéis 4 tragos.</string>
+    <string name="RetoBeberAlto6" translatable="false">Acábate tu vaso, que ya se te estaba calentando.</string>
+    <string name="RetoBeberAlto7" translatable="false">Pierdes 2 puntos y bebes 7 tragos.</string>
+    <string name="RetoBeberAlto8" translatable="false">Hasta que te vuelva a tocar bebes 4 tragos por cada persona que te adelante en el mapa.</string>
+    <string name="RetoBeberAlto9" translatable="false">En la próxima tirada en el mapa, si adelantas a alguien bebe 7 tragos.</string>
+    <string name="RetoBeberAlto10" translatable="false">Pierde 1 punto. Mandas beber 10 tragos repartidos como elijas. Creo que te renta ese punto.</string>
+    <string name="RetoBeberAlto11" translatable="false">Los chicos beben 6 tragos.</string>
+    <string name="RetoBeberAlto12" translatable="false">Las chicas beben 6 tragos.</string>
+    <string name="RetoBeberAlto13" translatable="false">Tira 2 dados. Bebes esa cantidad de tragos.</string>
+    <string name="RetoBeberAlto14" translatable="false">Reta a un jugador a la tirada más alta. Cada uno tira un dado. El perdedor bebe la suma de los dados.</string>
+    <string name="RetoBeberAlto15" translatable="false">Reta a cara o cruz a un jugador. El perdedor bebe 10 tragos.</string>
+    <string name="RetoBeberAlto16" translatable="false">Saca una carta. Bebe tragos igual al número. Si sacas una figura, en su lugar, repartes 7 tragos como quieras.</string>
+    <string name="RetoBeberAlto17" translatable="false">Cada jugador bebe un trago por cada dos puntos que le saques(Máximo 10). Tu bebes 3 por cada persona que tenga más puntos que tú.</string>
+    <string name="RetoBeberAlto18" translatable="false">Las chicas beben tantos tragos como chicos y los chicos tantos como chichas.</string>
+    <string name="RetoBeberAlto19" translatable="false">Si la primera letra de tu nombre coincide con la de otro jugador cada uno bebe 8 tragos y si es igual otros 4.</string>
+    <string name="RetoBeberAlto20" translatable="false">Cada otro jugador puede beber 1 trago. Tú bebes igual a la suma de todos los tragos.</string>
+    <string name="RetoBeberAlto21" translatable="false">Elige un número del 1 al 10. Apuesta como quieras ese número de tragos con el jugador con más puntos sin contarte a ti.</string>
+    <string name="RetoBeberAlto22" translatable="false">Cada jugador tira un dado y bebe esa cantidad de tragos.</string>
+    <string name="RetoBeberAlto23" translatable="false">Todos bebéis 5 tragos.</string>
+    <string name="RetoBeberAlto24" translatable="false">Acábate el vaso, grábalo y súbelo a instagram. Etiqueta a gusa_juego_para_fiestas.</string>
+    <string name="RetoBeberAlto25" translatable="false">¡¡Chupito para todos!!</string>
+    <string name="RetoBeberAlto26" translatable="false">De ahora en adelante se bebe con la mano contraria. Si te equivocas bebes uno extra.</string>
+    <string name="RetoBeberAlto27" translatable="false">El siguiente que vaya a mear antes tiene que beber 10 tragos. Seguro que aguantarse un poco merece la pena.</string>
+    <string name="RetoBeberAlto28" translatable="false">Bebe tragos igual al mes de tu cumpleaños.</string>
+    <string name="RetoBeberAlto33_1" translatable="false">Di un número del 1 al 10 y pulsa continuar.</string>
+    <string name="RetoBeberAlto33_2_1" translatable="false">Bebes esa cantidad de tragos.</string>
+    <string name="RetoBeberAlto33_2_2" translatable="false">Mandas beber esa cantidad de tragos.</string>
+    <string name="RetoBeberAlto33_2_3" translatable="false">Da igual el número, bebes 10.</string>
+    <string name="RetoBeberAlto34" translatable="false">Los que no hayan terminado su primer vaso se lo acaban.</string>
+    <string name="RetoBeberAlto35_1" translatable="false">Reparte 10 tragos. Ahora sabrán que clase de \"amigo\" eres.</string>
+    <string name="RetoBeberAlto35_2_1" translatable="false">Si no te repartiste ninguno a ti eres un mal amigo y bebes 4 tragos.</string>
+    <string name="RetoBeberAlto35_2_2" translatable="false">Si te repartiste algún trago bebes otros 4 ya que quieres quitarles tragos a tus amigos.</string>
+    <string name="RetoBeberAlto36" translatable="false">Cada jugador bebe un trago por cada 10 puntos que tenga.</string>
+
+
+    <string name="RetoBeberMuyAlto1" translatable="false">¡¡¡MALDICIÓN SOBRE TODOS LOS JUGADORES!!!\n\ Tirar dados hasta que saquéis un número par. Beberéis un trago antes de cada intento.</string>
+    <string name="RetoBeberMuyAlto2" translatable="false">Todos bebéis 6 tragos.</string>
+    <string name="RetoBeberMuyAlto3" translatable="false">Acábate tu vaso, que ya se te estaba calentando.</string>
+    <string name="RetoBeberMuyAlto4" translatable="false">Los chicos beben 8 tragos.</string>
+    <string name="RetoBeberMuyAlto5" translatable="false">Las chicas beben 8 tragos.</string>
+    <string name="RetoBeberMuyAlto6" translatable="false">Tira 3 dados. Bebes esa cantidad de tragos.</string>
+    <string name="RetoBeberMuyAlto7" translatable="false">Cada jugador tira un dado. El que menos saque bebe la suma de los dados(Máximo 15).</string>
+    <string name="RetoBeberMuyAlto8" translatable="false">Reta a cara o cruz a un jugador. El perdedor bebe 15 tragos.</string>
+    <string name="RetoBeberMuyAlto9" translatable="false">Cada otro jugador puede beber 1 o 2 trago. Tú bebes igual a la suma de todos los tragos.</string>
+    <string name="RetoBeberMuyAlto10" translatable="false">Cada jugador tira 2 dados y bebe esa cantidad de tragos.</string>
+    <string name="RetoBeberMuyAlto11" translatable="false">Todos bebéis 10 tragos.</string>
+    <string name="RetoBeberMuyAlto12" translatable="false">Llénate el vaso y acábatelo, grábalo y súbelo a instagram. Etiqueta a gusa_juego_para_fiestas.</string>
+    <string name="RetoBeberMuyAlto13" translatable="false">¡¡Chupito para todos!!</string>
+    <string name="RetoBeberMuyAlto14" translatable="false">Cada jugador bebe un trago por cada letra de su nombre.</string>
+    <string name="RetoBeberMuyAlto15" translatable="false">Cada jugador bebe un trago por cada mes que lleve solter@(Max: 10).</string>
+    <string name="RetoBeberMuyAlto16" translatable="false">Los que no hayan terminado dos vasos se acaban el que tengan empezado.</string>
+    <string name="RetoBeberMuyAlto17" translatable="false">Cada jugador bebe un trago por cada 5 puntos que tenga.</string>
+    <string name="RetoBeberMuyAlto18_1" translatable="false">Di un número del 1 al 10 y pulsa continuar.</string>
+    <string name="RetoBeberMuyAlto18_2_1" translatable="false">Bebes el doble de tragos de ese número.</string>
+    <string name="RetoBeberMuyAlto18_2_2" translatable="false">Mandas beber el doble esa cantidad de tragos.</string>
+    <string name="RetoBeberMuyAlto18_2_3" translatable="false">Da igual el número, bebes 15.</string>
+
+    //-----------------------
+    //Retos aleatorios
+    //-----------------------
+
+    <string name="RetoAleatorio1" translatable="false">Se juega a LA HISTORIA. Empiezas diciendo una palabra, el siguiente dirá esa palabra más otra, y así sumando hasta que alguien falle. El perdedor beberá 7 tragos.</string>
+    <string name="RetoAleatorio2" translatable="false">Durante una ronda se bebe el doble.</string>
+    <string name="RetoAleatorio3" translatable="false">Se juega al "21". Tenéis que contar del 1 al 21. Cualquiera puede decir el siguiente número en cualquier momento pero si 2 personas lo dicen a la vez beben y se reinicia.</string>
+    <string name="RetoAleatorio4" translatable="false">Se juega a EL MÁS PROBABLE. Di cualquier cosa rara. A la de 3 señalaréis a la persona que creáis que es más probable que lo haya hecho. La más votada bebera 6 tragos.</string>
+    <string name="RetoAleatorio5" translatable="false">Se juega al YO NUNCA. Di algo que nunca hayas hecho, los que si lo hayan hecho beben 1 trago. Cada jugador dirá un "Yo nunca".</string>
+    <string name="RetoAleatorio6" translatable="false">Se juega a PALABRAS ENCADENADAS. Di una palabra, el de tu derecha dira otra palabra que empiece por la última sílaba de la anterior. El que tarde más de 2 segundos pierde y bebe 4 tragos.</string>
+    <string name="RetoAleatorio7" translatable="false">Durante una ronda no vale cruzarse la mirada con otro jugador, los que lo hagan beben.</string>
+    <string name="RetoAleatorio8" translatable="false">¡Foto de grupo! Súbelo a instagram..</string>
+    <string name="RetoAleatorio9" translatable="false">Durante 1 ronda siempre que hables el resto de jugadores harán sonidos de pedos. La prueba no especifica cómo hacer los ruidos.</string>
+    <string name="RetoAleatorio10" translatable="false">Propón un trabalenguas. El resto de jugadores intentará decirlo a la primera. Si no les sale beben 2 tragos.</string>
+    <string name="RetoAleatorio11" translatable="false">Cuenta un chiste y súbelo a instagram.</string>
+    <string name="RetoAleatorio12" translatable="false">Esta ronda serás un bebé y te tendrán que dar de beber tus amigos si tienes que beber.</string>
+    <string name="RetoAleatorio13_1" translatable="false">Todos miráis abajo y a la de 3 levantáis la vista y miráis a un jugador. Si el otro jugador tambien te mira ambos bebéis 2 tragos.</string>
+    <string name="RetoAleatorio13_2" translatable="false">Ahora haréis lo mismo pero perdiendo prendas.</string>
+    <string name="RetoAleatorio14" translatable="false">Se juega a "MAYOR MENOR". Cada jugador por turnos saca una carta y tendrá que adivinar si es mayor o menor que la anterior. El perdedor bebe un trago por cada carta que se haya sacado.</string>
+    <string name="RetoAleatorio15" translatable="false">Se juega a "CARA O CRUZ". Cada jugador por turnos tira una moneda. Si sacas cara pasa la moneda al siguiente jugador y se acumulan 2 tragos. Si saca cruz se los bebe.</string>
+    <string name="RetoAleatorio16" translatable="false">Dale un beso a la botella y demuestra tu amor por ella. Haz una foto para que todo el mundo lo sepa.</string>
+    <string name="RetoAleatorio17" translatable="false">Grabar un video cantando vuestra cancion preferida.</string>
+    <string name="RetoAleatorio18" translatable="false">Durante una ronda el que ría bebe.</string>
+    <string name="RetoAleatorio19" translatable="false">Cambia una palabra por otra. El que se equivoque bebe.</string>
+    <string name="RetoAleatorio20" translatable="false">Elige un acento. Todos hablaréis con ese acento durante esta ronda.</string>
+    <string name="RetoAleatorio21" translatable="false">El resto de la partida quien quiera ir al baño bebe 2 tragos.</string>
+    <string name="RetoAleatorio22_1" translatable="false">Gusa recuerda que el agua también es bebida y si no te hidratas las resacas son terribles.</string>
+    <string name="RetoAleatorio22_2" translatable="false">Para que no se olvide brindamos con un chupito.</string>
+    <string name="RetoAleatorio23" translatable="false">Se juega a LA LETRA. Elige una letra y un género(Ejem: La A y comida). Cada jugador por turnos dirá una palabra de ese género que empiece por esa letra.</string>
+    <string name="RetoAleatorio24" translatable="false">Desde ahora vuestros nombres se pronuncian al revés. Quien se equivoque bebe un trago.</string>
+    <string name="RetoAleatorio25" translatable="false">Desde ahora hablaras de ti en tercera persona. Si no lo haces bebes.</string>
+    <string name="RetoAleatorio26" translatable="false">Cambia una palabra por otra. El que no lo haga bebe.</string>
+    <string name="RetoAleatorio27" translatable="false">Haz algo que solo tú puedas hacer y súbelo a instagram.</string>
+    <string name="RetoAleatorio28" translatable="false">De ahora en adelante siempre que se saque un 5 hay que decir \"Por el culo te la hinco\". El último bebe un trago.</string>
+
+    //-----------------------
+    //Retos de la casilla estrella
+    //-----------------------
+
+    <string name="RetoEstrella1_1" translatable="false">Ningún punto, lo siento. Al menos no pierdes puntos.</string>
+    <string name="RetoEstrella1_2" translatable="false">Bebes 3 tragos.</string>
+    <string name="RetoEstrella2_1" translatable="false">1 Punto, el resto puede reirse de ti.</string>
+    <string name="RetoEstrella2_2" translatable="false">Perdona me faltaba un 0, eran 10 puntos.</string>
+    <string name="RetoEstrella3" translatable="false">2 puntos pero bebes 1 trago.</string>
+    <string name="RetoEstrella4" translatable="false">4 Puntos pero bebes 2 tragos.</string>
+    <string name="RetoEstrella5" translatable="false">6 Puntos pero bebes 3 tragos.</string>
+    <string name="RetoEstrella6" translatable="false">8 Puntos pero bebes 4 tragos. Aprovéchalos</string>
+    <string name="RetoEstrella7" translatable="false">Te llevas 8 puntitos ricos si bebes 3 tragos.</string>
+    <string name="RetoEstrella8" translatable="false">Estos 9 puntos tienen tu nombre y estos 4 tragos también.</string>
+    <string name="RetoEstrella9" translatable="false">Si cuentas un buen chiste te llevas 15 puntos.</string>
+    <string name="RetoEstrella10" translatable="false">6 puntitos solo para ti.</string>
+    <string name="RetoEstrella11" translatable="false">Si bebes 5 tragos ganas 10 puntos.</string>
+    <string name="loBebesIgualmente" translatable="false">Los bebes igualmente y te quedas sin esos puntos. ¿A qué hemos venido?</string>
+    <string name="RetoEstrella12" translatable="false">Si bebes 6 tragos ganas 15 puntos.</string>
+    <string name="RetoEstrella13" translatable="false">Si bebes 7 tragos ganas 20 puntos.</string>
+    <string name="RetoEstrella14" translatable="false">Si bebes 8 tragos ganas 25 puntos.</string>
+    <string name="RetoEstrella15" translatable="false">Si bebes 10 tragos ganas 30 puntos.</string>
+    <string name="RetoEstrella16" translatable="false">Ganas 10 puntos.</string>
+    <string name="RetoEstrella17" translatable="false">¡¡Ganas 30 puntos!! Esto es mejor que una lotería.</string>
+    <string name="RetoEstrella18" translatable="false">Si te acabas el vaso ganas 30 puntos.</string>
+    <string name="RetoEstrella19" translatable="false">Si pierdes una prenda ganas 30 puntos.</string>
+    <string name="RetoEstrella20" translatable="false">Si contestas a la pregunta que te hagan tus amigos ganas 12 puntos.</string>
+    <string name="RetoEstrella21" translatable="false">Si haces un baile sensual ganas 15 puntos.</string>
+    <string name="RetoEstrella22" translatable="false">Si te acostarías con alguno de los presentes ganas 9 puntos.(Si lo harías, no que lo hagas)</string>
+    <string name="RetoEstrella23" translatable="false">Si te notas un poco caliente ganas 15 puntos.</string>
+
+
+    //-----------------------
+    //Retos del baul
+    //-----------------------
+
+    <string name="RetoBaulCuesta1" translatable="false">Abrir este baúl te costará 1 punto.</string>
+    <string name="RetoBaulCuesta5" translatable="false">Abrir este baúl te costará 5 puntos.</string>
+    <string name="RetoBaulCuesta10" translatable="false">Abrir este baúl te costará 10 puntos.</string>
+    <string name="RetoBaulCuesta15" translatable="false">Abrir este baúl te costará 15 puntos.</string>
+    <string name="RetoBaulCuesta20" translatable="false">Abrir este baúl te costará 20 puntos.</string>
+
+    <string name="RetoBaulComodin" translatable="false">¡¡Comodín!! Puedes saltarte una prueba.(Objeto)</string>
+    <string name="RetoBaulSuperComodin" translatable="false">¡¡Super Comodín!! Puedes saltarte una prueba y mandársela al jugador que quieras sin posiblidad de evitarla.(Objeto)</string>
+    <string name="RetoBaulCamarero" translatable="false">Obligas a un jugador a ser tu camarero y servirte la bebida el resto de la partida.</string>
+    <string name="RetoBaulNorma" translatable="false">Pones una norma. El límite es la imaginación.</string>
+    <string name="RetoBaulPonerReto" translatable="false">Pon un reto a alguien. Que los puntos gastados merezcan la pena.</string>
+    <string name="RetoBaulAcabarVaso" translatable="false">Manda a un jugador acabarse el vaso.</string>
+    <string name="RetoBaulTodosChupito" translatable="false">El resto bebe un chupito.</string>
+    <string name="RetoBaulTodos2Tragos" translatable="false">El resto bebe 2 tragos.</string>
+    <string name="RetoBaulVacio" translatable="false">Baúl vacío. Lo siento.</string>
+    <string name="RetoBaulTodos5" translatable="false">El resto bebe 5 tragos.</string>
+    <string name="RetoBaulCaminoArriba" translatable="false">Cambia la dirección del camino de arriba.(Objeto)</string>
+    <string name="RetoBaulCamioAbajo" translatable="false">Cambia la dirección del camino de abajo.(Objeto)</string>
+    <string name="RetoBaul5A1" translatable="false">Haz beber 5 tragos a un jugador cuando quieras durante tu turno. Esto es mejor conservarlo y amenazar con el que gastarlo.</string>
+    <string name="RetoBaulPregunta" translatable="false">Haz una pregunta al jugador que quieras. Tiene que contestarla.</string>
+    <string name="RetoBaulPiquito" translatable="false"> Dale un piquito al jugador que quieras.</string>
+    <string name="RetoBaulBeso" translatable="false">Dale un beso al jugador que quieras.</string>
+    <string name="RetoBaulBesoOtros" translatable="false">Haz que dos jugadores se besen.</string>
+
+    //-----------------------
+    //Retos picantes
+    //-----------------------
+
+    <string name="RetoPicanteMuyBajo1_1" translatable="false">Te hacen una pregunta picante. Tienes que responder.</string>
+    <string name="RetoPicanteMuyBajo1_2" translatable="false">Mejor que contesten todos a esa pregunta.</string>
+    <string name="RetoPicanteMuyBajo2" translatable="false">Te escriben algo guarro en el brazo.</string>
+    <string name="RetoPicanteMuyBajo3" translatable="false">Abraza por la espalda a un jugador aleatorio del sexo que te guste y susurrale algo al oido.</string>
+    <string name="RetoPicanteMuyBajo4" translatable="false">Confiesa una situación embarazosa respecto al sexo que hayas tenido.</string>
+    <string name="RetoPicanteMuyBajo5" translatable="false">Tus \"amigos\" se tiran encima de ti.</string>
+    <string name="RetoPicanteMuyBajo6" translatable="false">Túmbate y échate bebida en el ombligo. Un jugador aleatorio del sexo que te guste se lo bebe.</string>
+    <string name="RetoPicanteMuyBajo7" translatable="false">Describe con MUCHOS detalles tu última experiencia.</string>
+    <string name="RetoPicanteMuyBajo8" translatable="false">Pasa las manos sensualmente por tu cuerpo para que todos vean lo que te quieres.</string>
+    <string name="RetoPicanteMuyBajo9_1" translatable="false">Señala al jugador que creas que esta más cachondo ahora mismo.</string>
+    <string name="RetoPicanteMuyBajo9_2" translatable="false">Si admite que lo esta bebes 5 tragos.</string>
+    <string name="RetoPicanteMuyBajo10" translatable="false">Acaricia a alguien sin usar las manos o bebe 3 tragos y pierdes 5 puntos.</string>
+    <string name="RetoPicanteMuyBajo11" translatable="false">Confiesa si tienes alguna foto tuya desnud@ en el movil.</string>
+    <string name="RetoPicanteMuyBajo12" translatable="false">Enseña a todos ese arte que tienes haciendo twerking. Eres un artista, y lo sabes.</string>
+    <string name="RetoPicanteMuyBajo13" translatable="false">Dale un masaje a un jugador aleatorio del sexo que te guste hasta que te vuelva a tocar.</string>
+    <string name="RetoPicanteMuyBajo14" translatable="false">Del 1 al 10 ¿Cómo de guarr@ te consideras?</string>
+    <string name="RetoPicanteMuyBajo15" translatable="false">Cuenta una verdad y una mentira comprometida sobre ti y deja a tus amigos con la duda de cuál será la verdadera.</string>
+    <string name="RetoPicanteMuyBajo16" translatable="false">Siéntate encima de un jugador aleatorio hasta que te vuelva a tocar.</string>
+    <string name="RetoPicanteMuyBajo17" translatable="false">Durante una ronda todos los jugadores juegan con una mano tocándote.</string>
+    <string name="RetoPicanteMuyBajo18" translatable="false">PENE... La palabra con más sinónimos. Por turnos iréis diciendo sinónimos y si a alguien no se le ocurre uno en 5 segundos bebe 4 tragos.</string>
+    <string name="RetoPicanteMuyBajo19" translatable="false">Dile guap@ a una persona que te guste por whatsapp.</string>
+
+
+    <string name="RetoPicanteBajo1" translatable="false">Te dibujan algo en la pierna.</string>
+    <string name="RetoPicanteBajo2" translatable="false">Si te dejas dibujar algo en la barriguita ganas 3 puntos.</string>
+    <string name="RetoPicanteBajo3" translatable="false">Dale un piquito a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteBajo4" translatable="false">Dale un beso de 3 segundos a un jugador aleatorio del sexo que te guste si quieres ganar 9 puntos.</string>
+    <string name="RetoPicanteBajo5" translatable="false">Finge que haces una mamada con todas tus ganas o bebe 5 tragos y pierdes 3 puntos.</string>
+    <string name="RetoPicanteBajo6" translatable="false">Desabrocha o que te desabroche el sujetador un jugador del sexo opuesto en menos de 10 segundos. Si tardáis más bebéis 3 tragos.</string>
+    <string name="RetoPicanteBajo7" translatable="false">Pierde una prenda si quieres ganar 25 puntos.</string>
+    <string name="RetoPicanteBajo8" translatable="false">Dale un beso en la boca a un jugador aleatorio del sexo que te guste mientras cantas. A ver que sale…</string>
+    <string name="RetoPicanteBajo9" translatable="false">Enseña el color de tu ropa interior. Es por razones puramente científicas, lo juro.</string>
+    <string name="RetoPicanteBajo10" translatable="false">Agárrate tus partes por encima de la ropa durante esta ronda.</string>
+    <string name="RetoPicanteBajo11" translatable="false">Durante una ronda te sentarás abrazad@ a un jugador aleatorio del sexo que te guste y lo acariciarás.</string>
+    <string name="RetoPicanteBajo12" translatable="false">Dile a algún jugador la frase más bestia que se te ocurra. El ser guarrete ahora esta bien visto.</string>
+    <string name="RetoPicanteBajo13" translatable="false">Todos los jugadores te hacen cosquillas durante 5 segundos o bebe 7 tragos y pierdes 12 puntos.</string>
+    <string name="RetoPicanteBajo14" translatable="false">Un jugador aleatorio del sexo que te gusta te hace una pedorreta.</string>
+    <string name="RetoPicanteBajo15" translatable="false">Apuesta 3 tragos y tira un dado. Si aciertas el resultado das un azote al jugador que quieras.</string>
+    <string name="RetoPicanteBajo16" translatable="false">Apuesta un trago y saca una carta. Si aciertas el palo puedes darle un pico al jugador que quieras.</string>
+    <string name="RetoPicanteBajo17" translatable="false">El último en sacar un condon bebe 5 tragos. Si hay alguno que no tenga lógicamente beben ellos.</string>
+    <string name="RetoPicanteBajo18" translatable="false">Cuenta tu fantasía sexual al oido de un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteBajo19_1" translatable="false">Si te gustaria una noche con al menos 1 jugador bebe 3 tragos. No vale preguntar quién.</string>
+    <string name="RetoPicanteBajo19_2" translatable="false">Bueno venga, si vale preguntar.</string>
+    <string name="RetoPicanteBajo20" translatable="false">Abraza a un jugador de manera tierna.</string>
+
+
+    <string name="RetoPicanteMedio1" translatable="false">Pierdes una prenda si quieres ganar estos 25 puntos.</string>
+    <string name="RetoPicanteMedio2" translatable="false">Te escriben algo en el cuerpo.</string>
+    <string name="RetoPicanteMedio3" translatable="false">Haz un baile sensual a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteMedio4" translatable="false">Dile algo al oido a un jugador aleatorio del sexo que te gusta e intanta que se caliente.</string>
+    <string name="RetoPicanteMedio5" translatable="false">Representa 2 posturas sexuales tu sol@.</string>
+    <string name="RetoPicanteMedio8" translatable="false">Cada jugador te da un azotito. Sin pasarse que para eso hay otra prueba.</string>
+    <string name="RetoPicanteMedio9" translatable="false">Lámete un dedo con deseo. Ya me entiendes…</string>
+    <string name="RetoPicanteMedio11" translatable="false">Cada jugador te hace una pregunta de si o no y tienes que contestar.</string>
+    <string name="RetoPicanteMedio12" translatable="false">Finge que estás follando con todas tus ganas.</string>
+    <string name="RetoPicanteMedio13" translatable="false">Finge un orgasmo. A ver que tan buen@ eres actuando.</string>
+    <string name="RetoPicanteMedio14" translatable="false">Todos tus \"amigos\" te acarician a la vez sensualmente durante 5 segundos. Es momento de sacar al gatito mimoso que llevas dentro.</string>
+    <string name="RetoPicanteMedio17" translatable="false">Ata tu mano a la de otro jugador durante 30 minutos. Suerte cuando llegue el pipi.</string>
+    <string name="RetoPicanteMedio19" translatable="false">Dale un piquito a cada jugador.</string>
+    <string name="RetoPicanteMedio20" translatable="false">Pierdes una prenda. Nada de zapatillas o calcetines.</string>
+    <string name="RetoPicanteMedio21" translatable="false">Intercambia una prenda con otro jugador.</string>
+    <string name="RetoPicanteMedio22" translatable="false">Muerde el cuello de un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteMedio23" translatable="false">Da 3 besos sensuales en el cuello de un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteMedio24" translatable="false">El jugador que quieras pierde 1 prenda.</string>
+    <string name="RetoPicanteMedio25" translatable="false">Pierde una prenda o bebe 5 tragos y pierdes 10 puntos.</string>
+    <string name="RetoPicanteMedio26" translatable="false">Pierde una prenda o bebe 10 tragos y pierdes 5 puntos.</string>
+    <string name="RetoPicanteMedio27" translatable="false">Tapate los ojos. Un jugador te acariciará sensualmente y tienes que adivinar quien es. Si fallas bebes 2 tragos.</string>
+    <string name="RetoPicanteMedio28" translatable="false">Toca tus partes y despues huele tu mano… </string>
+    <string name="RetoPicanteMedio29" translatable="false">Haz un calvo de 1 segundo y gana 20 puntos.</string>
+    <string name="RetoPicanteMedio31" translatable="false">Un jugador aleatorio del sexo que te gusta te dará un azote bien fuerte. Y que se oiga.</string>
+    <string name="RetoPicanteMedio32" translatable="false">Durante una ronda hablarás gimiendo. Si no lo haces bebes.</string>
+    <string name="RetoPicanteMedio33" translatable="false">Escribe con el dedo en el culo de un jugador aleatorio del sexo que te guste la palabra que el resto decida. Si no lo adivina a la primera bebéis 2 tragos.</string>
+    <string name="RetoPicanteMedio35" translatable="false">Quítate una prenda sensualmente. Después puedes ponértela otra vez, no cojas frío.</string>
+    <string name="RetoPicanteMedio36" translatable="false">Cada jugador por turnos dirá cuando cree que tuviste tu último orgasmo. A cada 1 contestarás si antes o después. Si lo adivinan bebes 3 tragos.</string>
+    <string name="RetoPicanteMedio38" translatable="false">Un jugador aleatorio del sexo que te guste te abraza y te huele el pelo.</string>
+    <string name="RetoPicanteMedio39" translatable="false">Dale un beso en el cuello a un jugador aleatorio del sexo que te guste. Tiene que intentar estarse quieto. Si se mueve bebe 3 tragos.</string>
+    <string name="RetoPicanteMedio42" translatable="false">Jugad a pasa el hielo. Sabéis como se juega.</string>
+    <string name="RetoPicanteMedio43" translatable="false">Saca todo lo que lleve en los bolsillos a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteMedio44" translatable="false">Lámele el ombligo a un jugador aleatorio del sexo que te gute.</string>
+    <string name="RetoPicanteMedio45" translatable="false">El jugador con más ropa pierde una prenda.</string>
+    <string name="RetoPicanteMedio46" translatable="false">Cuéntanos que juguetes sexuales tienes.</string>
+    <string name="RetoPicanteMedio49" translatable="false">Apuesta 3 tragos y tira un dado. Si aciertas el resultado elije un jugador para que pierda una prenda..</string>
+    <string name="RetoPicanteMedio50" translatable="false">Siempre que hables el resto de la partida tendrás que agarrarte tus partes, si no lo haces bebes.</string>
+    <string name="RetoPicanteMedio51" translatable="false">Chúpale el dedo sensualmente a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteMedio53" translatable="false">Acaricia la cara de un jugador mientras le miras a los ojos.</string>
+
+
+
+    //fuertes
+    <string name="RetoPicanteAlto1" translatable="false">Pierdes una prenda y ganas 25 puntos.</string>
+    <string name="RetoPicanteAlto2" translatable="false">Tú y el jugador con más puntos perdéis una prenda, si eres tú pierdes 2.</string>
+    <string name="RetoPicanteAlto3" translatable="false">El jugador que quieras pierde una prenda. </string>
+    <string name="RetoPicanteAlto4" translatable="false">Quédate en ropa interior, el invierno es para débiles</string>
+    <string name="RetoPicanteAlto5" translatable="false">Haz un calvo de 3 segundos.</string>
+    <string name="RetoPicanteAlto6" translatable="false">Representa una postura sexual con un jugador aleatorio del sexo que te guste. Solo representarla ehhhh.</string>
+    <string name="RetoPicanteAlto7" translatable="false">Quítale una prenda a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteAlto8" translatable="false">Da tu mejor beso a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteAlto9" translatable="false">Toca bien el culo de cada jugador y opina cual es el mejor culo.</string>
+    <string name="RetoPicanteAlto10" translatable="false">Ponte algo de comida en el cuerpo. Un jugador aleatorio del sexo que te guste se la comerá.</string>
+    <string name="RetoPicanteAlto11" translatable="false">Enseña las 20 últimas fotos de tu cámara. No hay secretos entre \"amigos\".</string>
+    <string name="RetoPicanteAlto12" translatable="false">Apuesta 3 tragos y saca una carta. Si aciertas la carta pones la norma que quieras. Tienes 5 intentos.</string>
+    <string name="RetoPicanteAlto13_1" translatable="false">Todos bebéis 10 tragos o perdéis una prenda.</string>
+    <string name="RetoPicanteAlto13_2" translatable="false">Tú repites.</string>
+    <string name="RetoPicanteAlto14" translatable="false">Dale un beso de 3 segundos a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteAlto15" translatable="false">Los jugadores del sexo opuesto pierden prenda o beben 5 tragos.</string>
+    <string name="RetoPicanteAlto16" translatable="false">Un jugador aleatorio del sexo que te guste te acompañará la proxima vez que tengas que ir al baño.</string>
+    <string name="RetoPicanteAlto17" translatable="false">Muerdele el labio a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteAlto18" translatable="false">La siguiente ronda la pasarás con tu mano tocando tus partes por dentro de la ropa.</string>
+    <string name="RetoPicanteAlto19" translatable="false">Elige una zona de tu cuerpo. Un jugador aleatorio del sexo que te guste lamerá esa zona o bebeá 5 tragos. Si te sobrepasas eligiendo zona elegirán los tragos… puede…</string>
+    <string name="RetoPicanteAlto20" translatable="false">Intenta bajar la bragueta de un jugador aleatorio del sexo que te guste con la boca en 10 segundos.</string>
+    <string name="RetoPicanteAlto21" translatable="false">Pellizcate los pezones durante 3 segundos y recibe 5 puntos. Te das gustito y recibes puntos ¿Qué más quieres?</string>
+    <string name="RetoPicanteAlto22" translatable="false">Toma un trago de tu bebida en la boca y pásaselo a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteAlto23" translatable="false">Apuesta lo que quieras a cara o cruz. Cualquier jugador puede aceptar el reto.</string>
+    <string name="RetoPicanteAlto24" translatable="false">Apuesta 1 o 4 tragos y saca carta. Si aciertas y elegiste 1 el resto bebe 4 tragos. Si elegiste 4 el resto pierde prenda o bebe 10 tragos. Tienes 7 intentos.</string>
+    <string name="RetoPicanteAlto25" translatable="false">Junta tu lengua con la de otro jugador o bebe 7 tragos y pierdes 7 puntos.</string>
+    <string name="RetoPicanteAlto26" translatable="false">Dale un beso de 3 segundos a cada jugador del sexo que te guste.</string>
+    <string name="RetoPicanteAlto27" translatable="false">Un jugador aleatorio del sexo que te guste te amasa el culo como si fuese masa madre para pan.</string>
+
+
+    //muy fuertes
+    <string name="RetoPicanteMuyAlto1" translatable="false">Un jugador aleatorio del sexo que te gusta pasara su mano por tu zona más íntima.</string>
+    <string name="RetoPicanteMuyAlto2" translatable="false">Un jugador aleatorio del sexo que te gusta pasará las manos por tu cuerpo sensualmente.</string>
+    <string name="RetoPicanteMuyAlto3" translatable="false">Intenta calentar a un jugador aleatorio del sexo que te guste con una sola mano.</string>
+    <string name="RetoPicanteMuyAlto4" translatable="false">Vete al baño o donde no te vean y hazte una foto desnud@, se la enseñaras despues por 3 segundos a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteMuyAlto5" translatable="false">Elige a un jugador para ir a un cuarto separado por 5 minutos. El resto sigue jugando.</string>
+    <string name="RetoPicanteMuyAlto6" translatable="false">Toca el torso por dentro de la ropa a un jugador aleatorio del sexo que te guste.</string>
+    <string name="RetoPicanteMuyAlto7" translatable="false">Enseña el culo y después te das un azote.</string>
+    <string name="RetoPicanteMuyAlto8" translatable="false">Un jugador aleatorio del sexo que te guste te pellizca un pezón o bebes 7 tragos y pierdes 10 puntos.</string>
+    <string name="RetoPicanteMuyAlto9" translatable="false">Lame los tatuajes y piercings de todos los jugadores del sexo que te guste.</string>
+    <string name="RetoPicanteMuyAlto10" translatable="false">Toca una teta o que te toquen una teta con los ojos cerrados. Tienes que adivinar quién fue o bebe 3 tragos.</string>
+    <string name="RetoPicanteMuyAlto11" translatable="false">Durante 1 minuto haces lo que tus \"amigos\" te digan.</string>
+    <string name="RetoPicanteMuyAlto12" translatable="false">Acaricia tus partes hasta que te vuelva a tocar.</string>
+    <string name="RetoPicanteMuyAlto13" translatable="false">Lanza un dado. Si haciertas el resultado el resto de jugadores pierde prenda.</string>
+    <string name="RetoPicanteMuyAlto14" translatable="false">Lanza una moneda. Si haciertas el resultado el resto de jugadores pierde prenda.</string>
+    <string name="RetoPicanteMuyAlto15" translatable="false">Piensa en un reto y lanza una moneda. Si sale cruz lo haces tú y si sale cara se lo mandas a alguien.</string>
+    <string name="RetoPicanteMuyAlto16" translatable="false">Un jugador aleatorio del sexo que te guste puede todarte donde quiera durante 30 segundos.</string>
+
+    //-----------------------
+    //Retos iniciales
+    //-----------------------
+
+    <string name="RetoInicial1" translatable="false">¡Reto inicial!\n\LLenad todos el vaso hasta arriba. A la de 3 os lo bebéis. El primero en apollar el vaso vacío le manda el primer reto que le toque al último en apollar.</string>
+    <string name="RetoInicial2" translatable="false">¡Reto inicial!\n\Hasta dar la primera vuelta, al principio de cada turno, ese jugador bebe un trago.\n\¡A correr!</string>
+    <string name="RetoInicial3" translatable="false">¡Reto inicial!\n\En la primera vuelta si te adelantan bebes 2 tragos.</string>
+    <string name="RetoInicial4" translatable="false">¡Reto inicial!\n\Cada jugador saca una carta y tira un dado y sumará el resultado. Después tirá una moneda. Si saca cara manda beber esos tragos, si saca cruz se los bebe el.</string>
+    <string name="RetoInicial5" translatable="false">¡Reto inicial!\n\Los que tengan pareja beben 3 tragos, los que no, beben 7. A los que les gustaría tener hoy relaciones... ya sabes... bebe otros 7.</string>
+    <string name="RetoInicial6" translatable="false">¡Reto inicial!\n\Cada jugador pone una regla de beber. Ejemplo: Siempre que se saque un 1 se bebe.</string>
+    <string name="RetoInicial7" translatable="false">¡Reto inicial!\n\Ronda de chupitos. Se beben 2 chupitos, uno ahora y otro cuando alguien acabe su primer vaso.</string>
+    <string name="RetoInicial8" translatable="false">¡Reto inicial!\n\En las siguientes 3 tiradas de tablero de cada jugador si adivina el resultado el resto bebe 2 tragos, si falla los bebe el.</string>
+    <string name="RetoInicial9" translatable="false">¡Reto inicial!\n\Los jugadores que no querían jugar o los que no estaban seguros beben 15 tragos por aguafiestas. Los demás solo 7.</string>
+    <string name="RetoInicial10" translatable="false">¡Reto inicial!\n\Esta partida el que quiera ir al baño tendrá que beberse un chupito.</string>
+    <string name="RetoInicial11" translatable="false">¡Reto inicial!\n\Se prohibe la palabra beber. El jugador que lo diga bebe. La regla empezaba antes de leerse la frase.</string>
+    <string name="RetoInicial12" translatable="false">¡Reto inicial!\n\Si adivináis la tirada que vais a sacar en el mapa durante la primera vuelta el resto bebe un trago.</string>
+    <string name="RetoInicial13" translatable="false">¡Reto inicial!\n\Entre todos elegir una acción (por ejemplo toser), el que haga esa acción durante la partida bebe un trago.</string>
+    <string name="RetoInicial14" translatable="false">¡Reto inicial!\n\Durante la primera vuelta si acabas el movimiento en la casilla de antes o de después de otro jugador esos jugadores tienen que decir gusa, el último bebe 2 tragos.</string>
+
+
+</resources>

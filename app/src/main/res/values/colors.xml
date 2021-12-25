@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="jugador1">#FF0000</color>
+    <color name="jugador2">#2B27FF</color>
+    <color name="jugador3">#FF8400</color>
+    <color name="jugador4">#1AFF00</color>
+    <color name="jugador5">#00FFCC</color>
+    <color name="jugador6">#6600FF</color>
+    <color name="jugador7">#FFE600</color>
+    <color name="jugador8">#FF008C</color>
+    <color name="jugador9">#FFFFFF</color>
+    <color name="jugador10">#804000</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
