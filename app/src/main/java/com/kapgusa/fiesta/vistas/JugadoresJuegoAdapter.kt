@@ -34,7 +34,7 @@ class JugadoresJuegoAdapter (private val context: Context, private val dataSet: 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.nombre.text = dataSet[position].nombre
-        holder.alias.text = dataSet[position].descripcion
+        holder.alias.text = dataSet[position].casillas.toString()
         holder.puntos.text = dataSet[position].direccionImagen
     }
 

@@ -1,6 +1,7 @@
 package com.kapgusa.fiesta.modelo.bbdd
 
 import android.annotation.SuppressLint
+import android.bluetooth.BluetoothSocket
 import android.content.ContentValues
 import android.content.Context
 import android.content.res.Resources
@@ -11,6 +12,8 @@ import com.kapgusa.fiesta.modelo.Gustos
 import com.kapgusa.fiesta.modelo.Jugador
 import com.kapgusa.fiesta.modelo.Mapa
 import com.kapgusa.fiesta.modelo.Reto
+import org.greenrobot.eventbus.EventBus
+import java.io.IOException
 
 class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
@@ -19,7 +22,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
     //Declaración de constantes
     companion object{
         private const val DATABASE_NAME = "miBBDD" //Nombre de la BBDD
-        private const val DATABASE_VERSION = 2 //Versión de la BBDD
+        private const val DATABASE_VERSION = 1 //Versión de la BBDD
     }
 
     //Introduce los datos del jugador en la BBDD por primera vez
@@ -180,7 +183,8 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
         //Realiza la query y guarda el resultado en un cursor
         val cursor = db.rawQuery("select * from " + Tablas.CasillasMapas.TABLE_NAME +
-                " WHERE " + Tablas.CasillasMapas.COLUMN_id_mapa + " = " + id, null)
+                " WHERE " + Tablas.CasillasMapas.COLUMN_id_mapa + " = " + id +
+                " ORDER BY " + Tablas.CasillasMapas.COLUMN_posicion + " ASC", null)
 
         //Recorre el cursor y guarda el tipo del reto para añadirlo a la lista
         while (cursor.moveToNext()) {
@@ -198,20 +202,19 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
     //Si la BBDD no existe llama a esta función para crearla
     override fun onCreate(db: SQLiteDatabase?) {
-        version1()
-        version2()
-
+        version1(db)
+        version2(db)
     }
 
     //Se llama a esta función cuando hay un cambio en la versión de la BBDD
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        version2()
+        version2(db)
     }
 
 
-    private fun version1(){
+    private fun version1(db: SQLiteDatabase?){
         //Crea la tabla jugadores
-        db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Jugadores.TABLE_NAME} (" +
+        db!!.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Jugadores.TABLE_NAME} (" +
                 "${Tablas.Jugadores.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "${Tablas.Jugadores.COLUMN_nombre} TEXT NOT NULL, " +
                 "${Tablas.Jugadores.COLUMN_gustos} TEXT NOT NULL, " +
@@ -263,20 +266,20 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         }
     }
 
-    private fun version2(){
+    private fun version2(db: SQLiteDatabase?){
 
         //Crea la tabla mapas
-        db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Mapas.TABLE_NAME} (" +
+        db!!.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Mapas.TABLE_NAME} (" +
                 "${Tablas.Mapas.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "${Tablas.Mapas.COLUMN_nombre} TEXT NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_descripcion} TEXT NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_picante} INTEGER NOT NULL, " +
-                "${Tablas.Mapas.COLUMN_imagen} TEXT NOT NULL, " )
+                "${Tablas.Mapas.COLUMN_imagen} TEXT NOT NULL)" )
 
 
         //Crea la tabla casillas_mapas
         db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.CasillasMapas.TABLE_NAME} (" +
-                "${Tablas.CasillasMapas.COLUMN_id_mapa} INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "${Tablas.CasillasMapas.COLUMN_id_mapa} INTEGER NOT NULL, " +
                 "${Tablas.CasillasMapas.COLUMN_posicion} INTEGER NOT NULL, " +
                 "${Tablas.CasillasMapas.COLUMN_tipo} INTEGER NOT NULL, " +
                 "FOREIGN KEY(${Tablas.CasillasMapas.COLUMN_id_mapa}) REFERENCES ${Tablas.Mapas.TABLE_NAME}(${Tablas.Mapas.COLUMN_id}))")
@@ -298,11 +301,10 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 valores.put(Tablas.CasillasMapas.COLUMN_posicion, i) //Introduce la posición
                 valores.put(Tablas.CasillasMapas.COLUMN_tipo, casilla) //Introduce el tipo de casilla
 
-                db.insert(Tablas.TextosRetos.TABLE_NAME, null, valores) //Realiza el insert
+                db.insert(Tablas.CasillasMapas.TABLE_NAME, null, valores) //Realiza el insert
             }
         }
     }
-
 
     //Crea una lista con todos los retos predefinidos
     private fun crearListaDeRetos(): List<Reto>{
@@ -858,25 +860,25 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
         //Mapa casa de gusa picante
         var casillas = listOf(
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
+                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.ESTRELLA.ordinal, Reto.TipoReto.ALEATORIO.ordinal, Reto.TipoReto.BAUL.ordinal, Reto.TipoReto.PICANTE.ordinal,
+                Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal,
+                Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal,
+                Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal,
+                Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal,
+                Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal,
 
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal
+                Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal,
+                Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal,
+                Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal
         )
 
-        var rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.RetoBeberMuyBajo1_1), casillas, Resources.getSystem(), context)
-        lista.add(Mapa(context.getString(R.string.RetoBeberMuyBajo1_1), context.getString(R.string.descripcion1), casillas, true, rutaImagen))
+        var rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa1), casillas, context.resources, context)
+        lista.add(Mapa(context.getString(R.string.nombreMapa1), context.getString(R.string.descripcion1), casillas, true, rutaImagen))
 
 
         //Mapa casa de gusa
         casillas = listOf(
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
+                Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
@@ -888,15 +890,15 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal
         )
 
-        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.RetoBeberMuyBajo1_1), casillas, Resources.getSystem(), context)
-        lista.add(Mapa(context.getString(R.string.RetoBeberMuyBajo1_1), context.getString(R.string.descripcion1), casillas, true, rutaImagen))
+        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa2), casillas, context.resources, context)
+        lista.add(Mapa(context.getString(R.string.nombreMapa2), context.getString(R.string.descripcion2), casillas, true, rutaImagen))
 
 
         //Mapa sin tonterias
         casillas = listOf(
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
-                Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
+                Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal,
+                Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal,
+                Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal, Reto.TipoReto.PRENDA.ordinal,
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal,
@@ -906,9 +908,12 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal
         )
 
-        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.RetoBeberMuyBajo1_1), casillas, Resources.getSystem(), context)
-        lista.add(Mapa(context.getString(R.string.RetoBeberMuyBajo1_1), context.getString(R.string.descripcion1), casillas, true, rutaImagen))
+        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa3), casillas, context.resources, context)
+        lista.add(Mapa(context.getString(R.string.nombreMapa3), context.getString(R.string.descripcion3), casillas, true, rutaImagen))
 
         return lista
     }
+
+
+
 }

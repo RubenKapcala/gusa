@@ -1,6 +1,6 @@
 package com.kapgusa.fiesta.vistas
 
-import android.content.pm.PackageManager
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,8 +17,24 @@ class MainActivity : AppCompatActivity() {
 
         binding.pene.setHasFixedSize(true)
         binding.pene.layoutManager = LinearLayoutManager(this)
-        binding.pene.adapter = JugadoresJuegoAdapter(this, DbHelper(this).obtenerMapas())
 
+        DatabaseThread().start()
+
+        binding.botonNoPulsar.setOnClickListener{
+            val mapas = DbHelper(this).obtenerMapas()
+            binding.pene.adapter = JugadoresJuegoAdapter(this, mapas)
+            binding.MAPA.setImageBitmap(BitmapFactory.decodeFile(mapas[0].direccionImagen))
+
+        }
+
+    }
+
+    private inner class DatabaseThread(): Thread(){
+        override fun run() {
+            DbHelper(this@MainActivity)
+            binding.textoCargandoInutil.text = "YAAAAAAA"
+
+        }
 
     }
 

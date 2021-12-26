@@ -44,11 +44,9 @@ data class Mapa(
             bitmapPrincipal = bitmapPrincipal.copy(bitmapPrincipal.config, true)
             val canvas = Canvas(bitmapPrincipal)
             var dest: Rect
-            var bitmapSecundario: Bitmap?
-
+            var bitmapSecundario = BitmapFactory.decodeResource(resources, R.drawable.mapa_nuevo)
 
             //Ponemos el marco
-            bitmapSecundario = BitmapFactory.decodeResource(resources, R.drawable.mapa_nuevo)
             dest = Rect(0, 0, 1680, 900)
             canvas.drawBitmap(bitmapSecundario, null, dest, null)
 
@@ -92,34 +90,4 @@ data class Mapa(
         }
     }
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
