@@ -3,15 +3,14 @@ package com.kapgusa.fiesta.modelo
 import android.content.Context
 import android.content.ContextWrapper
 import android.content.res.Resources
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
-import android.graphics.Rect
+import android.graphics.*
+import androidx.core.content.ContextCompat
 import com.kapgusa.fiesta.R
 import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
+
 
 data class Mapa(
         val nombre: String,
@@ -37,22 +36,18 @@ data class Mapa(
                 Coordenada(6, 6), Coordenada(6, 8), Coordenada(6, 10), Coordenada(8, 12), Coordenada(10, 12))
 
 
-        fun crearImagenMapa(nombre: String, listaCasillas: List<Int>, resources: Resources?, context: Context?): String {
+        fun crearImagenMapa(nombre: String, listaCasillas: List<Int>, context: Context): String {
 
             //Creamos el bitmap
             var bitmapPrincipal = Bitmap.createBitmap(1680, 900, Bitmap.Config.ARGB_8888)
             bitmapPrincipal = bitmapPrincipal.copy(bitmapPrincipal.config, true)
             val canvas = Canvas(bitmapPrincipal)
             var dest: Rect
-            var bitmapSecundario = BitmapFactory.decodeResource(resources, R.drawable.mapa_nuevo)
-
-            //Ponemos el marco
-            dest = Rect(0, 0, 1680, 900)
-            canvas.drawBitmap(bitmapSecundario, null, dest, null)
+            var bitmapSecundario: Bitmap
 
             //Pintamos las casillas
             for ((i, casilla) in listaCasillas.withIndex()) {
-                bitmapSecundario = BitmapFactory.decodeResource(resources, Reto.imagenes[casilla])
+                bitmapSecundario = BitmapFactory.decodeResource(context.resources, Reto.imagenes[casilla])
                 dest = Rect(50 * coordenadasCasillas[i].x - 25, 50 * coordenadasCasillas[i].y - 25, 50 * coordenadasCasillas[i].x + 25, 50 * coordenadasCasillas[i].y + 25)
                 canvas.drawBitmap(bitmapSecundario, null, dest, null)
             }
@@ -63,7 +58,7 @@ data class Mapa(
         }
 
 
-        fun guardarImagen(nombre: String, imagen: Bitmap, context: Context?): String {
+        fun guardarImagen(nombre: String, imagen: Bitmap, context: Context): String {
             val cw = ContextWrapper(context)
             val dirImages = cw.getDir("Imagenes", Context.MODE_PRIVATE)
             val myPath = File(dirImages, "$nombre.png")
@@ -87,6 +82,26 @@ data class Mapa(
         fun borrarImagen(ruta: String) {
             val file = File(ruta)
             file.delete()
+        }
+
+        fun cambiarCasilla(context: Context, bitmap: Bitmap, casilla: Int, tipoReto: Reto.TipoReto): Bitmap{
+
+            val bitmapPrincipal = bitmap.copy(bitmap.config, true)
+            val canvas = Canvas(bitmapPrincipal)
+            val dest = Rect(
+                    50 * coordenadasCasillas[casilla].x - 25,
+                    50 * coordenadasCasillas[casilla].y - 25,
+                    50 * coordenadasCasillas[casilla].x + 25,
+                    50 * coordenadasCasillas[casilla].y + 25
+            )
+            val clearPaint = Paint()
+            clearPaint.xfermode = PorterDuffXfermode(PorterDuff.Mode.CLEAR)
+            canvas.drawRect(dest, clearPaint)
+
+            val bitmapSecundario = BitmapFactory.decodeResource(context.resources, Reto.imagenes[tipoReto.ordinal])
+            canvas.drawBitmap(bitmapSecundario, null, dest, null)
+
+            return bitmapPrincipal
         }
     }
 

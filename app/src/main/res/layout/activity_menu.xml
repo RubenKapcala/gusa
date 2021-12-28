@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_menu"
+    tools:context=".vistas.MenuActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/lyt_personalizar_Menu"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <ImageView
+            android:id="@+id/btn_creadorRetos_Menu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="@+id/btn_creadorMapas_Menu"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintHorizontal_bias="0.948"
+            app:layout_constraintStart_toStartOf="@+id/btn_creadorMapas_Menu"
+            app:layout_constraintTop_toBottomOf="@+id/btn_creadorMapas_Menu" />
+
+        <ImageView
+            android:id="@+id/btn_creadorMapas_Menu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.02"
+            app:layout_constraintWidth_percent="0.55" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/creador_mapas"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_creadorMapas_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/btn_creadorMapas_Menu"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="@+id/btn_creadorMapas_Menu"
+            app:layout_constraintTop_toTopOf="@+id/btn_creadorMapas_Menu" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/creador_retos"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_creadorRetos_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/btn_creadorRetos_Menu"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="@+id/btn_creadorRetos_Menu"
+            app:layout_constraintTop_toTopOf="@+id/btn_creadorRetos_Menu" />
+
+        <ImageView
+            android:id="@+id/btn_atrasPreferencias_Menu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="@+id/btn_creadorMapas_Menu"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintHorizontal_bias="0.945"
+            app:layout_constraintStart_toStartOf="@+id/btn_creadorMapas_Menu"
+            app:layout_constraintTop_toBottomOf="@+id/btn_creadorRetos_Menu" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/atras"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_atrasPreferencias_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/btn_atrasPreferencias_Menu"
+            app:layout_constraintHorizontal_bias="0.6"
+            app:layout_constraintStart_toStartOf="@+id/btn_atrasPreferencias_Menu"
+            app:layout_constraintTop_toTopOf="@+id/btn_atrasPreferencias_Menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout7"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/lyt_personalizar_Menu"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_personalizar_Menu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintTop_toBottomOf="@+id/btn_tutorial_Menu"
+            app:layout_constraintWidth_percent="0.55" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/personalizar"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_personalizar_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/btn_personalizar_Menu"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="@+id/btn_personalizar_Menu"
+            app:layout_constraintTop_toTopOf="@+id/btn_personalizar_Menu" />
+
+        <ImageView
+            android:id="@+id/btn_tutorial_Menu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintStart_toStartOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintTop_toBottomOf="@+id/btn_opciones_Menu"
+            app:layout_constraintWidth_percent="0.55" />
+
+        <ImageView
+            android:id="@+id/btn_opciones_Menu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:background="@drawable/animacion_boton"
+            android:scaleType="fitXY"
+            app:layout_constraintEnd_toEndOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintTop_toBottomOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintWidth_percent="0.55" />
+
+        <ImageView
+            android:id="@+id/btn_nuevaPatida_Menu"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.03"
+            app:layout_constraintWidth_percent="0.55" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/nueva_partida"
+            android:textAllCaps="false"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintTop_toTopOf="@+id/btn_nuevaPatida_Menu" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/opciones"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_opciones_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/btn_opciones_Menu"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="@+id/btn_opciones_Menu"
+            app:layout_constraintTop_toTopOf="@+id/btn_opciones_Menu" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/tutorial"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_tutorial_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/btn_tutorial_Menu"
+            app:layout_constraintHorizontal_bias="0.7"
+            app:layout_constraintStart_toStartOf="@+id/btn_tutorial_Menu"
+            app:layout_constraintTop_toTopOf="@+id/btn_tutorial_Menu" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

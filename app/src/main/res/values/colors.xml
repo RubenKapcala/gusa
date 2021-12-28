@@ -5,6 +5,8 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorFondoMapa">#88975E</color>
+    <color name="transparente">#7AFF0000</color>
     <color name="jugador1">#FF0000</color>
     <color name="jugador2">#2B27FF</color>
     <color name="jugador3">#FF8400</color>

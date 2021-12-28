@@ -1,0 +1,1129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vistas.CrearMapasActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutDescripcionCrearMapas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fondo_menu"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Button
+            android:id="@+id/botonAtrasDescripcionPersonalizarMapas"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton_reducido"
+            android:fontFamily="@font/chewy"
+            android:paddingLeft="30dp"
+            android:text="@string/atras"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout11"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout11"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <Button
+            android:id="@+id/botonGuardarPersonalizarMapas"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton_reducido"
+            android:fontFamily="@font/chewy"
+            android:paddingLeft="30dp"
+            android:text="@string/guardar"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout11"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout11"
+            app:layout_constraintWidth_percent="0.2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout9"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bordes"
+            app:layout_constraintBottom_toTopOf="@+id/textView14"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.15"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.56"
+            app:layout_constraintWidth_percent="0.4">
+
+            <EditText
+                android:id="@+id/nombreNuevoMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:backgroundTint="#00FFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/chewy"
+                android:gravity="center"
+                android:hint="@string/nombre"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout11"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/bordes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.45"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.6"
+            app:layout_constraintWidth_percent="0.8">
+
+            <EditText
+                android:id="@+id/descripcionNuevoMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:backgroundTint="#00FFFFFF"
+                android:ems="10"
+                android:fontFamily="@font/chewy"
+                android:hint="@string/descripcion"
+                android:inputType="textMultiLine|textPersonName"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/nombre"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout9"
+            app:layout_constraintEnd_toEndOf="@+id/textView14"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout9" />
+
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="@string/descripcion"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout11"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout11" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutCrearMapas"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fondo_menu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/layoutDescripcionCrearMapas"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <Button
+            android:id="@+id/botonBorrarMapaPersonalizar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton_reducido"
+            android:fontFamily="@font/chewy"
+            android:text="@string/borrarMapa"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.12"
+            app:layout_constraintHorizontal_bias="0.025"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintVertical_bias="0.5"
+            android:paddingLeft="30dp"
+            app:layout_constraintWidth_percent="0.22" />
+
+        <Button
+            android:id="@+id/botonNuevoMapaPersonalizar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/animacion_boton_reducido"
+            android:fontFamily="@font/chewy"
+            android:paddingLeft="30dp"
+            android:text="@string/nuevoMapa"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.12"
+            app:layout_constraintHorizontal_bias="0.971"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.22" />
+
+        <ImageView
+            android:id="@+id/botonDerechaMapaPersonalizar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="28dp"
+            android:rotation="180"
+            app:layout_constraintBottom_toBottomOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintEnd_toStartOf="@+id/botonNuevoMapaPersonalizar"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintStart_toEndOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintTop_toTopOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.06"
+            app:srcCompat="@drawable/flechaizquierda" />
+
+        <ImageView
+            android:id="@+id/botonIzquierdaPersonalizarMapa"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="48dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintEnd_toStartOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintStart_toEndOf="@+id/botonBorrarMapaPersonalizar"
+            app:layout_constraintTop_toTopOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.06"
+            app:srcCompat="@drawable/flechaizquierda" />
+
+        <TextView
+            android:id="@+id/textoTusMapasPersonalizar"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/chewy"
+            android:gravity="center"
+            android:text="@string/tusMapas"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/mostrarMapaCreador"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.12"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.526"
+            app:layout_constraintWidth_percent="0.3" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/mostrarMapaCreador"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/colorFondoMapa"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.8334"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintWidth_percent="0.9">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mapaCrearMapas"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/mapa_nuevo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla0"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla29"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla28"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla30"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla0"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla2"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla31"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla1"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla3"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla10"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla2"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla4"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla5"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla24"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla5"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla6"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla31"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla6"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla7"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla32"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla7"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla8"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla33"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla8"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla9"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla34"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla9"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.655"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla19"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla10"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.596"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla14"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla11"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.537"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla14"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla12"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.475"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla14"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla13"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.413"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla14"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla14"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.351"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla15"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla15"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla16"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla16"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.228"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla17"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla17"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.168"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla18"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla18"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.108"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.087"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla19"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintHorizontal_bias="0.05"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.2"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla20"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla19"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.32"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla21"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla20"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.438"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla22"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla21"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.555"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla23"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla22"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.677"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla24"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla23"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.793"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla25"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla18"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.898"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla26"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla41"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla25"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla27"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla42"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla26"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla28"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla43"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla27"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla29"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla13"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla43"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla30"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla34"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla29"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla31"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla32"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla30"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla32"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla33"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla41"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla33"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla11"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla21"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla34"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla12"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla39"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla35"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla13"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla39"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla36"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla14"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla39"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla37"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla15"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla39"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla38"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla16"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla39"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla39"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla17"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla20"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla40"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla39"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla21"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla41"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla40"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla22"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla42"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla38"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla23"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+                <ImageView
+                    android:id="@+id/crearMapaCasilla43"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scaleType="fitXY"
+                    app:layout_constraintEnd_toEndOf="@+id/crearMapaCasilla37"
+                    app:layout_constraintHeight_percent="0.05555555555555556"
+                    app:layout_constraintTop_toTopOf="@+id/crearMapaCasilla42"
+                    app:layout_constraintWidth_percent="0.02976190476190476"
+                    app:srcCompat="@drawable/elemento_nulo" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout6"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/tabla"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/mostrarMapaCreador"
+            app:layout_constraintTop_toTopOf="@+id/mostrarMapaCreador"
+            app:layout_constraintWidth_percent="0.37">
+
+            <Button
+                android:id="@+id/botonContinuarPersonalizarMapas"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/animacion_boton_reducido"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="10dp"
+                android:text="@string/continuar"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/descripcionCasillaCrearMapas"
+                app:layout_constraintTop_toBottomOf="@+id/descripcionCasillaCrearMapas"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <Button
+                android:id="@+id/botonAtrasPersonalizarMapas"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/animacion_boton_reducido"
+                android:fontFamily="@font/chewy"
+                android:paddingLeft="30dp"
+                android:text="@string/atras"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/descripcionCasillaCrearMapas"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descripcionCasillaCrearMapas"
+                app:layout_constraintVertical_bias="0.5"
+                app:layout_constraintWidth_percent="0.4" />
+
+            <ImageView
+                android:id="@+id/botonCasillaBeberCrearMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintHorizontal_bias="0.05"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.05"
+                app:layout_constraintWidth_percent="0.195"
+                app:srcCompat="@drawable/casilla_beber" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutBeberMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#D23A3A3A"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaBeberCrearMapa">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/botonCasillaAleatoriaCrearMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintHorizontal_bias="0.35"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintWidth_percent="0.195"
+                app:srcCompat="@drawable/casilla_aleatoria" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutAleatorioMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#D23A3A3A"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaAleatoriaCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaAleatoriaCrearMapa"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaAleatoriaCrearMapa"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaAleatoriaCrearMapa">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/botonCasillaEstrellaCrearMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintHorizontal_bias="0.65"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintWidth_percent="0.195"
+                app:srcCompat="@drawable/casilla_estrella" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutEstrellaMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#D23A3A3A"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaEstrellaCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaEstrellaCrearMapa"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaEstrellaCrearMapa"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaEstrellaCrearMapa">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/botonCasillaBaulCrearMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintHorizontal_bias="0.95"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintVertical_bias="0.3"
+                app:layout_constraintWidth_percent="0.195"
+                app:srcCompat="@drawable/casilla_baul" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutBaulMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#D23A3A3A"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaBaulCrearMapa">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <ImageView
+                android:id="@+id/botonCasillaPicanteCrearMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.27"
+                app:layout_constraintWidth_percent="0.195"
+                app:srcCompat="@drawable/casilla_picante" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutPicanteMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#D23A3A3A"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaPicanteCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaPicanteCrearMapa"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaPicanteCrearMapa"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaPicanteCrearMapa"
+                app:layout_constraintVertical_bias="1.0">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ImageView
+                android:id="@+id/botonCasillaPrendaCrearMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="fitXY"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaPicanteCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaPicanteCrearMapa"
+                app:layout_constraintWidth_percent="0.195"
+                app:srcCompat="@drawable/casilla_prenda" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layoutPrendaMapa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#D23A3A3A"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaPrendaCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaPrendaCrearMapa"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaPrendaCrearMapa"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaPrendaCrearMapa"
+                app:layout_constraintVertical_bias="1.0">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/descripcionCasillaCrearMapas"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="#55FFFFFF"
+                android:fontFamily="@font/chewy"
+                android:gravity="center"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.8"
+                app:layout_constraintWidth_percent="0.9" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/mostrarMapaCreador"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="#000000"
+            app:layout_constraintHeight_percent="0.006"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout10"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/constraintLayout6"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout6"
+            app:layout_constraintWidth_percent="0.004">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout6"
+            app:layout_constraintWidth_percent="0.004">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout6"
+            app:layout_constraintWidth_percent="0.004">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.006"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

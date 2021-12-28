@@ -13,7 +13,32 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/miEstilo">
-        <activity android:name=".vistas.MainActivity"
+        <activity
+            android:name=".vistas.TutorialActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".vistas.SeleccionarJugadoresActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".vistas.OpcionesActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".vistas.ElegirMapaActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".vistas.CrearRetosActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".vistas.CrearMapasActivity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".vistas.JuegoActivity"
+            android:screenOrientation="landscape"/>
+        <activity
+            android:name=".vistas.MenuActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".vistas.MainActivity"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

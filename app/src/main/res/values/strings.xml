@@ -1,9 +1,74 @@
 <resources>
-    <string name="app_name">gusa2</string>
 
-    <string name="paginaCargando">PÁGINA DE CARGANDO INÚTIL</string>
+    //--------------------------------------------------------------------------
+    //---------------------------textos comunes---------------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="app_name">gusa2</string>
+    <string name="continuar">CONTINUAR</string>
+    <string name="atras">ATRÁS</string>
+    <string name="salir">Salir</string>
+    <string name="guardar">GUARDAR</string>
+
+    //--------------------------------------------------------------------------
+    //----------------------------Activity Main---------------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="cargandoInutil1">PÁGINA DE CARGANDO INÚTIL</string>
+    <string name="cargandoInutil2">SI LE DAS AL BOTON SE QUITA</string>
+    <string name="cargandoInutil3">SI QUIERES ESPERAR ALLÁ TÚ</string>
+    <string name="cargandoInutil4">ALGUIEN TIENE MUCHO TIEMPO</string>
+    <string name="cargandoInutil5">EN SERIO, QUE ES INÚTIL</string>
+    <string name="cargandoInutil6">EL JUEGO ES MEJOR QUE ESTO</string>
+    <string name="cargandoInutil7">CUIDADO!! MIRA A TU DERECHA</string>
+    <string name="cargandoInutil8">JAJAJAJ! ERA BROMA</string>
+    <string name="cargandoInutil9">lOS JUEGOS GUAIS TIENEN CARGA</string>
+    <string name="cargandoInutil10">Y YO TAMBIÉN QUERÍA</string>
+    <string name="cargandoInutil11">PUESSS.... ¿CÓMO ESTÁS?</string>
+    <string name="cargandoInutil12">ES INÚTIL Y TÚ AÚN AQUÍ</string>
+
     <string name="actualizando">ACTUALIZANDO</string>
     <string name="cargandoInicial">INSTALACIÓN INICIAL</string>
+
+
+    //--------------------------------------------------------------------------
+    //----------------------------Activity Menu---------------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="alerta" translatable="false">Alerta</string>
+    <string name="alerta_mensaje" translatable="false">El consumo de alcohol está prohibido para menores de edad. El consumo de alcohol puede ser perjudicial para la salud. Este juego recuerda el deber de beber con moderación y responsabilidad.\n\Al pulsar continuar acepta ser mayor de edad para consumir alcohol y la responsabilidad de su uso.</string>
+
+    <string name="nueva_partida">NUEVA PARTIDA</string>
+    <string name="opciones">OPCIONES</string>
+    <string name="tutorial">TUTORIAL</string>
+    <string name="personalizar">PERSONALIZAR</string>
+
+    <string name="creador_mapas">CREADOR DE MAPAS</string>
+    <string name="creador_retos">CREADOR DE RETOS</string>
+
+    <string name="en_serio">¿EN SERIO?</string>
+    <string name="no_hay_alcohol">¿Ya no queda alcohol?</string>
+    <string name="queda_mas">Aún queda</string>
+
+
+    //--------------------------------------------------------------------------
+    //-------------------------Activity crear mapas-----------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="nombre">NOMBRE</string>
+    <string name="descripcion">DESCRIPCIÓN</string>
+    <string name="nuevoMapa">NUEVO MAPA</string>
+    <string name="borrarMapa">BORRAR MAPA</string>
+    <string name="tusMapas">Tus mapas:</string>
+    <string name="casillaBeber" translatable="false">Casilla Beber. ¿Quién beberá y cuánto?</string>
+    <string name="casillaAleatoria" translatable="false">Casilla Aleatoria. Su nombre lo dice todo.</string>
+    <string name="casillaEstrella" translatable="false">Casilla para ganar monedas.</string>
+    <string name="casillaBaul" translatable="false">Gasta monedas y consigue premios valiosos.</string>
+    <string name="casillaPicante" translatable="false">Casilla con pruebas picantes.</string>
+    <string name="casillaPrenda" translatable="false">Si caes en esta casilla pierdes prenda.</string>
+
+
+
 
     //--------------------------------------------------------------------------
     //-------------------------------Mapas--------------------------------------
@@ -15,6 +80,7 @@
     <string name="descripcion2" translatable="false">COMO \"CASA GUSA PICANTE\" PERO SIN PRUEBAS PICANTES… MÁS ABURRIDO VAMOS. PERO ESO NO EVITARÁ COGERNOS UN BUEN CIEGO. UN TABLERO CON UN POCO DE TODO Y BASTANTE EQUILIBRADO.</string>
     <string name="nombreMapa3" translatable="false">Sin tonterías</string>
     <string name="descripcion3">UN MODO DE JUEGO PARA LOS MÁS VALIENTES… MUCHOS RETOS PICANTES Y MUCHO BEBER.</string>
+
 
 
 
@@ -447,7 +513,6 @@
     <string name="RetoPicanteMedio50" translatable="false">Siempre que hables el resto de la partida tendrás que agarrarte tus partes, si no lo haces bebes.</string>
     <string name="RetoPicanteMedio51" translatable="false">Chúpale el dedo sensualmente a un jugador aleatorio del sexo que te guste.</string>
     <string name="RetoPicanteMedio53" translatable="false">Acaricia la cara de un jugador mientras le miras a los ojos.</string>
-
 
 
     //fuertes

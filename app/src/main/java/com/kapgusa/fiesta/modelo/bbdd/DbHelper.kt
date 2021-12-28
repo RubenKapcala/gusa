@@ -14,15 +14,23 @@ import com.kapgusa.fiesta.modelo.Mapa
 import com.kapgusa.fiesta.modelo.Reto
 import org.greenrobot.eventbus.EventBus
 import java.io.IOException
+import java.io.StringReader
 
 class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     private val db: SQLiteDatabase = this.writableDatabase//Representa la BBDD
+    private var cargas = 0
+    private var cargado = 0
+
 
     //Declaración de constantes
     companion object{
         private const val DATABASE_NAME = "miBBDD" //Nombre de la BBDD
         private const val DATABASE_VERSION = 1 //Versión de la BBDD
+
+        interface ReceptorInformacion{
+            public fun recibirMensaje(mensaje: String)
+        }
     }
 
     //Introduce los datos del jugador en la BBDD por primera vez
@@ -199,20 +207,25 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
     }
 
 
+    //Clase para comunicar por EventBus el estado de carga de la BBDD
+    data class EstadoCargaBBDD(val carga: Int, val texto: String)
 
     //Si la BBDD no existe llama a esta función para crearla
     override fun onCreate(db: SQLiteDatabase?) {
+        cargas = 6
+        cargado = 2
+        EventBus.getDefault().post(EstadoCargaBBDD(100/ cargas, "Iniciando BBDD"))
         version1(db)
-        version2(db)
+        EventBus.getDefault().post(EstadoCargaBBDD(100, "Finalizado"))
     }
 
     //Se llama a esta función cuando hay un cambio en la versión de la BBDD
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-        version2(db)
     }
 
-
     private fun version1(db: SQLiteDatabase?){
+
+        EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Creando tabla jugadores"))
         //Crea la tabla jugadores
         db!!.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Jugadores.TABLE_NAME} (" +
                 "${Tablas.Jugadores.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -223,6 +236,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 "${Tablas.Jugadores.COLUMN_perdidas} INTEGER NOT NULL)")
 
 
+        EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Creando tablas de retos"))
         //Crea la tabla retos
         db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Retos.TABLE_NAME} (" +
                 "${Tablas.Retos.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -243,6 +257,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
 
 
+        EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Introduciendo retos"))
         //Introduce los retos predefinidos en la BBDD
         for (reto in crearListaDeRetos()){
             val values = ContentValues() //Agrupa los valores a insertar
@@ -264,10 +279,8 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 db.insert(Tablas.TextosRetos.TABLE_NAME, null, valores) //Realiza el insert
             }
         }
-    }
 
-    private fun version2(db: SQLiteDatabase?){
-
+        EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Creando tablas de mapas"))
         //Crea la tabla mapas
         db!!.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Mapas.TABLE_NAME} (" +
                 "${Tablas.Mapas.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -275,7 +288,6 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 "${Tablas.Mapas.COLUMN_descripcion} TEXT NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_picante} INTEGER NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_imagen} TEXT NOT NULL)" )
-
 
         //Crea la tabla casillas_mapas
         db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.CasillasMapas.TABLE_NAME} (" +
@@ -285,6 +297,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 "FOREIGN KEY(${Tablas.CasillasMapas.COLUMN_id_mapa}) REFERENCES ${Tablas.Mapas.TABLE_NAME}(${Tablas.Mapas.COLUMN_id}))")
 
 
+        EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Creando los mapas"))
         //Introduce los mapas predefinidos en la BBDD
         for (mapa in crearListaDeMapas()){
             val values = ContentValues() //Agrupa los valores a insertar
@@ -872,7 +885,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal
         )
 
-        var rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa1), casillas, context.resources, context)
+        var rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa1), casillas, context)
         lista.add(Mapa(context.getString(R.string.nombreMapa1), context.getString(R.string.descripcion1), casillas, true, rutaImagen))
 
 
@@ -890,7 +903,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal
         )
 
-        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa2), casillas, context.resources, context)
+        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa2), casillas, context)
         lista.add(Mapa(context.getString(R.string.nombreMapa2), context.getString(R.string.descripcion2), casillas, true, rutaImagen))
 
 
@@ -908,7 +921,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal
         )
 
-        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa3), casillas, context.resources, context)
+        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa3), casillas, context)
         lista.add(Mapa(context.getString(R.string.nombreMapa3), context.getString(R.string.descripcion3), casillas, true, rutaImagen))
 
         return lista
