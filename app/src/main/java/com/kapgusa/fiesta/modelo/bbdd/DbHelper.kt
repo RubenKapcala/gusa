@@ -1,36 +1,32 @@
 package com.kapgusa.fiesta.modelo.bbdd
 
 import android.annotation.SuppressLint
-import android.bluetooth.BluetoothSocket
 import android.content.ContentValues
 import android.content.Context
-import android.content.res.Resources
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import com.kapgusa.fiesta.R
+import com.kapgusa.fiesta.controlador.Musica
 import com.kapgusa.fiesta.modelo.Gustos
 import com.kapgusa.fiesta.modelo.Jugador
 import com.kapgusa.fiesta.modelo.Mapa
 import com.kapgusa.fiesta.modelo.Reto
 import org.greenrobot.eventbus.EventBus
-import java.io.IOException
-import java.io.StringReader
 
 class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     private val db: SQLiteDatabase = this.writableDatabase//Representa la BBDD
-    private var cargas = 0
-    private var cargado = 0
+    private var cargas: Int = 0
+    private var cargado: Int = 0
 
 
     //Declaración de constantes
     companion object{
-        private const val DATABASE_NAME = "miBBDD" //Nombre de la BBDD
-        private const val DATABASE_VERSION = 1 //Versión de la BBDD
+        private const val DATABASE_NAME = "miBBDD" // Nombre de la BBDD
+        private const val DATABASE_VERSION = 1 // Versión de la BBDD
+        private const val NIVEL_BEBER_INICIAL = 4 // Nivel de beber cuando se instala el juego
+        private const val NIVEL_PICANTE_INICIAL = 3 // Nivel de picante cuando se instala el juego
 
-        interface ReceptorInformacion{
-            public fun recibirMensaje(mensaje: String)
-        }
     }
 
     //Introduce los datos del jugador en la BBDD por primera vez
@@ -57,7 +53,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
     //Recupera los datos del jugador
     @SuppressLint("Range") //El valor siempre será positivo
-    fun obtenerUsuario(): Jugador?{
+    fun getUsuario(): Jugador?{
 
         //Realiza la query y guarda el resultado en un cursor
         val cursor = db.query(Tablas.Jugadores.TABLE_NAME,
@@ -86,9 +82,141 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         return null //En caso de que no se pueda realizar la query devuelve null
     }
 
+    //Recupera los datos del volumen de la música
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getVolumenMusica(): Float?{
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.rawQuery("select " + Tablas.Preferencias.COLUMN_volumen_audio + " from " + Tablas.Preferencias.TABLE_NAME, null)
+
+        if (cursor.moveToFirst()){
+            val volumen = cursor.getFloat(cursor.getColumnIndex(Tablas.Preferencias.COLUMN_volumen_audio)) //Obtiene el volumen
+            cursor.close()//Cierra el cursor
+            return volumen
+        }
+        cursor.close() //Cierra el cursor
+        return null
+    }
+
+    //Recupera los datos del volumen de los efectos
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getVolumeEfectos(): Float?{
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.rawQuery("select " + Tablas.Preferencias.COLUMN_volumen_efectos + " from " + Tablas.Preferencias.TABLE_NAME, null)
+
+        if (cursor.moveToFirst()){
+            val volumen = cursor.getFloat(cursor.getColumnIndex(Tablas.Preferencias.COLUMN_volumen_efectos)) //Obtiene el volumen
+            cursor.close()//Cierra el cursor
+            return volumen
+        }
+        cursor.close() //Cierra el cursor
+        return null
+    }
+
+    //Recupera los datos de la música elegida
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getMusicaElegida(): Int?{
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.rawQuery("select " + Tablas.Preferencias.COLUMN_eleccion_musica + " from " + Tablas.Preferencias.TABLE_NAME, null)
+
+        if (cursor.moveToFirst()){
+            val musica = cursor.getInt(cursor.getColumnIndex(Tablas.Preferencias.COLUMN_eleccion_musica)) //Obtiene la música elegida
+            cursor.close()//Cierra el cursor
+            return musica
+        }
+        cursor.close() //Cierra el cursor
+        return null
+    }
+
+    //Recupera los datos del nivel de beber
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getNivelBeber(): Int?{
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.rawQuery("select " + Tablas.Preferencias.COLUMN_nivel_beber + " from " + Tablas.Preferencias.TABLE_NAME, null)
+
+        if (cursor.moveToFirst()){
+            val nivel = cursor.getInt(cursor.getColumnIndex(Tablas.Preferencias.COLUMN_nivel_beber)) //Obtiene el nivel de beber
+            cursor.close()//Cierra el cursor
+            return nivel
+        }
+        cursor.close() //Cierra el cursor
+        return null
+    }
+
+    //Recupera los datos del volumen de la música
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getNivelPicante(): Int?{
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.rawQuery("select " + Tablas.Preferencias.COLUMN_nivel_picante + " from " + Tablas.Preferencias.TABLE_NAME, null)
+
+        if (cursor.moveToFirst()){
+            val nivel = cursor.getInt(cursor.getColumnIndex(Tablas.Preferencias.COLUMN_nivel_picante)) //Obtiene el nivel picante
+            cursor.close()//Cierra el cursor
+            return nivel
+        }
+        cursor.close() //Cierra el cursor
+        return null
+    }
+
+    //Recupera los datos del vasallo
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getVasallo(): Boolean?{
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.rawQuery("select " + Tablas.Preferencias.COLUMN_vasallo + " from " + Tablas.Preferencias.TABLE_NAME, null)
+
+        if (cursor.moveToFirst()){
+            val nivel = cursor.getInt(cursor.getColumnIndex(Tablas.Preferencias.COLUMN_vasallo)) //Obtiene el vasallo
+            cursor.close()//Cierra el cursor
+            return nivel > 0
+        }
+        cursor.close() //Cierra el cursor
+        return null
+    }
+
+    //Modifica los datos de las preferencias en la BBDD
+    fun setVolumenMusica(volumen: Float){
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Preferencias.COLUMN_volumen_audio, volumen) //Introduce el dato
+        db.update(Tablas.Preferencias.TABLE_NAME, values, null, null)
+    }
+
+    //Modifica los datos de las preferencias en la BBDD
+    fun setVolumenEfectos(volumen: Float){
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Preferencias.COLUMN_volumen_efectos, volumen) //Introduce el dato
+        db.update(Tablas.Preferencias.TABLE_NAME, values, null, null)
+    }
+
+    //Modifica los datos de las preferencias en la BBDD
+    fun setMusicaElegida(musica: Int){
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Preferencias.COLUMN_eleccion_musica, musica) //Introduce el dato
+        db.update(Tablas.Preferencias.TABLE_NAME, values, null, null)
+    }
+
+    //Modifica los datos de las preferencias en la BBDD
+    fun setNivelbeber(nivel: Int){
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Preferencias.COLUMN_nivel_beber, nivel) //Introduce el dato
+        db.update(Tablas.Preferencias.TABLE_NAME, values, null, null)
+    }
+
+    //Modifica los datos de las preferencias en la BBDD
+    fun setNivelPicante(nivel: Int){
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Preferencias.COLUMN_nivel_picante, nivel) //Introduce el dato
+        db.update(Tablas.Preferencias.TABLE_NAME, values, null, null)
+    }
+
+    //Modifica los datos de las preferencias en la BBDD
+    fun setVasallo(vasallo: Boolean){
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Preferencias.COLUMN_vasallo, if(vasallo) 1 else 0) //Introduce el dato
+        db.update(Tablas.Preferencias.TABLE_NAME, values, null, null)
+    }
+
     //Devuelve una lista con todos los retos dependiendo de la partida
     @SuppressLint("Range") //El valor siempre será positivo
-    fun obtenerRetos(partidaPresencial: Boolean, partidaPicante: Boolean, retosPersonalizados: Boolean): List<List<Reto>>{
+    fun getRetos(partidaPresencial: Boolean, partidaPicante: Boolean, retosPersonalizados: Boolean): List<List<Reto>>{
 
         val listaRetos = mutableListOf<MutableList<Reto>>()
 
@@ -116,7 +244,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         //Recorre el cursor y guarda la información en un objeto Juego para añadirlo a la lista
         while (cursor.moveToNext()) {
 
-            val textos = obtenerTextosReto(cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_id)))
+            val textos = getTextosReto(cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_id)))
             val tipo = Reto.TipoReto.valueOf(cursor.getString(cursor.getColumnIndex(Tablas.Retos.COLUMN_tipo)))
             val nivelPicante = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelPicante))
             val nivelBeber = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelBeber))
@@ -136,7 +264,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
 
     @SuppressLint("Range") //El valor siempre será positivo
-    private fun obtenerTextosReto(id: Int): MutableList<String>{
+    private fun getTextosReto(id: Int): MutableList<String>{
 
         val lista = mutableListOf<String>()
 
@@ -158,7 +286,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
     //Devuelve una lista con todos los retos dependiendo de la partida
     @SuppressLint("Range") //El valor siempre será positivo
-    fun obtenerMapas(): List<Mapa>{
+    fun getMapas(): List<Mapa>{
 
         val listaMapas = mutableListOf<Mapa>()
 
@@ -168,7 +296,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         //Recorre el cursor y guarda la información en un objeto Mapa para añadirlo a la lista
         while (cursor.moveToNext()) {
 
-            val casillas = obtenerCasillasMapa(cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_id)))
+            val casillas = getCasillasMapa(cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_id)))
             val nombre = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_nombre))
             val descripcion = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_descripcion))
             val picante = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_picante)) > 0
@@ -185,7 +313,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
 
     @SuppressLint("Range") //El valor siempre será positivo
-    private fun obtenerCasillasMapa(id: Int): MutableList<Int>{
+    private fun getCasillasMapa(id: Int): MutableList<Int>{
 
         val lista = mutableListOf<Int>()
 
@@ -212,8 +340,8 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
     //Si la BBDD no existe llama a esta función para crearla
     override fun onCreate(db: SQLiteDatabase?) {
-        cargas = 6
-        cargado = 2
+        cargas = 5 //Número de mensajes que aparecerán al cargar
+        cargado = 2 //Lleva la cuenta de las veces que ha cargado un nuevo elemento
         EventBus.getDefault().post(EstadoCargaBBDD(100/ cargas, "Iniciando BBDD"))
         version1(db)
         EventBus.getDefault().post(EstadoCargaBBDD(100, "Finalizado"))
@@ -225,9 +353,27 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
     private fun version1(db: SQLiteDatabase?){
 
-        EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Creando tabla jugadores"))
+        EventBus.getDefault().post(EstadoCargaBBDD((100/ cargas)* cargado++, "Creando base de datos"))
+        //Crea la tabla PreferenciasAudio
+        db!!.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Preferencias.TABLE_NAME} (" +
+                "${Tablas.Preferencias.COLUMN_volumen_audio} FLOAT NOT NULL, " +
+                "${Tablas.Preferencias.COLUMN_volumen_efectos} FLOAT NOT NULL, " +
+                "${Tablas.Preferencias.COLUMN_eleccion_musica} INTEGER NOT NULL, " +
+                "${Tablas.Preferencias.COLUMN_nivel_beber} INTEGER NOT NULL, " +
+                "${Tablas.Preferencias.COLUMN_nivel_picante} INTEGER NOT NULL, " +
+                "${Tablas.Preferencias.COLUMN_vasallo} INTEGER NOT NULL)" )
+
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Preferencias.COLUMN_volumen_audio, Musica.VOLUMEN_MUSICA_INICIAL) //Introduce el volumen de música
+        values.put(Tablas.Preferencias.COLUMN_volumen_efectos, Musica.VOLUMEN_EFECTOS_INICIAL) //Introduce el volumen de los efectos
+        values.put(Tablas.Preferencias.COLUMN_eleccion_musica, Musica.MUSICA_ELEGIDA_INICIAL) //Introduce la música elegida inicial
+        values.put(Tablas.Preferencias.COLUMN_nivel_beber, NIVEL_BEBER_INICIAL) //Introduce el nivel de beber inicial
+        values.put(Tablas.Preferencias.COLUMN_nivel_picante, NIVEL_PICANTE_INICIAL) //Introduce el nivel de picante inicial
+        values.put(Tablas.Preferencias.COLUMN_vasallo, 1) //Introduce vasallo en true
+
+
         //Crea la tabla jugadores
-        db!!.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Jugadores.TABLE_NAME} (" +
+        db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Jugadores.TABLE_NAME} (" +
                 "${Tablas.Jugadores.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "${Tablas.Jugadores.COLUMN_nombre} TEXT NOT NULL, " +
                 "${Tablas.Jugadores.COLUMN_gustos} TEXT NOT NULL, " +
@@ -235,8 +381,6 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 "${Tablas.Jugadores.COLUMN_ganadas} INTEGER NOT NULL, " +
                 "${Tablas.Jugadores.COLUMN_perdidas} INTEGER NOT NULL)")
 
-
-        EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Creando tablas de retos"))
         //Crea la tabla retos
         db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Retos.TABLE_NAME} (" +
                 "${Tablas.Retos.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -248,13 +392,26 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 "${Tablas.Retos.COLUMN_presencial} INTEGER NOT NULL, " +
                 "${Tablas.Retos.COLUMN_personalizado} INTEGER NOT NULL)")
 
-
         //Crea la tabla retos_textos
         db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.TextosRetos.TABLE_NAME} (" +
                 "${Tablas.TextosRetos.COLUMN_idReto} INTEGER NOT NULL, " +
                 "${Tablas.TextosRetos.COLUMN_texto} TEXT NOT NULL, " +
                 "FOREIGN KEY(${Tablas.TextosRetos.COLUMN_idReto}) REFERENCES ${Tablas.Retos.TABLE_NAME}(${Tablas.Retos.COLUMN_id}))")
 
+        //Crea la tabla mapas
+        db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Mapas.TABLE_NAME} (" +
+                "${Tablas.Mapas.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "${Tablas.Mapas.COLUMN_nombre} TEXT NOT NULL, " +
+                "${Tablas.Mapas.COLUMN_descripcion} TEXT NOT NULL, " +
+                "${Tablas.Mapas.COLUMN_picante} INTEGER NOT NULL, " +
+                "${Tablas.Mapas.COLUMN_imagen} TEXT NOT NULL)" )
+
+        //Crea la tabla casillas_mapas
+        db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.CasillasMapas.TABLE_NAME} (" +
+                "${Tablas.CasillasMapas.COLUMN_id_mapa} INTEGER NOT NULL, " +
+                "${Tablas.CasillasMapas.COLUMN_posicion} INTEGER NOT NULL, " +
+                "${Tablas.CasillasMapas.COLUMN_tipo} INTEGER NOT NULL, " +
+                "FOREIGN KEY(${Tablas.CasillasMapas.COLUMN_id_mapa}) REFERENCES ${Tablas.Mapas.TABLE_NAME}(${Tablas.Mapas.COLUMN_id}))")
 
 
         EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Introduciendo retos"))
@@ -279,22 +436,6 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 db.insert(Tablas.TextosRetos.TABLE_NAME, null, valores) //Realiza el insert
             }
         }
-
-        EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Creando tablas de mapas"))
-        //Crea la tabla mapas
-        db!!.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Mapas.TABLE_NAME} (" +
-                "${Tablas.Mapas.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "${Tablas.Mapas.COLUMN_nombre} TEXT NOT NULL, " +
-                "${Tablas.Mapas.COLUMN_descripcion} TEXT NOT NULL, " +
-                "${Tablas.Mapas.COLUMN_picante} INTEGER NOT NULL, " +
-                "${Tablas.Mapas.COLUMN_imagen} TEXT NOT NULL)" )
-
-        //Crea la tabla casillas_mapas
-        db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.CasillasMapas.TABLE_NAME} (" +
-                "${Tablas.CasillasMapas.COLUMN_id_mapa} INTEGER NOT NULL, " +
-                "${Tablas.CasillasMapas.COLUMN_posicion} INTEGER NOT NULL, " +
-                "${Tablas.CasillasMapas.COLUMN_tipo} INTEGER NOT NULL, " +
-                "FOREIGN KEY(${Tablas.CasillasMapas.COLUMN_id_mapa}) REFERENCES ${Tablas.Mapas.TABLE_NAME}(${Tablas.Mapas.COLUMN_id}))")
 
 
         EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Creando los mapas"))
@@ -926,7 +1067,5 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
         return lista
     }
-
-
 
 }

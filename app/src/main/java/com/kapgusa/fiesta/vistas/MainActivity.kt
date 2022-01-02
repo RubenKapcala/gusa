@@ -7,6 +7,8 @@ import android.os.Looper
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.kapgusa.fiesta.R
+import com.kapgusa.fiesta.controlador.MainApplication
+import com.kapgusa.fiesta.controlador.Musica
 import com.kapgusa.fiesta.databinding.ActivityMainBinding
 import com.kapgusa.fiesta.modelo.bbdd.DbHelper
 import org.greenrobot.eventbus.EventBus
@@ -24,17 +26,26 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        //Guarda el contexto de la aplicación en el objeto MainApplication
+        MainApplication.setApplicationContext(applicationContext)
+
+        //Crea el objeto Musica y se prepara para usarse
+        Musica.ponerMelidia()
+        
+        //Abre un nuevo hilo para cargar la BBDD y al acabar inicia la carga inutil
         Thread {
             DbHelper(this)
             cargaInutil.run()
         }.start()
 
         binding.botonNoPulsar.setOnClickListener{
+            Musica.sonidoBoton()
             continuar()
         }
 
     }
 
+    //Llena la barra de carga
     private val cargaInutil: Runnable = object : Runnable {
         override fun run() {
 
@@ -112,6 +123,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    //Manda al usuario al menú inicial
     private fun continuar() {
         val intent = Intent(this, MenuActivity::class.java)
         startActivity(intent)

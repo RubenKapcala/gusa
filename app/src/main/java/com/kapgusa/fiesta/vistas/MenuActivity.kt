@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.kapgusa.fiesta.R
+import com.kapgusa.fiesta.controlador.Musica
 import com.kapgusa.fiesta.databinding.ActivityMenuBinding
 import kotlin.system.exitProcess
 
@@ -16,7 +17,7 @@ class MenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        
         mostrarMensajeControlDeEdad()
 
         funcionBotones()
@@ -27,9 +28,9 @@ class MenuActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.alerta)
         builder.setMessage(R.string.alerta_mensaje)
-                .setPositiveButton(R.string.continuar) { _, _ -> /*Musica.SonidoBoton()*/ }
+                .setPositiveButton(R.string.continuar) { _, _ -> Musica.sonidoBoton() }
             .setNegativeButton(R.string.salir) { _, _ ->
-                //Musica.SonidoBoton()
+                Musica.sonidoBoton()
                 finishAffinity()
                 exitProcess(0)
             }.setCancelable(false).show()
@@ -38,38 +39,45 @@ class MenuActivity : AppCompatActivity() {
     private fun funcionBotones() {
         binding.btnNuevaPatidaMenu.setOnClickListener{
             activarBotones(false)
+            Musica.sonidoBoton()
             val botonNuevoJuego = Intent(this, SeleccionarJugadoresActivity::class.java)
             startActivity(botonNuevoJuego)
         }
 
         binding.btnOpcionesMenu.setOnClickListener{
             activarBotones(false)
+            Musica.sonidoBoton()
             val botonOpciones = Intent(this, OpcionesActivity::class.java)
             startActivity(botonOpciones)
         }
 
         binding.btnTutorialMenu.setOnClickListener{
             activarBotones(false)
+            Musica.sonidoBoton()
             val botonTutorial = Intent(this, TutorialActivity::class.java)
             startActivity(botonTutorial)
         }
 
         binding.btnPersonalizarMenu.setOnClickListener{
+            Musica.sonidoBoton()
             binding.lytPersonalizarMenu.visibility = View.VISIBLE
         }
 
         binding.btnAtrasPreferenciasMenu.setOnClickListener{
+            Musica.sonidoBoton()
             binding.lytPersonalizarMenu.visibility = View.GONE
         }
 
         binding.btnCreadorRetosMenu.setOnClickListener{
             activarBotones(false)
+            Musica.sonidoBoton()
             val botonPersonalizar = Intent(this, CrearRetosActivity::class.java)
             startActivity(botonPersonalizar)
         }
 
         binding.btnCreadorMapasMenu.setOnClickListener{
             activarBotones(false)
+            Musica.sonidoBoton()
             val botonPersonalizar = Intent(this, CrearMapasActivity::class.java)
             startActivity(botonPersonalizar)
         }
@@ -86,6 +94,7 @@ class MenuActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        Musica.sonidoBoton()
         if (binding.lytPersonalizarMenu.visibility == View.VISIBLE) {
             binding.lytPersonalizarMenu.visibility = View.GONE
         } else {
@@ -93,20 +102,21 @@ class MenuActivity : AppCompatActivity() {
             builder.setTitle(R.string.en_serio)
             builder.setMessage(R.string.no_hay_alcohol)
                     .setPositiveButton(R.string.salir) { _, _ ->
+                        Musica.sonidoBoton()
                         finishAffinity()
                         exitProcess(0)
                     }
-                    .setNegativeButton(R.string.queda_mas) { _, _ -> }.setCancelable(false).show()
+                    .setNegativeButton(R.string.queda_mas) { _, _ ->
+                        Musica.sonidoBoton()
+                    }.setCancelable(false).show()
         }
     }
 
     override fun onPause() {
         super.onPause()
-        //Musica.PausarMusica()
     }
 
     override fun onResume() {
-        //Musica.PlayMusica()
         activarBotones(true)
         super.onResume()
     }

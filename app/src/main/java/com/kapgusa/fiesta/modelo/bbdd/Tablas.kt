@@ -1,7 +1,7 @@
 package com.kapgusa.fiesta.modelo.bbdd
 
 //Descripción de las tablas
-class Tablas {
+abstract class Tablas {
     abstract class Retos{
         companion object{
             const val TABLE_NAME = "retos"
@@ -53,6 +53,18 @@ class Tablas {
             const val COLUMN_id_mapa = "id_mapa"
             const val COLUMN_posicion = "posicion"
             const val COLUMN_tipo = "tipo"
+        }
+    }
+
+    abstract class Preferencias{
+        companion object{
+            const val TABLE_NAME = "preferencias"
+            const val COLUMN_volumen_audio = "volumen_audio"
+            const val COLUMN_volumen_efectos = "volumen_efectos"
+            const val COLUMN_eleccion_musica = "eleccion_musica"
+            const val COLUMN_nivel_beber = "nivel_beber"
+            const val COLUMN_nivel_picante = "nivel_picante"
+            const val COLUMN_vasallo = "vasallo"
         }
     }
 
