@@ -10,7 +10,8 @@ data class Reto(
     val monedasSiempre: Int,
     val monedasReto: Int,
     val presencial: Boolean,
-    val personalizado: Boolean
+    val personalizado: Boolean,
+    val id: Int = 0
 ){
     //Diferentes retos
     enum class TipoReto{BEBER, ALEATORIO, ESTRELLA, BAUL, PICANTE, PRENDA, EVENTO_INICIAL}

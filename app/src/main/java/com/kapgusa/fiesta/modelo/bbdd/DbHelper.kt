@@ -15,7 +15,7 @@ import org.greenrobot.eventbus.EventBus
 
 class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
-    private val db: SQLiteDatabase = this.writableDatabase//Representa la BBDD
+    private var db: SQLiteDatabase = this.writableDatabase//Representa la BBDD
     private var cargas: Int = 0
     private var cargado: Int = 0
 
@@ -244,7 +244,8 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         //Recorre el cursor y guarda la información en un objeto Juego para añadirlo a la lista
         while (cursor.moveToNext()) {
 
-            val textos = getTextosReto(cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_id)))
+            val id = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_id))
+            val textos = getTextosReto(id)
             val tipo = Reto.TipoReto.valueOf(cursor.getString(cursor.getColumnIndex(Tablas.Retos.COLUMN_tipo)))
             val nivelPicante = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelPicante))
             val nivelBeber = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelBeber))
@@ -253,7 +254,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
             val presencial = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelPicante)) > 0
             val personalizado = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelPicante)) > 0
 
-            val reto = Reto(textos, tipo, nivelPicante, nivelBeber, monedasSiempre, monedasReto, presencial, personalizado)
+            val reto = Reto(textos, tipo, nivelPicante, nivelBeber, monedasSiempre, monedasReto, presencial, personalizado, id)
 
             listaRetos[tipo.ordinal].add(reto)
         }
@@ -284,7 +285,61 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
     }
 
 
-    //Devuelve una lista con todos los retos dependiendo de la partida
+    //Introduce un nuevo reto en la BBDD
+    fun insertarReto(reto: Reto){
+
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Retos.COLUMN_tipo, reto.tipo.name) //Introduce el tipo de reto
+        values.put(Tablas.Retos.COLUMN_nivelPicante, reto.nivelPicante) //Introduce el nivel de picante
+        values.put(Tablas.Retos.COLUMN_nivelBeber, reto.nivelBeber) //Introduce el niver de beber
+        values.put(Tablas.Retos.COLUMN_monedas, reto.monedasSiempre) //Introduce las monedas ganadas
+        values.put(Tablas.Retos.COLUMN_monedasReto, reto.monedasReto) //Introduce las monedas ganadas tras el reto
+        values.put(Tablas.Retos.COLUMN_presencial, reto.presencial) //Introduce si es presencial
+        values.put(Tablas.Retos.COLUMN_personalizado, reto.personalizado) //Introduce si es personalizado
+
+        val id = db.insert(Tablas.Retos.TABLE_NAME, null, values).toInt() //Realiza el insert
+
+        for (texto in reto.texto){
+            val valores = ContentValues() //Agrupa los valores a insertar
+            valores.put(Tablas.TextosRetos.COLUMN_idReto, id) //Introduce el id del reto
+            valores.put(Tablas.TextosRetos.COLUMN_texto, texto) //Introduce el nivel de picante
+
+            db.insert(Tablas.TextosRetos.TABLE_NAME, null, valores) //Realiza el insert
+        }
+    }
+
+
+    //Modifica un mapa en la BBDD
+    fun modificarReto(reto: Reto, idRetoAnterior: Int){
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Retos.COLUMN_tipo, reto.tipo.name) //Introduce el tipo de reto
+        values.put(Tablas.Retos.COLUMN_nivelPicante, reto.nivelPicante) //Introduce el nivel de picante
+        values.put(Tablas.Retos.COLUMN_nivelBeber, reto.nivelBeber) //Introduce el niver de beber
+        values.put(Tablas.Retos.COLUMN_monedas, reto.monedasSiempre) //Introduce las monedas ganadas
+        values.put(Tablas.Retos.COLUMN_monedasReto, reto.monedasReto) //Introduce las monedas ganadas tras el reto
+        values.put(Tablas.Retos.COLUMN_presencial, reto.presencial) //Introduce si es presencial
+        values.put(Tablas.Retos.COLUMN_personalizado, reto.personalizado) //Introduce si es personalizado
+
+        db.update(Tablas.Retos.TABLE_NAME, values, Tablas.Retos.COLUMN_id + " = " + idRetoAnterior, null)
+        db.delete(Tablas.TextosRetos.TABLE_NAME, Tablas.TextosRetos.COLUMN_idReto + " = " + idRetoAnterior, null)
+
+        for (texto in reto.texto){
+            val valores = ContentValues() //Agrupa los valores a insertar
+            valores.put(Tablas.TextosRetos.COLUMN_idReto, idRetoAnterior) //Introduce el id del reto
+            valores.put(Tablas.TextosRetos.COLUMN_texto, texto) //Introduce el nivel de picante
+
+            db.insert(Tablas.TextosRetos.TABLE_NAME, null, valores) //Realiza el insert
+        }
+    }
+
+    //Borra un mapa en la BBDD
+    fun borrarReto(idReto: Int){
+        db.delete(Tablas.TextosRetos.TABLE_NAME, Tablas.TextosRetos.COLUMN_idReto + " = " + idReto, null)
+        db.delete(Tablas.Retos.TABLE_NAME, Tablas.Retos.COLUMN_id + " = " + idReto, null)
+    }
+
+
+    //Devuelve una lista con todos los mapas
     @SuppressLint("Range") //El valor siempre será positivo
     fun getMapas(): List<Mapa>{
 
@@ -296,13 +351,45 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         //Recorre el cursor y guarda la información en un objeto Mapa para añadirlo a la lista
         while (cursor.moveToNext()) {
 
-            val casillas = getCasillasMapa(cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_id)))
+            val id = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_id))
+            val casillas = getCasillasMapa(id)
             val nombre = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_nombre))
             val descripcion = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_descripcion))
             val picante = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_picante)) > 0
             val rutaImagen = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_imagen))
+            val personalizado = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_personalizado)) > 0
 
-            val mapa = Mapa(nombre, descripcion, casillas, picante, rutaImagen)
+            val mapa = Mapa(nombre, descripcion, casillas, picante, rutaImagen, personalizado, id)
+
+            listaMapas.add(mapa)
+        }
+        cursor.close() //Cierra el cursor
+
+        return listaMapas
+    }
+
+    //Devuelve una lista con todos los mapas personalizados
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getMapasPersonalizados(): List<Mapa>{
+
+        val listaMapas = mutableListOf<Mapa>()
+
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.rawQuery("select * from " + Tablas.Mapas.TABLE_NAME +
+                " WHERE " + Tablas.Mapas.COLUMN_personalizado + " = 1", null)
+
+        //Recorre el cursor y guarda la información en un objeto Mapa para añadirlo a la lista
+        while (cursor.moveToNext()) {
+
+            val id = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_id))
+            val casillas = getCasillasMapa(id)
+            val nombre = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_nombre))
+            val descripcion = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_descripcion))
+            val picante = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_picante)) > 0
+            val rutaImagen = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_imagen))
+            val personalizado = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_personalizado)) > 0
+
+            val mapa = Mapa(nombre, descripcion, casillas, picante, rutaImagen, personalizado, id)
 
             listaMapas.add(mapa)
         }
@@ -333,6 +420,60 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
         return lista
     }
+
+
+    //Introduce un nuevo mapa en la BBDD
+    fun insertarMapa(mapa: Mapa){
+
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Mapas.COLUMN_nombre, mapa.nombre) //Introduce el nombre
+        values.put(Tablas.Mapas.COLUMN_descripcion, mapa.descripcion) //Introduce la descripcion
+        values.put(Tablas.Mapas.COLUMN_picante, mapa.picante) //Introduce si es picante
+        values.put(Tablas.Mapas.COLUMN_imagen, mapa.direccionImagen) //Introduce la ruta de la imagen
+        values.put(Tablas.Mapas.COLUMN_personalizado, mapa.personalizado) //Introduce la ruta de la imagen
+
+        val id = db.insert(Tablas.Mapas.TABLE_NAME, null, values).toInt() //Realiza el insert
+
+        for ((i, casilla) in mapa.casillas.withIndex()){
+            val valores = ContentValues() //Agrupa los valores a insertar
+            valores.put(Tablas.CasillasMapas.COLUMN_id_mapa, id) //Introduce el id del mapa
+            valores.put(Tablas.CasillasMapas.COLUMN_posicion, i) //Introduce la posición
+            valores.put(Tablas.CasillasMapas.COLUMN_tipo, casilla) //Introduce el tipo de casilla
+
+            db.insert(Tablas.CasillasMapas.TABLE_NAME, null, valores) //Realiza el insert
+        }
+    }
+
+    //Modifica un mapa en la BBDD
+    fun modificarMapa(mapa: Mapa, idMapaAnterior: Int){
+        val values = ContentValues() //Agrupa los valores a insertar
+        values.put(Tablas.Mapas.COLUMN_nombre, mapa.nombre) //Introduce el nombre
+        values.put(Tablas.Mapas.COLUMN_descripcion, mapa.descripcion) //Introduce la descripcion
+        values.put(Tablas.Mapas.COLUMN_picante, mapa.picante) //Introduce si es picante
+        values.put(Tablas.Mapas.COLUMN_imagen, mapa.direccionImagen) //Introduce la ruta de la imagen
+        values.put(Tablas.Mapas.COLUMN_personalizado, mapa.personalizado) //Introduce la ruta de la imagen
+
+        db.update(Tablas.Mapas.TABLE_NAME, values, Tablas.Mapas.COLUMN_id + " = " + idMapaAnterior, null)
+        db.delete(Tablas.CasillasMapas.TABLE_NAME, Tablas.CasillasMapas.COLUMN_id_mapa + " = " + idMapaAnterior, null)
+
+        for ((i, casilla) in mapa.casillas.withIndex()){
+            val valores = ContentValues() //Agrupa los valores a insertar
+            valores.put(Tablas.CasillasMapas.COLUMN_id_mapa, idMapaAnterior) //Introduce el id del mapa
+            valores.put(Tablas.CasillasMapas.COLUMN_posicion, i) //Introduce la posición
+            valores.put(Tablas.CasillasMapas.COLUMN_tipo, casilla) //Introduce el tipo de casilla
+
+            db.insert(Tablas.CasillasMapas.TABLE_NAME, null, valores) //Realiza el insert
+        }
+    }
+
+    //Borra un mapa en la BBDD
+    fun borrarMapa(idMapa: Int){
+        db.delete(Tablas.CasillasMapas.TABLE_NAME, Tablas.CasillasMapas.COLUMN_id_mapa + " = " + idMapa, null)
+        db.delete(Tablas.Mapas.TABLE_NAME, Tablas.Mapas.COLUMN_id + " = " + idMapa, null)
+    }
+
+
+
 
 
     //Clase para comunicar por EventBus el estado de carga de la BBDD
@@ -371,6 +512,8 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         values.put(Tablas.Preferencias.COLUMN_nivel_picante, NIVEL_PICANTE_INICIAL) //Introduce el nivel de picante inicial
         values.put(Tablas.Preferencias.COLUMN_vasallo, 1) //Introduce vasallo en true
 
+        db.insert(Tablas.Preferencias.TABLE_NAME, null, values) //Realiza el insert
+
 
         //Crea la tabla jugadores
         db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Jugadores.TABLE_NAME} (" +
@@ -404,7 +547,8 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 "${Tablas.Mapas.COLUMN_nombre} TEXT NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_descripcion} TEXT NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_picante} INTEGER NOT NULL, " +
-                "${Tablas.Mapas.COLUMN_imagen} TEXT NOT NULL)" )
+                "${Tablas.Mapas.COLUMN_imagen} TEXT NOT NULL, " +
+                "${Tablas.Mapas.COLUMN_personalizado} INTEGER NOT NULL)" )
 
         //Crea la tabla casillas_mapas
         db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.CasillasMapas.TABLE_NAME} (" +
@@ -416,7 +560,8 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
 
         EventBus.getDefault().post(EstadoCargaBBDD((100/cargas)*cargado++, "Introduciendo retos"))
         //Introduce los retos predefinidos en la BBDD
-        for (reto in crearListaDeRetos()){
+        val lis = crearListaDeRetos()
+        for (reto in lis){
             val values = ContentValues() //Agrupa los valores a insertar
             values.put(Tablas.Retos.COLUMN_tipo, reto.tipo.name) //Introduce el tipo de reto
             values.put(Tablas.Retos.COLUMN_nivelPicante, reto.nivelPicante) //Introduce el nivel de picante
@@ -446,6 +591,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
             values.put(Tablas.Mapas.COLUMN_descripcion, mapa.descripcion) //Introduce la descripcion
             values.put(Tablas.Mapas.COLUMN_picante, mapa.picante) //Introduce si es picante
             values.put(Tablas.Mapas.COLUMN_imagen, mapa.direccionImagen) //Introduce la ruta de la imagen
+            values.put(Tablas.Mapas.COLUMN_personalizado, mapa.personalizado) //Introduce la ruta de la imagen
 
             val id = db.insert(Tablas.Mapas.TABLE_NAME, null, values).toInt() //Realiza el insert
 
@@ -1027,7 +1173,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         )
 
         var rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa1), casillas, context)
-        lista.add(Mapa(context.getString(R.string.nombreMapa1), context.getString(R.string.descripcion1), casillas, true, rutaImagen))
+        lista.add(Mapa(context.getString(R.string.nombreMapa1), context.getString(R.string.descripcion1), casillas, true, rutaImagen, false))
 
 
         //Mapa casa de gusa
@@ -1045,7 +1191,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         )
 
         rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa2), casillas, context)
-        lista.add(Mapa(context.getString(R.string.nombreMapa2), context.getString(R.string.descripcion2), casillas, true, rutaImagen))
+        lista.add(Mapa(context.getString(R.string.nombreMapa2), context.getString(R.string.descripcion2), casillas, true, rutaImagen, false))
 
 
         //Mapa sin tonterias
@@ -1063,7 +1209,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         )
 
         rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa3), casillas, context)
-        lista.add(Mapa(context.getString(R.string.nombreMapa3), context.getString(R.string.descripcion3), casillas, true, rutaImagen))
+        lista.add(Mapa(context.getString(R.string.nombreMapa3), context.getString(R.string.descripcion3), casillas, true, rutaImagen, false))
 
         return lista
     }

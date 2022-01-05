@@ -29,9 +29,6 @@ class MainActivity : AppCompatActivity() {
         //Guarda el contexto de la aplicación en el objeto MainApplication
         MainApplication.setApplicationContext(applicationContext)
 
-        //Crea el objeto Musica y se prepara para usarse
-        Musica.ponerMelidia()
-        
         //Abre un nuevo hilo para cargar la BBDD y al acabar inicia la carga inutil
         Thread {
             DbHelper(this)
@@ -53,6 +50,9 @@ class MainActivity : AppCompatActivity() {
 
             when (contadorVueltas) {
                 1 -> {
+                    //Crea el objeto Musica y se prepara para usarse
+                    Musica.ponerMelidia()
+
                     tiempoReloj = 3000
                     binding.progressBar.visibility = View.INVISIBLE
                     binding.textoCargandoInutil.setText(R.string.cargandoInutil1)

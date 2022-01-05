@@ -4,6 +4,670 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vistas.CrearRetosActivity">
+    tools:context=".vistas.CrearRetosActivity"
+    android:background="@drawable/fondo">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintHeight_percent="0.14"
+        android:background="#6A000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bordes"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.19"
+        app:layout_constraintWidth_percent="0.75" />
+
+    <LinearLayout
+        android:id="@+id/layoutPicanteRetos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bordes"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/layoutNivelRetos"
+        app:layout_constraintHeight_percent="0.13"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.405"
+        app:layout_constraintWidth_percent="0.27" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout17"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bordes"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/layoutNivelRetos"
+        app:layout_constraintHeight_percent="0.13"
+        app:layout_constraintTop_toBottomOf="@+id/layoutPicanteRetos"
+        app:layout_constraintWidth_percent="0.27" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout16"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bordes"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        app:layout_constraintStart_toStartOf="@+id/constraintLayout3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.91"
+        app:layout_constraintWidth_percent="0.4" />
+
+
+    <ImageView
+        android:id="@+id/botonBeberPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintWidth_percent="0.09"
+        app:srcCompat="@drawable/casilla_beber" />
+
+    <ImageView
+        android:id="@+id/botonAleatorioPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/botonEstrellaPersonalizar"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toEndOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintWidth_percent="0.09"
+        app:srcCompat="@drawable/casilla_aleatoria" />
+
+    <ImageView
+        android:id="@+id/botonEstrellaPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toEndOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/botonAleatorioPersonalizar"
+        app:layout_constraintWidth_percent="0.09"
+        app:srcCompat="@drawable/casilla_estrella" />
+
+    <ImageView
+        android:id="@+id/botonBaulPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toStartOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintStart_toEndOf="@+id/botonEstrellaPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/botonEstrellaPersonalizar"
+        app:layout_constraintWidth_percent="0.09"
+        app:srcCompat="@drawable/casilla_baul" />
+
+    <ImageView
+        android:id="@+id/BotonPicantePersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.15"
+        app:layout_constraintHorizontal_bias="0.85"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/botonBaulPersonalizar"
+        app:layout_constraintWidth_percent="0.09"
+        app:srcCompat="@drawable/casilla_picante" />
+
+    <TextView
+        android:id="@+id/textoTituloPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/chewy"
+        android:gravity="center"
+        android:text="@string/tusRetos"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.016"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/chewy"
+        android:gravity="center"
+        android:text="@string/texto"
+        android:background="@drawable/bordes"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.07"
+        app:layout_constraintHorizontal_bias="0.023"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/constraintLayout3"
+        app:layout_constraintWidth_percent="0.08" />
+
+    <TextView
+        android:id="@+id/textoPuntosSinReto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/chewy"
+        android:gravity="right|center_vertical"
+        android:text="@string/puntosSinReto"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.74"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/textoPuntosConReto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fontFamily="@font/chewy"
+        android:gravity="right|center_vertical"
+        android:text="@string/puntosAlCumplirReto"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textoPuntosSinReto"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.88"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/bordes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.475"
+        app:layout_constraintWidth_percent="0.6">
+
+        <EditText
+            android:id="@+id/textoRetoPersonalizar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#00FFFFFF"
+            android:ems="10"
+            android:hint="@string/texto"
+            android:inputType="textMultiLine|textPersonName"
+            android:textAlignment="center"
+            android:nextFocusForward="@+id/botonGuardarPersonalizar"
+            android:nextFocusDown="@+id/botonGuardarPersonalizar"
+            android:nextFocusLeft="@+id/botonGuardarPersonalizar"
+            android:nextFocusRight="@+id/botonGuardarPersonalizar"
+            android:nextFocusUp="@+id/botonGuardarPersonalizar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/botonNuevoRetoPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/animacion_boton_reducido"
+        android:fontFamily="@font/chewy"
+        android:paddingLeft="30dp"
+        android:text="@string/nuevoReto"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintHorizontal_bias="0.971"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.18" />
+
+    <Button
+        android:id="@+id/botonBorrarReroPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/animacion_boton_reducido"
+        android:fontFamily="@font/chewy"
+        android:paddingLeft="30dp"
+        android:text="@string/borraReto"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.18" />
+
+    <Button
+        android:id="@+id/botonGuardarPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/animacion_boton_reducido"
+        android:fontFamily="@font/chewy"
+        android:paddingLeft="30dp"
+        android:text="@string/guardar"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintHorizontal_bias="0.608"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.925"
+        app:layout_constraintWidth_percent="0.18" />
+
+    <Button
+        android:id="@+id/botonAtrasCrearRetos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/animacion_boton_reducido"
+        android:fontFamily="@font/chewy"
+        android:paddingLeft="30dp"
+        android:text="@string/atras"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintHorizontal_bias="0.973"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.927"
+        app:layout_constraintWidth_percent="0.18" />
+
+    <Button
+        android:id="@+id/botonCambiarPicantePersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/boton_pulsado_reducido"
+        android:fontFamily="@font/chewy"
+        android:paddingLeft="30dp"
+        android:text="@string/noPicante"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/layoutPicanteRetos"
+        app:layout_constraintEnd_toEndOf="@+id/layoutPicanteRetos"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintStart_toStartOf="@+id/layoutPicanteRetos"
+        app:layout_constraintTop_toTopOf="@+id/layoutPicanteRetos"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <Button
+        android:id="@+id/botonCambiarPresencialPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/boton_sin_pulsar_reducido"
+        android:fontFamily="@font/chewy"
+        android:paddingLeft="30dp"
+        android:text="@string/noPresencial"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout17"
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout17"
+        app:layout_constraintHeight_percent="0.12"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout17"
+        app:layout_constraintTop_toBottomOf="@+id/layoutPicanteRetos"
+        app:layout_constraintWidth_percent="0.25" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bordes"
+        app:layout_constraintBottom_toBottomOf="@+id/textoPuntosSinReto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toEndOf="@+id/textoPuntosSinReto"
+        app:layout_constraintTop_toTopOf="@+id/textoPuntosSinReto"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.1">
+
+        <EditText
+            android:id="@+id/numeroPuntosSinReto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FFFFFF"
+            android:ems="10"
+            android:fontFamily="@font/chewy"
+            android:gravity="center"
+            android:hint="@string/puntosSinReto"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bordes"
+        app:layout_constraintBottom_toBottomOf="@+id/textoPuntosConReto"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.08"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toEndOf="@+id/textoPuntosConReto"
+        app:layout_constraintTop_toTopOf="@+id/textoPuntosConReto"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.1">
+
+        <EditText
+            android:id="@+id/numeroPuntosConReto"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00FFFFFF"
+            android:ems="10"
+            android:fontFamily="@font/chewy"
+            android:gravity="center"
+            android:hint="@string/puntosAlCumplirReto"
+            android:inputType="number"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taparBeber"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#D23A3A3A"
+        app:layout_constraintBottom_toBottomOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintEnd_toEndOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintVertical_bias="0.535">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taparAleatorio"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#D23A3A3A"
+        app:layout_constraintBottom_toBottomOf="@+id/botonAleatorioPersonalizar"
+        app:layout_constraintEnd_toEndOf="@+id/botonAleatorioPersonalizar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/botonAleatorioPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/botonAleatorioPersonalizar"
+        app:layout_constraintVertical_bias="0.535">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taparBaul"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#D23A3A3A"
+        app:layout_constraintBottom_toBottomOf="@+id/botonBaulPersonalizar"
+        app:layout_constraintEnd_toEndOf="@+id/botonBaulPersonalizar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/botonBaulPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/botonBaulPersonalizar"
+        app:layout_constraintVertical_bias="0.535">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/taparEstrella"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="#D23A3A3A">
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taparPicante"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#D23A3A3A"
+        app:layout_constraintBottom_toBottomOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintEnd_toEndOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintVertical_bias="0.535">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutNivelRetos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/bordes"
+        app:layout_constraintHeight_percent="0.17"
+        app:layout_constraintHorizontal_bias="0.868"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.756"
+        app:layout_constraintWidth_percent="0.45">
+
+        <TextView
+            android:id="@+id/textoNiveles"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/chewy"
+            android:gravity="right|center_vertical"
+            android:text="@string/nivelAlcohol"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintHorizontal_bias="0.081"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.809"
+            app:layout_constraintWidth_percent="0.4" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupBeber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@+id/textoNiveles"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHeight_percent="0.4"
+            app:layout_constraintHorizontal_bias="0.44"
+            app:layout_constraintStart_toEndOf="@+id/textoNiveles"
+            app:layout_constraintTop_toTopOf="@+id/textoNiveles"
+            app:layout_constraintVertical_bias="0.5"
+            app:layout_constraintWidth_percent="0.5">
+
+            <RadioButton
+                android:id="@+id/radioBotonBeber1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/jugador2"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <RadioButton
+                android:id="@+id/radioBotonBeber2"
+                android:layout_width="wrap_content"
+                android:buttonTint="@color/jugador2"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <RadioButton
+                android:id="@+id/radioBotonBeber3"
+                android:layout_width="wrap_content"
+                android:buttonTint="@color/jugador2"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <RadioButton
+                android:id="@+id/radioBotonBeber4"
+                android:layout_width="wrap_content"
+                android:buttonTint="@color/jugador2"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+            <RadioButton
+                android:id="@+id/radioBotonBeber5"
+                android:layout_width="wrap_content"
+                android:buttonTint="@color/jugador2"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
+            app:layout_constraintEnd_toEndOf="@+id/radioGroupBeber"
+            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintStart_toStartOf="@+id/radioGroupBeber" />
+
+        <TextView
+            android:id="@+id/textView21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="2"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
+            app:layout_constraintEnd_toStartOf="@+id/textView23"
+            app:layout_constraintStart_toEndOf="@+id/textView22" />
+
+        <TextView
+            android:id="@+id/textView23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="3"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
+            app:layout_constraintEnd_toEndOf="@+id/radioGroupBeber"
+            app:layout_constraintStart_toStartOf="@+id/radioGroupBeber" />
+
+        <TextView
+            android:id="@+id/textView25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="4"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
+            app:layout_constraintEnd_toStartOf="@+id/textView27"
+            app:layout_constraintStart_toEndOf="@+id/textView23" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/chewy"
+            android:text="5"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
+            app:layout_constraintEnd_toEndOf="@+id/radioGroupBeber"
+            app:layout_constraintHorizontal_bias="0.92"
+            app:layout_constraintStart_toStartOf="@+id/radioGroupBeber" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/botonIzquierdaPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintEnd_toStartOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintTop_toTopOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.06"
+        app:srcCompat="@drawable/flechaizquierda" />
+
+    <ImageView
+        android:id="@+id/botonDerechaPersonalizar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:rotation="180"
+        app:layout_constraintBottom_toBottomOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toEndOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintVertical_bias="0.5"
+        app:layout_constraintWidth_percent="0.06"
+        app:srcCompat="@drawable/flechaizquierda" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/siEsCero"
+        android:textColor="#000000"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="@+id/linearLayout16"
+        app:layout_constraintEnd_toEndOf="@+id/textoPuntosConReto"
+        app:layout_constraintTop_toTopOf="@+id/textoPuntosConReto"
+        app:layout_constraintVertical_bias="0.7" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,6 +44,7 @@ abstract class Tablas {
             const val COLUMN_descripcion = "descripcion"
             const val COLUMN_picante = "picante"
             const val COLUMN_imagen = "imagen"
+            const val COLUMN_personalizado = "personalizado"
         }
     }
 

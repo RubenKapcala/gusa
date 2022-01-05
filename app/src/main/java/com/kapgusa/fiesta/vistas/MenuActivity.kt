@@ -3,11 +3,13 @@ package com.kapgusa.fiesta.vistas
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.kapgusa.fiesta.R
 import com.kapgusa.fiesta.controlador.Musica
 import com.kapgusa.fiesta.databinding.ActivityMenuBinding
+import com.kapgusa.fiesta.modelo.bbdd.DbHelper
 import kotlin.system.exitProcess
 
 class MenuActivity : AppCompatActivity() {
@@ -20,6 +22,9 @@ class MenuActivity : AppCompatActivity() {
         
         mostrarMensajeControlDeEdad()
 
+        val db = DbHelper(this)
+        db.getMapas().size
+        Toast.makeText(this, " " + db.getMapas().size, Toast.LENGTH_SHORT).show()
         funcionBotones()
 
     }

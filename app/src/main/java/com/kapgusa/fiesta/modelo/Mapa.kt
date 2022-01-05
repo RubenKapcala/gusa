@@ -17,7 +17,10 @@ data class Mapa(
         val descripcion: String,
         val casillas: List<Int>,
         val picante: Boolean,
-        val direccionImagen: String
+        val direccionImagen: String,
+        val personalizado: Boolean,
+        val id: Int = 0
+
 ){
 
     companion object {
@@ -39,7 +42,7 @@ data class Mapa(
         fun crearImagenMapa(nombre: String, listaCasillas: List<Int>, context: Context): String {
 
             //Creamos el bitmap
-            var bitmapPrincipal = Bitmap.createBitmap(1680, 900, Bitmap.Config.ARGB_8888)
+            var bitmapPrincipal = Bitmap.createBitmap(1650, 900, Bitmap.Config.ARGB_8888)
             bitmapPrincipal = bitmapPrincipal.copy(bitmapPrincipal.config, true)
             val canvas = Canvas(bitmapPrincipal)
             var dest: Rect

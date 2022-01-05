@@ -6,9 +6,11 @@
 
     <string name="app_name">gusa2</string>
     <string name="continuar">CONTINUAR</string>
+    <string name="aceptar">ACEPTAR</string>
     <string name="atras">ATRÁS</string>
     <string name="salir">Salir</string>
-    <string name="guardar">GUARDAR</string>
+    <string name="nombreRepetido">Ese nombre ya esta cogido, haber nacido antes.</string>
+
 
     //--------------------------------------------------------------------------
     //----------------------------Activity Main---------------------------------
@@ -52,7 +54,7 @@
 
 
     //--------------------------------------------------------------------------
-    //-------------------------Activity crear mapas-----------------------------
+    //----------------Activites crear mapas y crear retos-----------------------
     //--------------------------------------------------------------------------
 
     <string name="nombre">NOMBRE</string>
@@ -66,8 +68,28 @@
     <string name="casillaBaul" translatable="false">Gasta monedas y consigue premios valiosos.</string>
     <string name="casillaPicante" translatable="false">Casilla con pruebas picantes.</string>
     <string name="casillaPrenda" translatable="false">Si caes en esta casilla pierdes prenda.</string>
+    <string name="rellenarCampos">Debes rellenar todos los campos.</string>
 
 
+    <string name="tusRetos">Tus retos: </string>
+    <string name="puntosSinReto">Puntos sin reto</string>
+    <string name="puntosAlCumplirReto">Puntos al cumplir reto</string>
+    <string name="siEsCero">Cero entiende que es una prueba sin opciones</string>
+    <string name="valorDelBaul">Valor del baúl</string>
+    <string name="guardar">GUARDAR</string>
+    <string name="nuevoReto">NUEVO RETO</string>
+    <string name="texto">Texto</string>
+    <string name="picante">PICANTE</string>
+    <string name="noPicante">NO PICANTE</string>
+    <string name="presencial">PRESENCIAL</string>
+    <string name="noPresencial">NO PRESENCIAL</string>
+    <string name="borraReto">BORRAR RETO</string>
+    <string name="modificar">MODIFICAR</string>
+    <string name="deseaBorrar">¿Deséa borrarlo permanéntemente?</string>
+    <string name="retoCreado">Reto creado.</string>
+    <string name="retoModificado">Reto modificado.</string>
+    <string name="nivelAlcohol">Nivel de alcohol</string>
+    <string name="NivelPicante">nivel de picante</string>
 
 
     //--------------------------------------------------------------------------

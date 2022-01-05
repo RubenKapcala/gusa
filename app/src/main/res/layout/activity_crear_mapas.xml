@@ -4,10 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vistas.CrearMapasActivity">
+    tools:context=".vistas.CrearMapasActivity"
+    tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutDescripcionCrearMapas"
+        android:id="@+id/lyt_descripcion_crearMapas"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/fondo_menu"
@@ -20,7 +21,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <Button
-            android:id="@+id/botonAtrasDescripcionPersonalizarMapas"
+            android:id="@+id/btn_AtrasDescripcion_crearMapas"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/animacion_boton_reducido"
@@ -39,7 +40,7 @@
             app:layout_constraintWidth_percent="0.2" />
 
         <Button
-            android:id="@+id/botonGuardarPersonalizarMapas"
+            android:id="@+id/btn_guardar_crearMapas"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/animacion_boton_reducido"
@@ -54,7 +55,7 @@
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="@+id/constraintLayout11"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout11"
-            app:layout_constraintWidth_percent="0.2" />
+            app:layout_constraintWidth_percent="0.2"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout9"
@@ -153,12 +154,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/layoutDescripcionCrearMapas"
+        app:layout_constraintStart_toEndOf="@+id/lyt_descripcion_crearMapas"
         app:layout_constraintTop_toTopOf="parent">
 
 
         <Button
-            android:id="@+id/botonBorrarMapaPersonalizar"
+            android:id="@+id/btn_borrarMapa_crearMapas"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/animacion_boton_reducido"
@@ -166,18 +167,18 @@
             android:text="@string/borrarMapa"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintBottom_toBottomOf="@+id/text_tusMapas_crearMapas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.12"
             app:layout_constraintHorizontal_bias="0.025"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintTop_toTopOf="@+id/text_tusMapas_crearMapas"
             app:layout_constraintVertical_bias="0.5"
             android:paddingLeft="30dp"
             app:layout_constraintWidth_percent="0.22" />
 
         <Button
-            android:id="@+id/botonNuevoMapaPersonalizar"
+            android:id="@+id/btn_nuevoMapa_crearMapas"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/animacion_boton_reducido"
@@ -186,46 +187,46 @@
             android:text="@string/nuevoMapa"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintBottom_toBottomOf="@+id/text_tusMapas_crearMapas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.12"
             app:layout_constraintHorizontal_bias="0.971"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintTop_toTopOf="@+id/text_tusMapas_crearMapas"
             app:layout_constraintVertical_bias="0.5"
             app:layout_constraintWidth_percent="0.22" />
 
         <ImageView
-            android:id="@+id/botonDerechaMapaPersonalizar"
+            android:id="@+id/btn_derechaMapa_crearMapas"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginEnd="28dp"
             android:rotation="180"
-            app:layout_constraintBottom_toBottomOf="@+id/textoTusMapasPersonalizar"
-            app:layout_constraintEnd_toStartOf="@+id/botonNuevoMapaPersonalizar"
+            app:layout_constraintBottom_toBottomOf="@+id/text_tusMapas_crearMapas"
+            app:layout_constraintEnd_toStartOf="@+id/btn_nuevoMapa_crearMapas"
             app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintStart_toEndOf="@+id/textoTusMapasPersonalizar"
-            app:layout_constraintTop_toTopOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintStart_toEndOf="@+id/text_tusMapas_crearMapas"
+            app:layout_constraintTop_toTopOf="@+id/text_tusMapas_crearMapas"
             app:layout_constraintVertical_bias="0.5"
             app:layout_constraintWidth_percent="0.06"
             app:srcCompat="@drawable/flechaizquierda" />
 
         <ImageView
-            android:id="@+id/botonIzquierdaPersonalizarMapa"
+            android:id="@+id/btn_izquierdaMapa_crearMapas"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="48dp"
-            app:layout_constraintBottom_toBottomOf="@+id/textoTusMapasPersonalizar"
-            app:layout_constraintEnd_toStartOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintBottom_toBottomOf="@+id/text_tusMapas_crearMapas"
+            app:layout_constraintEnd_toStartOf="@+id/text_tusMapas_crearMapas"
             app:layout_constraintHeight_percent="0.1"
-            app:layout_constraintStart_toEndOf="@+id/botonBorrarMapaPersonalizar"
-            app:layout_constraintTop_toTopOf="@+id/textoTusMapasPersonalizar"
+            app:layout_constraintStart_toEndOf="@+id/btn_borrarMapa_crearMapas"
+            app:layout_constraintTop_toTopOf="@+id/text_tusMapas_crearMapas"
             app:layout_constraintVertical_bias="0.5"
             app:layout_constraintWidth_percent="0.06"
             app:srcCompat="@drawable/flechaizquierda" />
 
         <TextView
-            android:id="@+id/textoTusMapasPersonalizar"
+            android:id="@+id/text_tusMapas_crearMapas"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fontFamily="@font/chewy"
@@ -850,7 +851,7 @@
             app:layout_constraintWidth_percent="0.37">
 
             <Button
-                android:id="@+id/botonContinuarPersonalizarMapas"
+                android:id="@+id/btn_continuar_crearMapas"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/animacion_boton_reducido"
@@ -869,7 +870,7 @@
                 app:layout_constraintWidth_percent="0.4" />
 
             <Button
-                android:id="@+id/botonAtrasPersonalizarMapas"
+                android:id="@+id/btn_atras_crearMapas"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:background="@drawable/animacion_boton_reducido"
@@ -892,13 +893,11 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintEnd_toStartOf="@+id/botonCasillaAleatoriaCrearMapa"
                 app:layout_constraintHeight_percent="0.15"
-                app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.05"
                 app:layout_constraintWidth_percent="0.195"
                 app:srcCompat="@drawable/casilla_beber" />
 
@@ -920,10 +919,9 @@
                 android:layout_height="0dp"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBeberCrearMapa"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/botonCasillaEstrellaCrearMapa"
                 app:layout_constraintHeight_percent="0.15"
-                app:layout_constraintHorizontal_bias="0.35"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/botonCasillaBeberCrearMapa"
                 app:layout_constraintTop_toTopOf="@+id/botonCasillaBeberCrearMapa"
                 app:layout_constraintWidth_percent="0.195"
                 app:srcCompat="@drawable/casilla_aleatoria" />
@@ -948,8 +946,7 @@
                 app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBeberCrearMapa"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_percent="0.15"
-                app:layout_constraintHorizontal_bias="0.65"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/botonCasillaAleatoriaCrearMapa"
                 app:layout_constraintTop_toTopOf="@+id/botonCasillaBeberCrearMapa"
                 app:layout_constraintWidth_percent="0.195"
                 app:srcCompat="@drawable/casilla_estrella" />
@@ -971,13 +968,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBeberCrearMapa"
-                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/descripcionCasillaCrearMapas"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaBeberCrearMapa"
                 app:layout_constraintHeight_percent="0.15"
                 app:layout_constraintHorizontal_bias="0.95"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/botonCasillaBeberCrearMapa"
-                app:layout_constraintVertical_bias="0.3"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintTop_toBottomOf="@+id/botonCasillaBeberCrearMapa"
                 app:layout_constraintWidth_percent="0.195"
                 app:srcCompat="@drawable/casilla_baul" />
 
@@ -999,13 +995,12 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:scaleType="fitXY"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/botonCasillaBeberCrearMapa"
+                app:layout_constraintBottom_toBottomOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaAleatoriaCrearMapa"
                 app:layout_constraintHeight_percent="0.15"
                 app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="@+id/botonCasillaBeberCrearMapa"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.27"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaAleatoriaCrearMapa"
+                app:layout_constraintTop_toTopOf="@+id/botonCasillaBaulCrearMapa"
                 app:layout_constraintWidth_percent="0.195"
                 app:srcCompat="@drawable/casilla_picante" />
 
@@ -1029,9 +1024,9 @@
                 android:layout_height="0dp"
                 android:scaleType="fitXY"
                 app:layout_constraintBottom_toBottomOf="@+id/botonCasillaPicanteCrearMapa"
-                app:layout_constraintEnd_toEndOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintEnd_toEndOf="@+id/botonCasillaEstrellaCrearMapa"
                 app:layout_constraintHeight_percent="0.15"
-                app:layout_constraintStart_toStartOf="@+id/botonCasillaBaulCrearMapa"
+                app:layout_constraintStart_toStartOf="@+id/botonCasillaEstrellaCrearMapa"
                 app:layout_constraintTop_toTopOf="@+id/botonCasillaPicanteCrearMapa"
                 app:layout_constraintWidth_percent="0.195"
                 app:srcCompat="@drawable/casilla_prenda" />
