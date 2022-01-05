@@ -1,7 +1,12 @@
 package com.kapgusa.fiesta.vistas
 
+import android.content.Context
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
+import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +16,7 @@ import com.kapgusa.fiesta.databinding.ActivityCrearRetosBinding
 import com.kapgusa.fiesta.modelo.Reto
 import com.kapgusa.fiesta.modelo.bbdd.DbHelper
 import java.util.*
+
 
 class CrearRetosActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCrearRetosBinding
@@ -135,12 +141,26 @@ class CrearRetosActivity : AppCompatActivity() {
                 Musica.sonidoBotonMal()
             }
         }
+
+        val pulsarEnter = OnEditorActionListener{ _, _, event ->
+            val handled = false
+            if (event == null){
+                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(binding.textRetoCrearRetos.windowToken, 0)
+            }
+            handled
+        }
+        binding.textRetoCrearRetos.setOnEditorActionListener(pulsarEnter)
+        binding.textPuntosSinRetoInputCrearRetos.setOnEditorActionListener(pulsarEnter)
+        binding.textPuntosConRetoInputCrearRetos.setOnEditorActionListener(pulsarEnter)
+
     }
+
 
     private fun comprobarTodoOk(): Boolean {
         var todoOk = binding.textRetoCrearRetos.text.toString().replace(" ", "").compareTo("") != 0
-                || binding.textPuntosConRetoInputCrearRetos.text.toString().replace(" ", "").compareTo("") != 0
-                || binding.textPuntosConRetoInputCrearRetos.text.toString().replace(" ", "").compareTo("") != 0
+                && binding.textPuntosConRetoInputCrearRetos.text.toString().replace(" ", "").compareTo("") != 0
+                && binding.textPuntosConRetoInputCrearRetos.text.toString().replace(" ", "").compareTo("") != 0
 
         //Comprobamos si ha checado y lo guardamos si es necesario
         val nivel = when(true){
@@ -151,7 +171,10 @@ class CrearRetosActivity : AppCompatActivity() {
             binding.rbNivel5CrearRetos.isChecked -> 5
             else -> 0
         }
-        when (tipo) {Reto.TipoReto.BEBER.ordinal,Reto.TipoReto.PICANTE.ordinal -> if (nivel == 0) { todoOk = false } }
+        when (tipo) {
+            Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.PICANTE.ordinal -> if (nivel == 0) {
+                todoOk = false
+            } }
         return todoOk
     }
 
@@ -338,3 +361,4 @@ class CrearRetosActivity : AppCompatActivity() {
         }
     }
 }
+

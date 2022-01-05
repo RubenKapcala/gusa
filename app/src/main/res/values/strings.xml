@@ -72,7 +72,7 @@
 
 
     <string name="tusRetos">Tus retos: </string>
-    <string name="puntosSinReto">Puntos sin reto</string>
+    <string name="puntosCasilla">Puntos de la casilla</string>
     <string name="puntosAlCumplirReto">Puntos al cumplir reto</string>
     <string name="siEsCero">Cero entiende que es una prueba sin opciones</string>
     <string name="valorDelBaul">Valor del baúl</string>
