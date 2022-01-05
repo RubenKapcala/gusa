@@ -251,12 +251,44 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
             val nivelBeber = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelBeber))
             val monedasSiempre = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_monedas))
             val monedasReto = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_monedasReto))
-            val presencial = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelPicante)) > 0
-            val personalizado = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelPicante)) > 0
+            val presencial = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_presencial)) > 0
+            val personalizado = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_personalizado)) > 0
 
             val reto = Reto(textos, tipo, nivelPicante, nivelBeber, monedasSiempre, monedasReto, presencial, personalizado, id)
 
             listaRetos[tipo.ordinal].add(reto)
+        }
+        cursor.close() //Cierra el cursor
+
+        return listaRetos
+    }
+
+    //Devuelve una lista con todos los retos dependiendo de la partida
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getRetosPersonalizados(): List<Reto>{
+
+        val listaRetos = mutableListOf<Reto>()
+
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.rawQuery("select * from " + Tablas.Retos.TABLE_NAME +
+                " WHERE " + Tablas.Retos.COLUMN_personalizado + " = 1", null)
+
+        //Recorre el cursor y guarda la información en un objeto Juego para añadirlo a la lista
+        while (cursor.moveToNext()) {
+
+            val id = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_id))
+            val textos = getTextosReto(id)
+            val tipo = Reto.TipoReto.valueOf(cursor.getString(cursor.getColumnIndex(Tablas.Retos.COLUMN_tipo)))
+            val nivelPicante = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelPicante))
+            val nivelBeber = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_nivelBeber))
+            val monedasSiempre = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_monedas))
+            val monedasReto = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_monedasReto))
+            val presencial = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_presencial)) > 0
+            val personalizado = cursor.getInt(cursor.getColumnIndex(Tablas.Retos.COLUMN_personalizado)) > 0
+
+            val reto = Reto(textos, tipo, nivelPicante, nivelBeber, monedasSiempre, monedasReto, presencial, personalizado, id)
+
+            listaRetos.add(reto)
         }
         cursor.close() //Cierra el cursor
 

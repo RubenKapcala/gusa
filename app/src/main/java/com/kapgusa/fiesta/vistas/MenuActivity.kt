@@ -22,9 +22,6 @@ class MenuActivity : AppCompatActivity() {
         
         mostrarMensajeControlDeEdad()
 
-        val db = DbHelper(this)
-        db.getMapas().size
-        Toast.makeText(this, " " + db.getMapas().size, Toast.LENGTH_SHORT).show()
         funcionBotones()
 
     }

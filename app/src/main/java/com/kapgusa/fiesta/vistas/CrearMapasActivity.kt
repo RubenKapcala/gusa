@@ -2,7 +2,6 @@ package com.kapgusa.fiesta.vistas
 
 import android.annotation.SuppressLint
 import android.content.DialogInterface
-import android.graphics.Rect
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -46,9 +45,9 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
 
         funcionalidadBotones()
 
-        RefrescarBotonesCasillas()
+        refrescarBotonesCasillas()
 
-        CargarPantalla()
+        cargarPantalla()
     }
 
     private fun funcionalidadBotones() {
@@ -92,7 +91,7 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
                         //Guardamos la lista sin el mapa
                         db.borrarMapa(listaMapasPersonalizados[posicion].id)
                         posicion = 0
-                        CargarPantalla()
+                        cargarPantalla()
                     }).setCancelable(false).show()
         }
         binding.btnNuevoMapaCrearMapas.setOnClickListener {
@@ -119,32 +118,32 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
         }
         binding.botonCasillaBeberCrearMapa.setOnClickListener {
             tipo = Reto.TipoReto.BEBER.ordinal
-            RefrescarBotonesCasillas()
+            refrescarBotonesCasillas()
             Musica.sonidoBoton()
         }
         binding.botonCasillaAleatoriaCrearMapa.setOnClickListener {
             tipo = Reto.TipoReto.ALEATORIO.ordinal
-            RefrescarBotonesCasillas()
+            refrescarBotonesCasillas()
             Musica.sonidoBoton()
         }
         binding.botonCasillaEstrellaCrearMapa.setOnClickListener {
             tipo = Reto.TipoReto.ESTRELLA.ordinal
-            RefrescarBotonesCasillas()
+            refrescarBotonesCasillas()
             Musica.sonidoBoton()
         }
         binding.botonCasillaBaulCrearMapa.setOnClickListener {
             tipo = Reto.TipoReto.BAUL.ordinal
-            RefrescarBotonesCasillas()
+            refrescarBotonesCasillas()
             Musica.sonidoBoton()
         }
         binding.botonCasillaPicanteCrearMapa.setOnClickListener {
             tipo = Reto.TipoReto.PICANTE.ordinal
-            RefrescarBotonesCasillas()
+            refrescarBotonesCasillas()
             Musica.sonidoBoton()
         }
         binding.botonCasillaPrendaCrearMapa.setOnClickListener {
             tipo = Reto.TipoReto.PRENDA.ordinal
-            RefrescarBotonesCasillas()
+            refrescarBotonesCasillas()
             Musica.sonidoBoton()
         }
         binding.mapaCrearMapas.setOnTouchListener(this)
@@ -165,7 +164,7 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
             listaRetosCasillas[indice] = -1
         }
         tipo = Reto.TipoReto.BEBER.ordinal
-        RefrescarBotonesCasillas()
+        refrescarBotonesCasillas()
     }
 
 
@@ -218,11 +217,11 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
         //Guardamos la lista de mapas
         binding.lytDescripcionCrearMapas.visibility = View.GONE
         modificandoMapa = true
-        CargarPantalla()
+        cargarPantalla()
     }
 
 
-    private fun MeterPosicion(posicionCasilla: Int) {
+    private fun meterPosicion(posicionCasilla: Int) {
         if (listaRetosCasillas[posicionCasilla] != tipo) {
             Musica.sonidoBoton()
             casillas[posicionCasilla]?.setImageResource(Reto.imagenes[tipo])
@@ -231,7 +230,7 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
     }
 
     @SuppressLint("SetTextI18n")
-    private fun CargarPantalla() {
+    private fun cargarPantalla() {
         listaMapasPersonalizados = db.getMapasPersonalizados()
         if (listaMapasPersonalizados.isEmpty()) {
             //Preparamos para añadir mapa
@@ -264,9 +263,10 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
 
         //Cargamos nombre y descripcion del mapa
         binding.nombreNuevoMapa.setText(mapaTemporal.nombre)
-        binding.descripcionNuevoMapa.setText(mapaTemporal.descripcion)    }
+        binding.descripcionNuevoMapa.setText(mapaTemporal.descripcion)
+    }
 
-    private fun RefrescarBotonesCasillas() {
+    private fun refrescarBotonesCasillas() {
         binding.layoutBeberMapa.visibility = View.VISIBLE
         binding.layoutAleatorioMapa.visibility = View.VISIBLE
         binding.layoutEstrellaMapa.visibility = View.VISIBLE
@@ -301,12 +301,82 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
         }
     }
 
+    override fun onTouch(v: View?, event: MotionEvent): Boolean {
+        if (event.action == MotionEvent.ACTION_MOVE || event.action == MotionEvent.ACTION_DOWN) {
+
+            val x = ((event.getX(event.actionIndex) - 25) * 33 / binding.mapaCrearMapas.width).toInt()
+            val y = ((event.getY(event.actionIndex) - 25) * 18 / binding.mapaCrearMapas.height).toInt()
+            when (y) {
+                1 -> when (x) {
+                    3 -> meterPosicion(18)
+                    5 -> meterPosicion(17)
+                    7 -> meterPosicion(16)
+                    9 -> meterPosicion(15)
+                    11 -> meterPosicion(14)
+                    13 -> meterPosicion(13)
+                    15 -> meterPosicion(12)
+                    17 -> meterPosicion(11)
+                    19 -> meterPosicion(10)
+                }
+                3 -> when (x) {
+                    1 -> meterPosicion(19)
+                    21 -> meterPosicion(9)
+                }
+                5 -> when (x) {
+                    1 -> meterPosicion(20)
+                    5 -> meterPosicion(39)
+                    7 -> meterPosicion(38)
+                    9 -> meterPosicion(37)
+                    11 -> meterPosicion(36)
+                    13 -> meterPosicion(35)
+                    15 -> meterPosicion(34)
+                    21 -> meterPosicion(8)
+                }
+                7 -> when (x) {
+                    1 -> meterPosicion(21)
+                    5 -> meterPosicion(40)
+                    17 -> meterPosicion(33)
+                    21 -> meterPosicion(7)
+                }
+                9 -> when (x) {
+                    1 -> meterPosicion(22)
+                    5 -> meterPosicion(41)
+                    17 -> meterPosicion(32)
+                    21 -> meterPosicion(6)
+                }
+                11 -> when (x) {
+                    1 -> meterPosicion(23)
+                    7 -> meterPosicion(42)
+                    9 -> meterPosicion(43)
+                    13 -> meterPosicion(29)
+                    15 -> meterPosicion(30)
+                    17 -> meterPosicion(31)
+                    21 -> meterPosicion(5)
+                }
+                13 -> when (x) {
+                    1 -> meterPosicion(24)
+                    21 -> meterPosicion(4)
+                }
+                15 -> when (x) {
+                    3 -> meterPosicion(25)
+                    5 -> meterPosicion(26)
+                    7 -> meterPosicion(27)
+                    9 -> meterPosicion(28)
+                    13 -> meterPosicion(0)
+                    15 -> meterPosicion(1)
+                    17 -> meterPosicion(2)
+                    19 -> meterPosicion(3)
+                }
+            }
+        }
+        return true
+    }
 
     private fun atras() {
         if (binding.lytDescripcionCrearMapas.visibility == View.VISIBLE) {
             binding.lytDescripcionCrearMapas.visibility = View.GONE
         } else if (!modificandoMapa) {
-            CargarPantalla()
+            cargarPantalla()
             if (listaMapasPersonalizados.isEmpty()) {
                 finish()
             }
@@ -317,77 +387,6 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
 
     override fun onBackPressed() {
         atras()
-    }
-
-    override fun onTouch(v: View?, event: MotionEvent): Boolean {
-        if (event.action == MotionEvent.ACTION_MOVE || event.action == MotionEvent.ACTION_DOWN) {
-
-            val x = ((event.getX(event.actionIndex) - 25) * 33 / binding.mapaCrearMapas.width).toInt()
-            val y = ((event.getY(event.actionIndex) - 25) * 18 / binding.mapaCrearMapas.height).toInt()
-            when (y) {
-                1 -> when (x) {
-                    3 -> MeterPosicion(18)
-                    5 -> MeterPosicion(17)
-                    7 -> MeterPosicion(16)
-                    9 -> MeterPosicion(15)
-                    11 -> MeterPosicion(14)
-                    13 -> MeterPosicion(13)
-                    15 -> MeterPosicion(12)
-                    17 -> MeterPosicion(11)
-                    19 -> MeterPosicion(10)
-                }
-                3 -> when (x) {
-                    1 -> MeterPosicion(19)
-                    21 -> MeterPosicion(9)
-                }
-                5 -> when (x) {
-                    1 -> MeterPosicion(20)
-                    5 -> MeterPosicion(39)
-                    7 -> MeterPosicion(38)
-                    9 -> MeterPosicion(37)
-                    11 -> MeterPosicion(36)
-                    13 -> MeterPosicion(35)
-                    15 -> MeterPosicion(34)
-                    21 -> MeterPosicion(8)
-                }
-                7 -> when (x) {
-                    1 -> MeterPosicion(21)
-                    5 -> MeterPosicion(40)
-                    17 -> MeterPosicion(33)
-                    21 -> MeterPosicion(7)
-                }
-                9 -> when (x) {
-                    1 -> MeterPosicion(22)
-                    5 -> MeterPosicion(41)
-                    17 -> MeterPosicion(32)
-                    21 -> MeterPosicion(6)
-                }
-                11 -> when (x) {
-                    1 -> MeterPosicion(23)
-                    7 -> MeterPosicion(42)
-                    9 -> MeterPosicion(43)
-                    13 -> MeterPosicion(29)
-                    15 -> MeterPosicion(30)
-                    17 -> MeterPosicion(31)
-                    21 -> MeterPosicion(5)
-                }
-                13 -> when (x) {
-                    1 -> MeterPosicion(24)
-                    21 -> MeterPosicion(4)
-                }
-                15 -> when (x) {
-                    3 -> MeterPosicion(25)
-                    5 -> MeterPosicion(26)
-                    7 -> MeterPosicion(27)
-                    9 -> MeterPosicion(28)
-                    13 -> MeterPosicion(0)
-                    15 -> MeterPosicion(1)
-                    17 -> MeterPosicion(2)
-                    19 -> MeterPosicion(3)
-                }
-            }
-        }
-        return true
     }
 
 }

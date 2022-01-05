@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".vistas.CrearRetosActivity"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo"
+    tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry,Autofill,SpUsage">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -31,16 +32,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.19"
-        app:layout_constraintWidth_percent="0.75" />
+        app:layout_constraintWidth_percent="0.75" >
+
+    </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/layoutPicanteRetos"
+        android:id="@+id/lyt_picante_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/bordes"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/layoutNivelRetos"
+        app:layout_constraintEnd_toEndOf="@+id/lyt_nivelRetos_crearRetos"
         app:layout_constraintHeight_percent="0.13"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.405"
@@ -52,9 +55,9 @@
         android:layout_height="0dp"
         android:background="@drawable/bordes"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="@+id/layoutNivelRetos"
+        app:layout_constraintEnd_toEndOf="@+id/lyt_nivelRetos_crearRetos"
         app:layout_constraintHeight_percent="0.13"
-        app:layout_constraintTop_toBottomOf="@+id/layoutPicanteRetos"
+        app:layout_constraintTop_toBottomOf="@+id/lyt_picante_crearRetos"
         app:layout_constraintWidth_percent="0.27" />
 
     <LinearLayout
@@ -72,7 +75,7 @@
 
 
     <ImageView
-        android:id="@+id/botonBeberPersonalizar"
+        android:id="@+id/btn_beber_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -87,43 +90,43 @@
         app:srcCompat="@drawable/casilla_beber" />
 
     <ImageView
-        android:id="@+id/botonAleatorioPersonalizar"
+        android:id="@+id/btn_aleatorio_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toStartOf="@+id/botonEstrellaPersonalizar"
+        app:layout_constraintEnd_toStartOf="@+id/btn_estrella_crearRetos"
         app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintStart_toEndOf="@+id/botonBeberPersonalizar"
-        app:layout_constraintTop_toTopOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintStart_toEndOf="@+id/btn_beber_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/btn_beber_crearRetos"
         app:layout_constraintWidth_percent="0.09"
         app:srcCompat="@drawable/casilla_aleatoria" />
 
     <ImageView
-        android:id="@+id/botonEstrellaPersonalizar"
+        android:id="@+id/btn_estrella_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toStartOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintEnd_toStartOf="@+id/btn_picante_crearRetos"
         app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintStart_toEndOf="@+id/botonBeberPersonalizar"
-        app:layout_constraintTop_toTopOf="@+id/botonAleatorioPersonalizar"
+        app:layout_constraintStart_toEndOf="@+id/btn_beber_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/btn_aleatorio_crearRetos"
         app:layout_constraintWidth_percent="0.09"
         app:srcCompat="@drawable/casilla_estrella" />
 
     <ImageView
-        android:id="@+id/botonBaulPersonalizar"
+        android:id="@+id/btn_baul_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toStartOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintEnd_toStartOf="@+id/btn_picante_crearRetos"
         app:layout_constraintHeight_percent="0.15"
-        app:layout_constraintStart_toEndOf="@+id/botonEstrellaPersonalizar"
-        app:layout_constraintTop_toTopOf="@+id/botonEstrellaPersonalizar"
+        app:layout_constraintStart_toEndOf="@+id/btn_estrella_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/btn_estrella_crearRetos"
         app:layout_constraintWidth_percent="0.09"
         app:srcCompat="@drawable/casilla_baul" />
 
     <ImageView
-        android:id="@+id/BotonPicantePersonalizar"
+        android:id="@+id/btn_picante_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="fitXY"
@@ -131,12 +134,12 @@
         app:layout_constraintHeight_percent="0.15"
         app:layout_constraintHorizontal_bias="0.85"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/botonBaulPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/btn_baul_crearRetos"
         app:layout_constraintWidth_percent="0.09"
         app:srcCompat="@drawable/casilla_picante" />
 
     <TextView
-        android:id="@+id/textoTituloPersonalizar"
+        android:id="@+id/text_titulo_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/chewy"
@@ -170,7 +173,7 @@
         app:layout_constraintWidth_percent="0.08" />
 
     <TextView
-        android:id="@+id/textoPuntosSinReto"
+        android:id="@+id/text_puntosSinReto_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/chewy"
@@ -188,7 +191,7 @@
         app:layout_constraintWidth_percent="0.3" />
 
     <TextView
-        android:id="@+id/textoPuntosConReto"
+        android:id="@+id/text_puntosConReto_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fontFamily="@font/chewy"
@@ -197,7 +200,7 @@
         android:textColor="#000000"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/textoPuntosSinReto"
+        app:layout_constraintEnd_toEndOf="@+id/text_puntosSinReto_crearRetos"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintTop_toTopOf="parent"
@@ -219,7 +222,7 @@
         app:layout_constraintWidth_percent="0.6">
 
         <EditText
-            android:id="@+id/textoRetoPersonalizar"
+            android:id="@+id/text_reto_crearRetos"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#00FFFFFF"
@@ -227,21 +230,23 @@
             android:hint="@string/texto"
             android:inputType="textMultiLine|textPersonName"
             android:textAlignment="center"
-            android:nextFocusForward="@+id/botonGuardarPersonalizar"
-            android:nextFocusDown="@+id/botonGuardarPersonalizar"
-            android:nextFocusLeft="@+id/botonGuardarPersonalizar"
-            android:nextFocusRight="@+id/botonGuardarPersonalizar"
-            android:nextFocusUp="@+id/botonGuardarPersonalizar"
+            android:nextFocusForward="@+id/btn_guardar_crearRetos"
+            android:nextFocusDown="@+id/btn_guardar_crearRetos"
+            android:nextFocusLeft="@+id/btn_guardar_crearRetos"
+            android:nextFocusRight="@+id/btn_guardar_crearRetos"
+            android:nextFocusUp="@+id/btn_guardar_crearRetos"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
-        android:id="@+id/botonNuevoRetoPersonalizar"
+        android:id="@+id/btn_nuevoReto_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/animacion_boton_reducido"
@@ -250,17 +255,17 @@
         android:text="@string/nuevoReto"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/text_titulo_crearRetos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.12"
         app:layout_constraintHorizontal_bias="0.971"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/text_titulo_crearRetos"
         app:layout_constraintVertical_bias="0.5"
         app:layout_constraintWidth_percent="0.18" />
 
     <Button
-        android:id="@+id/botonBorrarReroPersonalizar"
+        android:id="@+id/btn_borrarRero_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/animacion_boton_reducido"
@@ -269,17 +274,17 @@
         android:text="@string/borraReto"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/text_titulo_crearRetos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.12"
         app:layout_constraintHorizontal_bias="0.025"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/text_titulo_crearRetos"
         app:layout_constraintVertical_bias="0.5"
         app:layout_constraintWidth_percent="0.18" />
 
     <Button
-        android:id="@+id/botonGuardarPersonalizar"
+        android:id="@+id/btn_guardar_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/animacion_boton_reducido"
@@ -298,7 +303,7 @@
         app:layout_constraintWidth_percent="0.18" />
 
     <Button
-        android:id="@+id/botonAtrasCrearRetos"
+        android:id="@+id/btn_atras_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/animacion_boton_reducido"
@@ -317,7 +322,7 @@
         app:layout_constraintWidth_percent="0.18" />
 
     <Button
-        android:id="@+id/botonCambiarPicantePersonalizar"
+        android:id="@+id/btn_cambiarPicante_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/boton_pulsado_reducido"
@@ -326,15 +331,15 @@
         android:text="@string/noPicante"
         android:textColor="#000000"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/layoutPicanteRetos"
-        app:layout_constraintEnd_toEndOf="@+id/layoutPicanteRetos"
+        app:layout_constraintBottom_toBottomOf="@+id/lyt_picante_crearRetos"
+        app:layout_constraintEnd_toEndOf="@+id/lyt_picante_crearRetos"
         app:layout_constraintHeight_percent="0.12"
-        app:layout_constraintStart_toStartOf="@+id/layoutPicanteRetos"
-        app:layout_constraintTop_toTopOf="@+id/layoutPicanteRetos"
+        app:layout_constraintStart_toStartOf="@+id/lyt_picante_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/lyt_picante_crearRetos"
         app:layout_constraintWidth_percent="0.25" />
 
     <Button
-        android:id="@+id/botonCambiarPresencialPersonalizar"
+        android:id="@+id/btn_cambiarPresencial_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/boton_sin_pulsar_reducido"
@@ -347,7 +352,7 @@
         app:layout_constraintEnd_toEndOf="@+id/linearLayout17"
         app:layout_constraintHeight_percent="0.12"
         app:layout_constraintStart_toStartOf="@+id/linearLayout17"
-        app:layout_constraintTop_toBottomOf="@+id/layoutPicanteRetos"
+        app:layout_constraintTop_toBottomOf="@+id/lyt_picante_crearRetos"
         app:layout_constraintWidth_percent="0.25" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -355,17 +360,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bordes"
-        app:layout_constraintBottom_toBottomOf="@+id/textoPuntosSinReto"
+        app:layout_constraintBottom_toBottomOf="@+id/text_puntosSinReto_crearRetos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintHorizontal_bias="0.015"
-        app:layout_constraintStart_toEndOf="@+id/textoPuntosSinReto"
-        app:layout_constraintTop_toTopOf="@+id/textoPuntosSinReto"
+        app:layout_constraintStart_toEndOf="@+id/text_puntosSinReto_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/text_puntosSinReto_crearRetos"
         app:layout_constraintVertical_bias="0.5"
         app:layout_constraintWidth_percent="0.1">
 
         <EditText
-            android:id="@+id/numeroPuntosSinReto"
+            android:id="@+id/text_puntosSinRetoInput_crearRetos"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#00FFFFFF"
@@ -388,17 +393,17 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bordes"
-        app:layout_constraintBottom_toBottomOf="@+id/textoPuntosConReto"
+        app:layout_constraintBottom_toBottomOf="@+id/text_puntosConReto_crearRetos"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.08"
         app:layout_constraintHorizontal_bias="0.015"
-        app:layout_constraintStart_toEndOf="@+id/textoPuntosConReto"
-        app:layout_constraintTop_toTopOf="@+id/textoPuntosConReto"
+        app:layout_constraintStart_toEndOf="@+id/text_puntosConReto_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/text_puntosConReto_crearRetos"
         app:layout_constraintVertical_bias="0.5"
         app:layout_constraintWidth_percent="0.1">
 
         <EditText
-            android:id="@+id/numeroPuntosConReto"
+            android:id="@+id/text_puntosConRetoInput_crearRetos"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#00FFFFFF"
@@ -423,11 +428,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#D23A3A3A"
-        app:layout_constraintBottom_toBottomOf="@+id/botonBeberPersonalizar"
-        app:layout_constraintEnd_toEndOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_beber_crearRetos"
+        app:layout_constraintEnd_toEndOf="@+id/btn_beber_crearRetos"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/botonBeberPersonalizar"
-        app:layout_constraintTop_toTopOf="@+id/botonBeberPersonalizar"
+        app:layout_constraintStart_toStartOf="@+id/btn_beber_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/btn_beber_crearRetos"
         app:layout_constraintVertical_bias="0.535">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -437,11 +442,25 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#D23A3A3A"
-        app:layout_constraintBottom_toBottomOf="@+id/botonAleatorioPersonalizar"
-        app:layout_constraintEnd_toEndOf="@+id/botonAleatorioPersonalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_aleatorio_crearRetos"
+        app:layout_constraintEnd_toEndOf="@+id/btn_aleatorio_crearRetos"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/botonAleatorioPersonalizar"
-        app:layout_constraintTop_toTopOf="@+id/botonAleatorioPersonalizar"
+        app:layout_constraintStart_toStartOf="@+id/btn_aleatorio_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/btn_aleatorio_crearRetos"
+        app:layout_constraintVertical_bias="0.535">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/taparEstrella"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="#D23A3A3A"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_estrella_crearRetos"
+        app:layout_constraintEnd_toEndOf="@+id/btn_estrella_crearRetos"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_estrella_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/btn_estrella_crearRetos"
         app:layout_constraintVertical_bias="0.535">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -451,20 +470,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#D23A3A3A"
-        app:layout_constraintBottom_toBottomOf="@+id/botonBaulPersonalizar"
-        app:layout_constraintEnd_toEndOf="@+id/botonBaulPersonalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_baul_crearRetos"
+        app:layout_constraintEnd_toEndOf="@+id/btn_baul_crearRetos"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/botonBaulPersonalizar"
-        app:layout_constraintTop_toTopOf="@+id/botonBaulPersonalizar"
+        app:layout_constraintStart_toStartOf="@+id/btn_baul_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/btn_baul_crearRetos"
         app:layout_constraintVertical_bias="0.535">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/taparEstrella"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="#D23A3A3A">
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -472,17 +484,17 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#D23A3A3A"
-        app:layout_constraintBottom_toBottomOf="@+id/BotonPicantePersonalizar"
-        app:layout_constraintEnd_toEndOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_picante_crearRetos"
+        app:layout_constraintEnd_toEndOf="@+id/btn_picante_crearRetos"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/BotonPicantePersonalizar"
-        app:layout_constraintTop_toTopOf="@+id/BotonPicantePersonalizar"
+        app:layout_constraintStart_toStartOf="@+id/btn_picante_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/btn_picante_crearRetos"
         app:layout_constraintVertical_bias="0.535">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutNivelRetos"
+        android:id="@+id/lyt_nivelRetos_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -496,7 +508,7 @@
         app:layout_constraintWidth_percent="0.45">
 
         <TextView
-            android:id="@+id/textoNiveles"
+            android:id="@+id/text_niveles_crearRetos"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:fontFamily="@font/chewy"
@@ -514,21 +526,21 @@
             app:layout_constraintWidth_percent="0.4" />
 
         <RadioGroup
-            android:id="@+id/radioGroupBeber"
+            android:id="@+id/rg_beber_crearRetos"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@+id/textoNiveles"
+            app:layout_constraintBottom_toBottomOf="@+id/text_niveles_crearRetos"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHeight_percent="0.4"
             app:layout_constraintHorizontal_bias="0.44"
-            app:layout_constraintStart_toEndOf="@+id/textoNiveles"
-            app:layout_constraintTop_toTopOf="@+id/textoNiveles"
+            app:layout_constraintStart_toEndOf="@+id/text_niveles_crearRetos"
+            app:layout_constraintTop_toTopOf="@+id/text_niveles_crearRetos"
             app:layout_constraintVertical_bias="0.5"
             app:layout_constraintWidth_percent="0.5">
 
             <RadioButton
-                android:id="@+id/radioBotonBeber1"
+                android:id="@+id/rb_nivel1_crearRetos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:buttonTint="@color/jugador2"
@@ -536,7 +548,7 @@
                 android:gravity="center" />
 
             <RadioButton
-                android:id="@+id/radioBotonBeber2"
+                android:id="@+id/rb_nivel2_crearRetos"
                 android:layout_width="wrap_content"
                 android:buttonTint="@color/jugador2"
                 android:layout_height="wrap_content"
@@ -544,7 +556,7 @@
                 android:gravity="center" />
 
             <RadioButton
-                android:id="@+id/radioBotonBeber3"
+                android:id="@+id/rb_nivel3_crearRetos"
                 android:layout_width="wrap_content"
                 android:buttonTint="@color/jugador2"
                 android:layout_height="wrap_content"
@@ -552,7 +564,7 @@
                 android:gravity="center" />
 
             <RadioButton
-                android:id="@+id/radioBotonBeber4"
+                android:id="@+id/rb_nivel4_crearRetos"
                 android:layout_width="wrap_content"
                 android:buttonTint="@color/jugador2"
                 android:layout_height="wrap_content"
@@ -560,7 +572,7 @@
                 android:gravity="center" />
 
             <RadioButton
-                android:id="@+id/radioBotonBeber5"
+                android:id="@+id/rb_nivel5_crearRetos"
                 android:layout_width="wrap_content"
                 android:buttonTint="@color/jugador2"
                 android:layout_height="wrap_content"
@@ -577,10 +589,10 @@
             android:text="1"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
-            app:layout_constraintEnd_toEndOf="@+id/radioGroupBeber"
+            app:layout_constraintBottom_toTopOf="@+id/rg_beber_crearRetos"
+            app:layout_constraintEnd_toEndOf="@+id/rg_beber_crearRetos"
             app:layout_constraintHorizontal_bias="0.08"
-            app:layout_constraintStart_toStartOf="@+id/radioGroupBeber" />
+            app:layout_constraintStart_toStartOf="@+id/rg_beber_crearRetos" />
 
         <TextView
             android:id="@+id/textView21"
@@ -590,7 +602,7 @@
             android:text="2"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
+            app:layout_constraintBottom_toTopOf="@+id/rg_beber_crearRetos"
             app:layout_constraintEnd_toStartOf="@+id/textView23"
             app:layout_constraintStart_toEndOf="@+id/textView22" />
 
@@ -602,9 +614,9 @@
             android:text="3"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
-            app:layout_constraintEnd_toEndOf="@+id/radioGroupBeber"
-            app:layout_constraintStart_toStartOf="@+id/radioGroupBeber" />
+            app:layout_constraintBottom_toTopOf="@+id/rg_beber_crearRetos"
+            app:layout_constraintEnd_toEndOf="@+id/rg_beber_crearRetos"
+            app:layout_constraintStart_toStartOf="@+id/rg_beber_crearRetos" />
 
         <TextView
             android:id="@+id/textView25"
@@ -614,7 +626,7 @@
             android:text="4"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
+            app:layout_constraintBottom_toTopOf="@+id/rg_beber_crearRetos"
             app:layout_constraintEnd_toStartOf="@+id/textView27"
             app:layout_constraintStart_toEndOf="@+id/textView23" />
 
@@ -626,33 +638,33 @@
             android:text="5"
             android:textColor="#000000"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/radioGroupBeber"
-            app:layout_constraintEnd_toEndOf="@+id/radioGroupBeber"
+            app:layout_constraintBottom_toTopOf="@+id/rg_beber_crearRetos"
+            app:layout_constraintEnd_toEndOf="@+id/rg_beber_crearRetos"
             app:layout_constraintHorizontal_bias="0.92"
-            app:layout_constraintStart_toStartOf="@+id/radioGroupBeber" />
+            app:layout_constraintStart_toStartOf="@+id/rg_beber_crearRetos" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/botonIzquierdaPersonalizar"
+        android:id="@+id/btn_izquierdarb_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textoTituloPersonalizar"
-        app:layout_constraintEnd_toStartOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/text_titulo_crearRetos"
+        app:layout_constraintEnd_toStartOf="@+id/text_titulo_crearRetos"
         app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintTop_toTopOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintTop_toTopOf="@+id/text_titulo_crearRetos"
         app:layout_constraintVertical_bias="0.5"
         app:layout_constraintWidth_percent="0.06"
         app:srcCompat="@drawable/flechaizquierda" />
 
     <ImageView
-        android:id="@+id/botonDerechaPersonalizar"
+        android:id="@+id/btn_derecha_crearRetos"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:rotation="180"
-        app:layout_constraintBottom_toBottomOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintBottom_toBottomOf="@+id/text_titulo_crearRetos"
         app:layout_constraintHeight_percent="0.1"
-        app:layout_constraintStart_toEndOf="@+id/textoTituloPersonalizar"
-        app:layout_constraintTop_toTopOf="@+id/textoTituloPersonalizar"
+        app:layout_constraintStart_toEndOf="@+id/text_titulo_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/text_titulo_crearRetos"
         app:layout_constraintVertical_bias="0.5"
         app:layout_constraintWidth_percent="0.06"
         app:srcCompat="@drawable/flechaizquierda" />
@@ -665,8 +677,8 @@
         android:textColor="#000000"
         android:textSize="8sp"
         app:layout_constraintBottom_toBottomOf="@+id/linearLayout16"
-        app:layout_constraintEnd_toEndOf="@+id/textoPuntosConReto"
-        app:layout_constraintTop_toTopOf="@+id/textoPuntosConReto"
+        app:layout_constraintEnd_toEndOf="@+id/text_puntosConReto_crearRetos"
+        app:layout_constraintTop_toTopOf="@+id/text_puntosConReto_crearRetos"
         app:layout_constraintVertical_bias="0.7" />
 
 
