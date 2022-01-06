@@ -52,6 +52,26 @@
     <string name="no_hay_alcohol">¿Ya no queda alcohol?</string>
     <string name="queda_mas">Aún queda</string>
 
+    //--------------------------------------------------------------------------
+    //--------------------------Activity Opciones-------------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="menu">MENÚ</string>
+    <string name="musica">Música</string>
+    <string name="volumenMusica">Volumen de la música</string>
+    <string name="volumenEfectos">Volumen de los efectos</string>
+    <string name="juego" translatable="false">JUEGO</string>
+    <string name="sonido" translatable="false">SONIDO</string>
+    <string name="eligeTuMusica" translatable="false">Elige tu música</string>
+    <string name="vasalloActivado" translatable="false">Vasallo activado</string>
+    <string name="vasalloDesactivado" translatable="false">Vasallo desactivado</string>
+    <string name="descripcionVasallo"><b><big>Vasallo: </big></b>A partir de 5 jugadores otro jugador aleatorio hará el mismo reto que el jugador en turno.</string>
+    <string name="puntosIniciales" translatable="false">Puntos iniciales</string>
+    <string name="porDefecto" translatable="false">Por defecto (Irá cambiando)</string>
+    <string name="momentoRelax" translatable="false">Momento relax de Gusa</string>
+    <string name="gusaOnFire" translatable="false">Gusa on fire</string>
+    <string name="fiestaConGusa" translatable="false">Fiesta con gusa</string>
+    <string name="gusaOriginal" translatable="false">Gusa original  (nostalgia) :-(</string>
 
     //--------------------------------------------------------------------------
     //----------------Activites crear mapas y crear retos-----------------------
@@ -89,7 +109,7 @@
     <string name="retoCreado">Reto creado.</string>
     <string name="retoModificado">Reto modificado.</string>
     <string name="nivelAlcohol">Nivel de alcohol</string>
-    <string name="NivelPicante">nivel de picante</string>
+    <string name="nivelPicante">nivel de picante</string>
 
 
     //--------------------------------------------------------------------------

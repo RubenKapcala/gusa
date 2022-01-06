@@ -317,7 +317,7 @@ class CrearRetosActivity : AppCompatActivity() {
             Reto.TipoReto.PICANTE.ordinal -> {
                 binding.taparPicante.visibility = View.INVISIBLE
                 binding.lytNivelRetosCrearRetos.visibility = View.VISIBLE
-                binding.textNivelesCrearRetos.setText(R.string.NivelPicante)
+                binding.textNivelesCrearRetos.setText(R.string.nivelPicante)
                 binding.btnCambiarPicanteCrearRetos.visibility = View.INVISIBLE
                 binding.lytPicanteCrearRetos.visibility = View.INVISIBLE
             }

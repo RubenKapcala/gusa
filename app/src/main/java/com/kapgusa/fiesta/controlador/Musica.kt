@@ -19,7 +19,7 @@ object Musica {
     private lateinit var mediaPlayer: MediaPlayer // Permite controlar la música del juego
     private var volumenEfectos = VOLUMEN_EFECTOS_INICIAL // Volumen de los efectos de sonido
     private  var volumenMusica = VOLUMEN_MUSICA_INICIAL // Volumen de la música
-    private var musicaElegida = MUSICA_ELEGIDA_INICIAL // Elección de la música
+    var musicaElegida = MUSICA_ELEGIDA_INICIAL // Elección de la música
     private var cancionPorDefecto = 0 // Canción que sonará si esta en automático
 
     //Sonidos para el SoundPool
@@ -29,7 +29,7 @@ object Musica {
     private var sonidoDado = 0
     private var sonidoGong = 0
     private var sonidoMovimiento = 0
-    private var sonidoAleatorio: Int = 0
+    private var sonidoAleatorio = 0
 
 
     //Array con las distintas melodias para el juego
