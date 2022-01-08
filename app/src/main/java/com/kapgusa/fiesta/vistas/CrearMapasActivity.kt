@@ -1,7 +1,6 @@
 package com.kapgusa.fiesta.vistas
 
 import android.annotation.SuppressLint
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
@@ -10,13 +9,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.kapgusa.fiesta.R
-import com.kapgusa.fiesta.controlador.CarpetaImagenes
 import com.kapgusa.fiesta.controlador.Musica
 import com.kapgusa.fiesta.databinding.ActivityCrearMapasBinding
 import com.kapgusa.fiesta.modelo.Mapa
 import com.kapgusa.fiesta.modelo.Reto
 import com.kapgusa.fiesta.modelo.bbdd.DbHelper
-import java.io.File
 import java.util.*
 
 class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
@@ -79,20 +76,15 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
         }
         binding.btnBorrarMapaCrearMapas.setOnClickListener {
             val builder = AlertDialog.Builder(this)
-            builder.setTitle(R.string.en_serio)
+            builder.setTitle(R.string.enSerio)
             builder.setMessage(R.string.deseaBorrar)
-                    .setPositiveButton(R.string.atras, DialogInterface.OnClickListener { dialog, which -> })
-                    .setNegativeButton(R.string.aceptar, DialogInterface.OnClickListener { dialog, which -> //Borramos la imagen
-                        val file = File(listaMapasPersonalizados[posicion].direccionImagen)
-                        if (file.exists()) {
-                            CarpetaImagenes.borrarImagen(file.absolutePath)
-                        }
+                    .setPositiveButton(R.string.atras) { _, _ -> }
+                    .setNegativeButton(R.string.aceptar) { _, _ -> //Borramos la imagen
 
-                        //Guardamos la lista sin el mapa
                         db.borrarMapa(listaMapasPersonalizados[posicion].id)
                         posicion = 0
                         cargarPantalla()
-                    }).setCancelable(false).show()
+                    }.setCancelable(false).show()
         }
         binding.btnNuevoMapaCrearMapas.setOnClickListener {
             comenzarNuevoMapa()
@@ -187,13 +179,7 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
     }
 
     private fun guardarMapa() {
-        //Si estamos modificando un mapa borrar la imagen anterior
-        if (modificandoMapa) {
-            val file = File(listaMapasPersonalizados[posicion].direccionImagen)
-            if (file.exists()) {
-                CarpetaImagenes.borrarImagen(file.absolutePath)
-            }
-        }
+
         //Metemos la descripción
         val descripcion = binding.descripcionNuevoMapa.text.toString()
 
@@ -205,13 +191,11 @@ class CrearMapasActivity : AppCompatActivity(), View.OnTouchListener {
             }
         }
 
-        val rutaImagen = Mapa.crearImagenMapa(binding.nombreNuevoMapa.text.toString(), listaRetosCasillas.asList(), this)
-
         //Guarda el mapa
         if (modificandoMapa) {
-            db.modificarMapa(Mapa(binding.nombreNuevoMapa.text.toString(), descripcion, listaRetosCasillas.asList(), picante, rutaImagen, true), listaMapasPersonalizados[posicion].id)
+            db.modificarMapa(Mapa(binding.nombreNuevoMapa.text.toString(), descripcion, listaRetosCasillas.asList(), picante, true), listaMapasPersonalizados[posicion].id)
         } else {
-            db.insertarMapa(Mapa(binding.nombreNuevoMapa.text.toString(), descripcion, listaRetosCasillas.asList(), picante, rutaImagen, true))
+            db.insertarMapa(Mapa(binding.nombreNuevoMapa.text.toString(), descripcion, listaRetosCasillas.asList(), picante, true))
         }
 
         //Guardamos la lista de mapas

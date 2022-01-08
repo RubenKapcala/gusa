@@ -29,10 +29,8 @@ abstract class Tablas {
             const val TABLE_NAME = "jugadores"
             const val COLUMN_id = "id"
             const val COLUMN_nombre = "nombre"
+            const val COLUMN_esChico = "esChico"
             const val COLUMN_gustos = "gustos"
-            const val COLUMN_tragos = "tragos"
-            const val COLUMN_ganadas = "ganadas"
-            const val COLUMN_perdidas = "partidas"
         }
     }
 
@@ -43,7 +41,6 @@ abstract class Tablas {
             const val COLUMN_nombre = "nombre"
             const val COLUMN_descripcion = "descripcion"
             const val COLUMN_picante = "picante"
-            const val COLUMN_imagen = "imagen"
             const val COLUMN_personalizado = "personalizado"
         }
     }

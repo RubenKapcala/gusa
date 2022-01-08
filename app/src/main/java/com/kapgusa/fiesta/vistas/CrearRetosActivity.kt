@@ -123,7 +123,7 @@ class CrearRetosActivity : AppCompatActivity() {
         binding.btnBorrarReroCrearRetos.setOnClickListener {
             Musica.sonidoBoton()
             val builder = AlertDialog.Builder(this)
-            builder.setTitle(R.string.en_serio)
+            builder.setTitle(R.string.enSerio)
             builder.setMessage(R.string.deseaBorrar)
                     .setPositiveButton(R.string.atras) { _, _ -> Musica.sonidoBoton() }
                     .setNegativeButton(R.string.aceptar) { _, _ ->

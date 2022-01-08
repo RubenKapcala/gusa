@@ -7,6 +7,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="colorFondoMapa">#88975E</color>
     <color name="transparente">#7AFF0000</color>
+    <color name="sinEscoger">#D23A3A3A</color>
     <color name="jugador1">#FF0000</color>
     <color name="jugador2">#2B27FF</color>
     <color name="jugador3">#FF8400</color>
@@ -19,4 +20,5 @@
     <color name="jugador10">#804000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
 </resources>

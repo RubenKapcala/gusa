@@ -8,7 +8,6 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.SeekBar.OnSeekBarChangeListener
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.kapgusa.fiesta.R
 import com.kapgusa.fiesta.controlador.Musica
@@ -37,9 +36,9 @@ class OpcionesActivity : AppCompatActivity() {
 
         db = DbHelper(this)
 
-        CargarValoresGuardados()
+        cargarValoresGuardados()
 
-        AjustarViewsIniciales()
+        ajustarViewsIniciales()
 
         funcionalidadBotones()
     }
@@ -123,7 +122,6 @@ class OpcionesActivity : AppCompatActivity() {
             }
             if (event.action == MotionEvent.ACTION_UP) {
                 binding.lytInfoOpciones.visibility = View.INVISIBLE
-                Musica.sonidoBoton()
             }
             true
         }
@@ -153,7 +151,7 @@ class OpcionesActivity : AppCompatActivity() {
     }
 
 
-    private fun CargarValoresGuardados() {
+    private fun cargarValoresGuardados() {
         vasalloActivo = db.getVasallo()!!
         musicaVol = db.getVolumenMusica()!!
         efectosVol = db.getVolumeEfectos()!!
@@ -161,7 +159,7 @@ class OpcionesActivity : AppCompatActivity() {
         nivelPicante = db.getNivelPicante()!!
     }
 
-    private fun AjustarViewsIniciales() {
+    private fun ajustarViewsIniciales() {
         if (vasalloActivo) {
             binding.btnVasalloOpciones.background = resources.getDrawable(R.drawable.boton_sin_pulsar)
             binding.btnVasalloOpciones.setText(R.string.vasalloActivado)

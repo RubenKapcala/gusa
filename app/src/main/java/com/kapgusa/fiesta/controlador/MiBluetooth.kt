@@ -12,9 +12,7 @@ import android.os.Build
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.google.gson.Gson
 import com.kapgusa.fiesta.R
-import com.kapgusa.fiesta.modelo.Transformable
 import org.greenrobot.eventbus.EventBus
 import java.io.IOException
 import java.io.InputStream
@@ -23,8 +21,6 @@ import java.util.*
 
 
 object MiBluetooth {
-
-    /*
 
     //Declaración de constantes
     const val REQUEST_ENABLE_BLUETOOTH = 1 //Respuesta a activar bluetooth
@@ -37,24 +33,19 @@ object MiBluetooth {
     enum class Estado{STATE_LISTENING, STATE_CONNECTING, STATE_CONNECTED, STATE_CONNECTION_FAILED}
 
     //Define el objeto que se está enviando en el mensaje
-    enum class TipoDatoTransmitido{PARTIDA, LISTA_JUGADORES, JUGADOR, ACCION, EVENTO, TEXTO}
-
-    //Clases que pueden ser enviadas en el mensaje
-    enum class Evento: Transformable {INICIAR_PARTIDA, PAUSAR_PARTIDA}
-    class Accion(val nombre: String, val alias: String, val puntos: Int): Transformable
+    enum class TipoDatoTransmitido{}
 
     //Variables referentes a las conexiones
     private var conexionServidor: SendReceive? = null //Conexión con un servidor
     private var conexionesCliente: MutableList<SendReceive?> = mutableListOf() //Conexiones con los clientes
     var bluetoothAdapter: BluetoothAdapter? = null
-    var eresServidor = false //Nos indica si estás trabajando como servidor o como cliente
+    var eresServidor = true //Nos indica si estás trabajando como servidor o como cliente
 
 
     //Cuando se inicie este objeto obtiene el BluetoothAdapter
     init {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter()
     }
-
 
     //Comprueba si el dispositivo tiene opciones Bluetooth al no devolver null el init
     val esBluetooth: Boolean
@@ -156,7 +147,7 @@ object MiBluetooth {
                 //De no serlo lo informa y sugiere comprobar que esté la ubicación activa
                 Toast.makeText(
                         activity,
-                        activity.getText(R.string.activar_gps),
+                        activity.getText(R.string.activarGps),
                         Toast.LENGTH_LONG
                 ).show()
             }
@@ -167,19 +158,8 @@ object MiBluetooth {
 
 
     //Permite enviar un mensaje a los dispositivos conectados
-    fun enviarDatos(mensaje: String, tipo: TipoDatoTransmitido){
-        val stringBuffer = StringBuffer()
-        stringBuffer.append(tipo.ordinal.toString()) //Pasa tipo de dato a Int y después a String
-        stringBuffer.append(separador) //Añade un separador
-        stringBuffer.append(mensaje) //Añade el mensaje
-        stringBuffer.append(separador) //Añade otro separados
-        if (eresServidor){ //Si funciona como servidor se lo envía a cada cliente
-            for (i in conexionesCliente){
-                i!!.write(stringBuffer.toString().toByteArray())
-            }
-        }else{ //Si funciona como cliente se lo envia al servidor
-            conexionServidor!!.write(stringBuffer.toString().toByteArray())
-        }
+    fun enviarDatos(dato: Any, tipo: TipoDatoTransmitido){
+
     }
 
 
@@ -305,26 +285,7 @@ object MiBluetooth {
                     //Convierte el String(Json) en un objeto dependiendo del tipo que se obtuvo de
                     //la primerra parte del mensaje
                     when(tipo){
-                        TipoDatoTransmitido.PARTIDA -> {
-                            val partida = Gson().fromJson(tempMsg, Partida::class.java)
-                            EventBus.getDefault().post(partida) //Informa que recibió ese objeto
-                        }
-                        TipoDatoTransmitido.LISTA_JUGADORES -> {
-                            val lista = Gson().fromJson(tempMsg, ListaJugadores::class.java)
-                            EventBus.getDefault().post(lista) //Informa que recibió ese objeto
-                        }
-                        TipoDatoTransmitido.JUGADOR -> {
-                            val jugador = Gson().fromJson(tempMsg, Jugador::class.java)
-                            EventBus.getDefault().post(jugador) //Informa que recibió ese objeto
-                        }
-                        TipoDatoTransmitido.ACCION -> {
-                            val accion = Gson().fromJson(tempMsg, Accion::class.java)
-                            EventBus.getDefault().post(accion) //Informa que recibió ese objeto
-                        }
-                        TipoDatoTransmitido.EVENTO -> {
-                            val evento = Gson().fromJson(tempMsg, Evento::class.java)
-                            EventBus.getDefault().post(evento) //Informa que recibió ese objeto
-                        }
+
                         else -> {}
                     }
                 } catch (e: IOException) {
@@ -352,8 +313,5 @@ object MiBluetooth {
             } catch (e: Exception) { }
         }
     }
-
-     */
-
 
 }

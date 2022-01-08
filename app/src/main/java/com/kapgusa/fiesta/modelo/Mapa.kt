@@ -17,7 +17,6 @@ data class Mapa(
         val descripcion: String,
         val casillas: List<Int>,
         val picante: Boolean,
-        val direccionImagen: String,
         val personalizado: Boolean,
         val id: Int = 0
 
@@ -39,7 +38,7 @@ data class Mapa(
                 Coordenada(6, 6), Coordenada(6, 8), Coordenada(6, 10), Coordenada(8, 12), Coordenada(10, 12))
 
 
-        fun crearImagenMapa(nombre: String, listaCasillas: List<Int>, context: Context): String {
+        fun crearImagenMapa(mapa: Mapa, context: Context): Bitmap {
 
             //Creamos el bitmap
             var bitmapPrincipal = Bitmap.createBitmap(1650, 900, Bitmap.Config.ARGB_8888)
@@ -49,7 +48,7 @@ data class Mapa(
             var bitmapSecundario: Bitmap
 
             //Pintamos las casillas
-            for ((i, casilla) in listaCasillas.withIndex()) {
+            for ((i, casilla) in mapa.casillas.withIndex()) {
                 bitmapSecundario = BitmapFactory.decodeResource(context.resources, Reto.imagenes[casilla])
                 dest = Rect(50 * coordenadasCasillas[i].x - 25, 50 * coordenadasCasillas[i].y - 25, 50 * coordenadasCasillas[i].x + 25, 50 * coordenadasCasillas[i].y + 25)
                 canvas.drawBitmap(bitmapSecundario, null, dest, null)
@@ -57,7 +56,7 @@ data class Mapa(
 
             bitmapPrincipal = bitmapPrincipal.copy(Bitmap.Config.ARGB_8888, false)
 
-            return guardarImagen(nombre, bitmapPrincipal, context)
+            return bitmapPrincipal
         }
 
 

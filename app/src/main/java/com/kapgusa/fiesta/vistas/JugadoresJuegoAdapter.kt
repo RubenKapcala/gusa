@@ -35,7 +35,6 @@ class JugadoresJuegoAdapter (private val context: Context, private val dataSet: 
 
         holder.nombre.text = dataSet[position].nombre
         holder.alias.text = dataSet[position].casillas.toString()
-        holder.puntos.text = dataSet[position].direccionImagen
 
     }
 

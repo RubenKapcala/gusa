@@ -2,11 +2,11 @@ package com.kapgusa.fiesta.modelo
 
 data class Jugador(
         val nombre: String,
+        val isChico: Boolean,
         var gustos: Gustos,
-        var posicion: Int,
-        var monedas: Int,
-        var tragos: Int,
-        var partidas: Int,
-        var ganadas: Int,
-        var perdidas: Int
-)
+        var id: Int? = null
+){
+    var posicion: Int = 0
+    var monedas: Int = 0
+    var preparado = false
+}

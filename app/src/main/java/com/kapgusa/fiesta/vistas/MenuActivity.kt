@@ -29,7 +29,7 @@ class MenuActivity : AppCompatActivity() {
     private fun mostrarMensajeControlDeEdad() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(R.string.alerta)
-        builder.setMessage(R.string.alerta_mensaje)
+        builder.setMessage(R.string.alertaMensaje)
                 .setPositiveButton(R.string.continuar) { _, _ -> Musica.sonidoBoton() }
             .setNegativeButton(R.string.salir) { _, _ ->
                 Musica.sonidoBoton()
@@ -42,7 +42,7 @@ class MenuActivity : AppCompatActivity() {
         binding.btnNuevaPatidaMenu.setOnClickListener{
             activarBotones(false)
             Musica.sonidoBoton()
-            val botonNuevoJuego = Intent(this, SeleccionarJugadoresActivity::class.java)
+            val botonNuevoJuego = Intent(this, ElegirMapaActivity::class.java)
             startActivity(botonNuevoJuego)
         }
 
@@ -101,14 +101,14 @@ class MenuActivity : AppCompatActivity() {
             binding.lytPersonalizarMenu.visibility = View.GONE
         } else {
             val builder = AlertDialog.Builder(this)
-            builder.setTitle(R.string.en_serio)
-            builder.setMessage(R.string.no_hay_alcohol)
+            builder.setTitle(R.string.enSerio)
+            builder.setMessage(R.string.noHayAlcohol)
                     .setPositiveButton(R.string.salir) { _, _ ->
                         Musica.sonidoBoton()
                         finishAffinity()
                         exitProcess(0)
                     }
-                    .setNegativeButton(R.string.queda_mas) { _, _ ->
+                    .setNegativeButton(R.string.quedaMas) { _, _ ->
                         Musica.sonidoBoton()
                     }.setCancelable(false).show()
         }

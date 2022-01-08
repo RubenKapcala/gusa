@@ -30,56 +30,91 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
     }
 
     //Introduce los datos del jugador en la BBDD por primera vez
-    fun crearUsuario(nombre: String, gustos: Gustos){
+    fun insertarJugador(nombre: String, isChico: Boolean, gustos: Gustos): Jugador{
         val values = ContentValues() //Agrupa los valores a insertar
         values.put(Tablas.Jugadores.COLUMN_nombre, nombre) //Introduce el nombre
+        values.put(Tablas.Jugadores.COLUMN_esChico, if(isChico) 1 else 0) //Introduce el sexo
         values.put(Tablas.Jugadores.COLUMN_gustos, gustos.name) //Introduce los gustos
-        values.put(Tablas.Jugadores.COLUMN_tragos, 0) //Introduce los tragos a 0
-        values.put(Tablas.Jugadores.COLUMN_ganadas, 0) //Introduce las partidas ganadas a 0
-        values.put(Tablas.Jugadores.COLUMN_perdidas, 0) //Introduce las partidas perdidas a 0
 
-        db.insert(Tablas.Jugadores.TABLE_NAME, null, values) //Realiza el insert
+        val id = db.insert(Tablas.Jugadores.TABLE_NAME, null, values).toInt() //Realiza el insert
+        return getJugador(id)!!
     }
 
     //Modifica los datos del jugador en la BBDD
-    fun modificarUsuario(nombre: String, gustos: Gustos){
+    fun modificarJugador(nombre: String, isChico: Boolean, gustos: Gustos, id: Int): Jugador{
         val values = ContentValues() //Agrupa los valores a insertar
         values.put(Tablas.Jugadores.COLUMN_nombre, nombre) //Introduce el nombre
+        values.put(Tablas.Jugadores.COLUMN_esChico, if(isChico) 1 else 0) //Introduce el sexo
         values.put(Tablas.Jugadores.COLUMN_gustos, gustos.name) //Introduce los gustos
 
-        db.update(Tablas.Jugadores.TABLE_NAME, values, Tablas.Jugadores.COLUMN_id + " = 1", null)
+        db.update(Tablas.Jugadores.TABLE_NAME, values, Tablas.Jugadores.COLUMN_id + " = " + id, null)
 
+        return getJugador(id)!!
     }
 
     //Recupera los datos del jugador
     @SuppressLint("Range") //El valor siempre será positivo
-    fun getUsuario(): Jugador?{
+    fun getJugador(id: Int): Jugador?{
 
         //Realiza la query y guarda el resultado en un cursor
         val cursor = db.query(Tablas.Jugadores.TABLE_NAME,
                 arrayOf(
                     Tablas.Jugadores.COLUMN_nombre,
-                    Tablas.Jugadores.COLUMN_gustos,
-                    Tablas.Jugadores.COLUMN_tragos,
-                    Tablas.Jugadores.COLUMN_ganadas,
-                    Tablas.Jugadores.COLUMN_perdidas,
+                    Tablas.Jugadores.COLUMN_esChico,
+                    Tablas.Jugadores.COLUMN_gustos
                 ),
-                Tablas.Jugadores.COLUMN_id + " = 1", null, null, null, null)
+                Tablas.Jugadores.COLUMN_id + " = " + id, null, null, null, null)
 
         //Saca del cursor la información y con los datos crea un objeto Jugador
         if (cursor.moveToFirst()){
             val nombre = cursor.getString(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_nombre)) //Obtiene el nombre
+            val esChico = cursor.getInt(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_esChico)) > 0
             val gustos = cursor.getString(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_gustos)) //Obtiene los gustos
-            val tragos = cursor.getInt(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_tragos)) //Obtiene las partidas
-            val ganadas = cursor.getInt(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_ganadas)) //Obtiene ganadas
-            val perdidas = cursor.getInt(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_perdidas)) //Obtiene perdidas
 
             cursor.close() //Cierra el cursor
             //Devuelve el jugador
-            return Jugador(nombre, Gustos.valueOf(gustos), 0, 0, 0, tragos, ganadas, perdidas)
+            return Jugador(nombre, esChico, Gustos.valueOf(gustos), id)
         }
         cursor.close()//Cierra el cursor
         return null //En caso de que no se pueda realizar la query devuelve null
+    }
+
+    //Recupera los datos de los jugadores
+    @SuppressLint("Range") //El valor siempre será positivo
+    fun getJugadores(): MutableList<Jugador>{
+
+        val listJugador: MutableList<Jugador> = mutableListOf()
+
+        //Realiza la query y guarda el resultado en un cursor
+        val cursor = db.query(Tablas.Jugadores.TABLE_NAME,
+                arrayOf(
+                        Tablas.Jugadores.COLUMN_id,
+                        Tablas.Jugadores.COLUMN_nombre,
+                        Tablas.Jugadores.COLUMN_esChico,
+                        Tablas.Jugadores.COLUMN_gustos
+                ),
+                null, null, null, null, null)
+
+        //Saca del cursor la información y con los datos crea un objeto List<Jugador>
+        while (cursor.moveToNext()) {
+
+            val id = cursor.getInt(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_id)) //Obtiene el id
+            val nombre = cursor.getString(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_nombre)) //Obtiene el nombre
+            val esChico = cursor.getInt(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_esChico)) > 0 //Obtiene el sexo
+            val gustos = cursor.getString(cursor.getColumnIndex(Tablas.Jugadores.COLUMN_gustos)) //Obtiene los gustos
+
+            val jugador = Jugador(nombre, esChico, Gustos.valueOf(gustos), id)
+
+            listJugador.add(jugador)
+        }
+
+        cursor.close() //Cierra el cursor
+        return listJugador //Devuelve la lista
+    }
+
+    //Borra un jugador en la BBDD
+    fun borrarJugador(idJugador: Int){
+        db.delete(Tablas.Jugadores.TABLE_NAME, Tablas.Jugadores.COLUMN_id + " = " + idJugador, null)
     }
 
     //Recupera los datos del volumen de la música
@@ -341,7 +376,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
     }
 
 
-    //Modifica un mapa en la BBDD
+    //Modifica un reto en la BBDD
     fun modificarReto(reto: Reto, idRetoAnterior: Int){
         val values = ContentValues() //Agrupa los valores a insertar
         values.put(Tablas.Retos.COLUMN_tipo, reto.tipo.name) //Introduce el tipo de reto
@@ -364,7 +399,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         }
     }
 
-    //Borra un mapa en la BBDD
+    //Borra un reto en la BBDD
     fun borrarReto(idReto: Int){
         db.delete(Tablas.TextosRetos.TABLE_NAME, Tablas.TextosRetos.COLUMN_idReto + " = " + idReto, null)
         db.delete(Tablas.Retos.TABLE_NAME, Tablas.Retos.COLUMN_id + " = " + idReto, null)
@@ -388,10 +423,9 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
             val nombre = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_nombre))
             val descripcion = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_descripcion))
             val picante = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_picante)) > 0
-            val rutaImagen = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_imagen))
             val personalizado = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_personalizado)) > 0
 
-            val mapa = Mapa(nombre, descripcion, casillas, picante, rutaImagen, personalizado, id)
+            val mapa = Mapa(nombre, descripcion, casillas, picante, personalizado, id)
 
             listaMapas.add(mapa)
         }
@@ -418,10 +452,9 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
             val nombre = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_nombre))
             val descripcion = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_descripcion))
             val picante = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_picante)) > 0
-            val rutaImagen = cursor.getString(cursor.getColumnIndex(Tablas.Mapas.COLUMN_imagen))
             val personalizado = cursor.getInt(cursor.getColumnIndex(Tablas.Mapas.COLUMN_personalizado)) > 0
 
-            val mapa = Mapa(nombre, descripcion, casillas, picante, rutaImagen, personalizado, id)
+            val mapa = Mapa(nombre, descripcion, casillas, picante, personalizado, id)
 
             listaMapas.add(mapa)
         }
@@ -461,7 +494,6 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         values.put(Tablas.Mapas.COLUMN_nombre, mapa.nombre) //Introduce el nombre
         values.put(Tablas.Mapas.COLUMN_descripcion, mapa.descripcion) //Introduce la descripcion
         values.put(Tablas.Mapas.COLUMN_picante, mapa.picante) //Introduce si es picante
-        values.put(Tablas.Mapas.COLUMN_imagen, mapa.direccionImagen) //Introduce la ruta de la imagen
         values.put(Tablas.Mapas.COLUMN_personalizado, mapa.personalizado) //Introduce la ruta de la imagen
 
         val id = db.insert(Tablas.Mapas.TABLE_NAME, null, values).toInt() //Realiza el insert
@@ -482,7 +514,6 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
         values.put(Tablas.Mapas.COLUMN_nombre, mapa.nombre) //Introduce el nombre
         values.put(Tablas.Mapas.COLUMN_descripcion, mapa.descripcion) //Introduce la descripcion
         values.put(Tablas.Mapas.COLUMN_picante, mapa.picante) //Introduce si es picante
-        values.put(Tablas.Mapas.COLUMN_imagen, mapa.direccionImagen) //Introduce la ruta de la imagen
         values.put(Tablas.Mapas.COLUMN_personalizado, mapa.personalizado) //Introduce la ruta de la imagen
 
         db.update(Tablas.Mapas.TABLE_NAME, values, Tablas.Mapas.COLUMN_id + " = " + idMapaAnterior, null)
@@ -552,9 +583,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 "${Tablas.Jugadores.COLUMN_id} INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "${Tablas.Jugadores.COLUMN_nombre} TEXT NOT NULL, " +
                 "${Tablas.Jugadores.COLUMN_gustos} TEXT NOT NULL, " +
-                "${Tablas.Jugadores.COLUMN_tragos} INTEGER NOT NULL, " +
-                "${Tablas.Jugadores.COLUMN_ganadas} INTEGER NOT NULL, " +
-                "${Tablas.Jugadores.COLUMN_perdidas} INTEGER NOT NULL)")
+                "${Tablas.Jugadores.COLUMN_esChico} INTEGER NOT NULL)")
 
         //Crea la tabla retos
         db.execSQL("CREATE TABLE IF NOT EXISTS ${Tablas.Retos.TABLE_NAME} (" +
@@ -579,7 +608,6 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 "${Tablas.Mapas.COLUMN_nombre} TEXT NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_descripcion} TEXT NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_picante} INTEGER NOT NULL, " +
-                "${Tablas.Mapas.COLUMN_imagen} TEXT NOT NULL, " +
                 "${Tablas.Mapas.COLUMN_personalizado} INTEGER NOT NULL)" )
 
         //Crea la tabla casillas_mapas
@@ -622,7 +650,6 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
             values.put(Tablas.Mapas.COLUMN_nombre, mapa.nombre) //Introduce el nombre
             values.put(Tablas.Mapas.COLUMN_descripcion, mapa.descripcion) //Introduce la descripcion
             values.put(Tablas.Mapas.COLUMN_picante, mapa.picante) //Introduce si es picante
-            values.put(Tablas.Mapas.COLUMN_imagen, mapa.direccionImagen) //Introduce la ruta de la imagen
             values.put(Tablas.Mapas.COLUMN_personalizado, mapa.personalizado) //Introduce la ruta de la imagen
 
             val id = db.insert(Tablas.Mapas.TABLE_NAME, null, values).toInt() //Realiza el insert
@@ -1204,8 +1231,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal, Reto.TipoReto.PICANTE.ordinal
         )
 
-        var rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa1), casillas, context)
-        lista.add(Mapa(context.getString(R.string.nombreMapa1), context.getString(R.string.descripcion1), casillas, true, rutaImagen, false))
+        lista.add(Mapa(context.getString(R.string.nombreMapa1), context.getString(R.string.descripcion1), casillas, true, false))
 
 
         //Mapa casa de gusa
@@ -1222,8 +1248,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal
         )
 
-        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa2), casillas, context)
-        lista.add(Mapa(context.getString(R.string.nombreMapa2), context.getString(R.string.descripcion2), casillas, true, rutaImagen, false))
+        lista.add(Mapa(context.getString(R.string.nombreMapa2), context.getString(R.string.descripcion2), casillas, true, false))
 
 
         //Mapa sin tonterias
@@ -1240,8 +1265,7 @@ class DbHelper(private var context: Context): SQLiteOpenHelper(context, DATABASE
                 Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal, Reto.TipoReto.BEBER.ordinal
         )
 
-        rutaImagen = Mapa.crearImagenMapa(context.getString(R.string.nombreMapa3), casillas, context)
-        lista.add(Mapa(context.getString(R.string.nombreMapa3), context.getString(R.string.descripcion3), casillas, true, rutaImagen, false))
+        lista.add(Mapa(context.getString(R.string.nombreMapa3), context.getString(R.string.descripcion3), casillas, true, false))
 
         return lista
     }

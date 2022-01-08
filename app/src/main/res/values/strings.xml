@@ -7,9 +7,10 @@
     <string name="app_name">gusa2</string>
     <string name="continuar">CONTINUAR</string>
     <string name="aceptar">ACEPTAR</string>
+    <string name="confirmar">CONFIRMAR</string>
     <string name="atras">ATRÁS</string>
-    <string name="salir">Salir</string>
-    <string name="nombreRepetido">Ese nombre ya esta cogido, haber nacido antes.</string>
+    <string name="salir">SALIR</string>
+    <string name="cancelar">CANCELAR</string>
 
 
     //--------------------------------------------------------------------------
@@ -38,19 +39,19 @@
     //--------------------------------------------------------------------------
 
     <string name="alerta" translatable="false">Alerta</string>
-    <string name="alerta_mensaje" translatable="false">El consumo de alcohol está prohibido para menores de edad. El consumo de alcohol puede ser perjudicial para la salud. Este juego recuerda el deber de beber con moderación y responsabilidad.\n\Al pulsar continuar acepta ser mayor de edad para consumir alcohol y la responsabilidad de su uso.</string>
+    <string name="alertaMensaje" translatable="false">El consumo de alcohol está prohibido para menores de edad. El consumo de alcohol puede ser perjudicial para la salud. Este juego recuerda el deber de beber con moderación y responsabilidad.\n\Al pulsar continuar acepta ser mayor de edad para consumir alcohol y la responsabilidad de su uso.</string>
 
-    <string name="nueva_partida">NUEVA PARTIDA</string>
+    <string name="nuevaPartida">NUEVA PARTIDA</string>
     <string name="opciones">OPCIONES</string>
     <string name="tutorial">TUTORIAL</string>
     <string name="personalizar">PERSONALIZAR</string>
 
-    <string name="creador_mapas">CREADOR DE MAPAS</string>
-    <string name="creador_retos">CREADOR DE RETOS</string>
+    <string name="creadorMapas">CREADOR DE MAPAS</string>
+    <string name="creadorRetos">CREADOR DE RETOS</string>
 
-    <string name="en_serio">¿EN SERIO?</string>
-    <string name="no_hay_alcohol">¿Ya no queda alcohol?</string>
-    <string name="queda_mas">Aún queda</string>
+    <string name="enSerio">¿EN SERIO?</string>
+    <string name="noHayAlcohol">¿Ya no queda alcohol?</string>
+    <string name="quedaMas">Aún queda</string>
 
     //--------------------------------------------------------------------------
     //--------------------------Activity Opciones-------------------------------
@@ -110,6 +111,36 @@
     <string name="retoModificado">Reto modificado.</string>
     <string name="nivelAlcohol">Nivel de alcohol</string>
     <string name="nivelPicante">nivel de picante</string>
+
+
+    //--------------------------------------------------------------------------
+    //-------------------------Activity ElegirMapa------------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="partidaPresencial">PARTIDA PRESENCIAL</string>
+    <string name="partidaNoPresencial">PARTIDA NO PRESENCIAL</string>
+
+    <string name="descripcionPresencial"><b><big>Presencial: </big></b>Para jugar en la misma sala. Entran pruebas en las que puede haber contacto.\n
+    <b><big>Desde casa: </big></b>Para jugar online. Quita las pruebas que necesiten estar en el mismo sitio.</string>
+
+
+    //--------------------------------------------------------------------------
+    //-------------------Activity SeleccionarJugadores--------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="aniadir">AÑADIR</string>
+    <string name="nombreJugador">Nombre del jugador</string>
+    <string name="jugadoresPreparados">Jugadores preparados:</string>
+    <string name="tusJugadores">Tus jugadores:</string>
+    <string name="modoMultidispositivo">Modo Multidispositivo</string>
+    <string name="comenzar">COMENZAR</string>
+    <string name="sexo">SEXO</string>
+    <string name="gustos">GUSTOS</string>
+    <string name="nombreRepetido">Ese nombre ya esta cogido, haber nacido antes.</string>
+    <string name="activarGps" translatable="false">Asegúrese que tiene activa la localización ya que algunos dispositivos orecisan de esta para la conexión bluetooth</string>
+    <string name="descripcionMultidispositivo"><b><big>Multidispositivo: </big></b>Se conectará mediante bluetooth a otros dispositivos. Estos podrán añadir jugadores a la lista
+    de preparados. Ese jugador realizará los turnos desde ese dispositivo.</string>
+    <string name="nombreVacio">Ya sabemos que no eres nadie pero tienes que introducir un nombre</string>
 
 
     //--------------------------------------------------------------------------
