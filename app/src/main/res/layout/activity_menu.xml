@@ -122,11 +122,13 @@
             android:layout_height="0dp"
             android:background="@drawable/animacion_boton"
             android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btn_nuevaPatida_Menu"
             app:layout_constraintHeight_percent="0.2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/btn_nuevaPatida_Menu"
-            app:layout_constraintTop_toBottomOf="@+id/btn_tutorial_Menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.55"
             app:layout_constraintWidth_percent="0.55" />
 
         <TextView
@@ -145,15 +147,17 @@
             app:layout_constraintTop_toTopOf="@+id/btn_personalizar_Menu" />
 
         <ImageView
-            android:id="@+id/btn_tutorial_Menu"
+            android:id="@+id/btn_buscarPartida_Menu"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/animacion_boton"
             android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btn_nuevaPatida_Menu"
             app:layout_constraintHeight_percent="0.2"
             app:layout_constraintStart_toStartOf="@+id/btn_nuevaPatida_Menu"
-            app:layout_constraintTop_toBottomOf="@+id/btn_opciones_Menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.3"
             app:layout_constraintWidth_percent="0.55" />
 
         <ImageView
@@ -163,11 +167,13 @@
             android:layout_marginTop="2dp"
             android:background="@drawable/animacion_boton"
             android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/btn_nuevaPatida_Menu"
             app:layout_constraintHeight_percent="0.2"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/btn_nuevaPatida_Menu"
-            app:layout_constraintTop_toBottomOf="@+id/btn_nuevaPatida_Menu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8"
             app:layout_constraintWidth_percent="0.55" />
 
         <ImageView
@@ -182,7 +188,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03"
+            app:layout_constraintVertical_bias="0.05"
             app:layout_constraintWidth_percent="0.55" />
 
         <TextView
@@ -221,15 +227,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/chewy"
-            android:text="@string/tutorial"
+            android:text="@string/buscarPartida"
             android:textColor="#000000"
             android:textSize="30sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@+id/btn_tutorial_Menu"
-            app:layout_constraintEnd_toEndOf="@+id/btn_tutorial_Menu"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_buscarPartida_Menu"
+            app:layout_constraintEnd_toEndOf="@+id/btn_buscarPartida_Menu"
             app:layout_constraintHorizontal_bias="0.7"
-            app:layout_constraintStart_toStartOf="@+id/btn_tutorial_Menu"
-            app:layout_constraintTop_toTopOf="@+id/btn_tutorial_Menu" />
+            app:layout_constraintStart_toStartOf="@+id/btn_buscarPartida_Menu"
+            app:layout_constraintTop_toTopOf="@+id/btn_buscarPartida_Menu" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

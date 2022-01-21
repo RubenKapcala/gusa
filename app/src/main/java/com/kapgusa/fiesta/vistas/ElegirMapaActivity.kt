@@ -8,6 +8,7 @@ import android.view.MotionEvent
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.kapgusa.fiesta.R
+import com.kapgusa.fiesta.controlador.MiBluetooth
 import com.kapgusa.fiesta.controlador.Musica
 import com.kapgusa.fiesta.databinding.ActivityElegirMapaBinding
 import com.kapgusa.fiesta.modelo.Mapa
@@ -51,6 +52,7 @@ class ElegirMapaActivity : AppCompatActivity() {
             binding.btnContinuarElegirMapa.isEnabled = false
             val intent = Intent(this, SeleccionarJugadoresActivity::class.java)
             intent.putExtra("posicion", posicion)
+            MiBluetooth.eresServidor = true
             startActivity(intent)
         }
         binding.btnPresencialElegirMapa.setOnClickListener {

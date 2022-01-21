@@ -1,19 +1,16 @@
-package com.kapgusa.fiesta.vistas
+package com.kapgusa.fiesta.vistas.adaptadores
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kapgusa.fiesta.R
 import com.kapgusa.fiesta.controlador.MiBluetooth
-import com.kapgusa.fiesta.modelo.Dispositivo
 import com.kapgusa.fiesta.modelo.Gustos
 import com.kapgusa.fiesta.modelo.Jugador
-import com.kapgusa.fiesta.modelo.Mapa
+import com.kapgusa.fiesta.vistas.SeleccionarJugadoresActivity
 
 class AdapterJugadoresDispositivosSeleccionarJugadores (private val dataSet: List<Jugador>, private val funciones: SeleccionarJugadoresActivity.BotonesRv) : RecyclerView.Adapter<AdapterJugadoresDispositivosSeleccionarJugadores.ViewHolder>() {
 
@@ -27,7 +24,7 @@ class AdapterJugadoresDispositivosSeleccionarJugadores (private val dataSet: Lis
     }
 
     //Crea la vista para el ViewHolder
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterJugadoresDispositivosSeleccionarJugadores.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.jugador_dispositivo_seleccionar_jugadores, parent, false)
         )

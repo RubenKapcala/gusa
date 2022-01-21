@@ -1,18 +1,14 @@
-package com.kapgusa.fiesta.vistas
+package com.kapgusa.fiesta.vistas.adaptadores
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.kapgusa.fiesta.R
 import com.kapgusa.fiesta.modelo.Dispositivo
-import com.kapgusa.fiesta.modelo.Gustos
-import com.kapgusa.fiesta.modelo.Jugador
-import com.kapgusa.fiesta.modelo.Mapa
+import com.kapgusa.fiesta.vistas.SeleccionarJugadoresActivity
 
 class AdapterDispositivosSeleccionarJugadores (private val context: Context, private val dataSet: List<Dispositivo>, private val funciones: SeleccionarJugadoresActivity.BotonesRv) : RecyclerView.Adapter<AdapterDispositivosSeleccionarJugadores.ViewHolder>() {
 
@@ -23,7 +19,7 @@ class AdapterDispositivosSeleccionarJugadores (private val context: Context, pri
     }
 
     //Crea la vista para el ViewHolder
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterDispositivosSeleccionarJugadores.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.dispositivo_seleccionar_jugadores, parent, false)
         )

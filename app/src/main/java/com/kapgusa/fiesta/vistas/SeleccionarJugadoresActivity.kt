@@ -16,6 +16,11 @@ import com.kapgusa.fiesta.modelo.Dispositivo
 import com.kapgusa.fiesta.modelo.Gustos
 import com.kapgusa.fiesta.modelo.Jugador
 import com.kapgusa.fiesta.modelo.bbdd.DbHelper
+import com.kapgusa.fiesta.vistas.adaptadores.AdapterDispositivosSeleccionarJugadores
+import com.kapgusa.fiesta.vistas.adaptadores.AdapterJugadoresSeleccionarJugadores
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class SeleccionarJugadoresActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySeleccionarJugadoresBinding
@@ -23,7 +28,7 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
 
     //Inicializa las variables
     private lateinit var listaTusJugadores: MutableList<Jugador>
-    private val listaDispositivo: MutableList<Dispositivo> = mutableListOf()
+    private val listaDispositivos: MutableList<Dispositivo> = mutableListOf()
     private var esChico = false
     private var gustos = Gustos.CHICAS
     private var modificandoJugador: Jugador? = null
@@ -35,7 +40,6 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
         fun btnModificar(jugador: Jugador)
         fun btnSacarJugador(jugador: Jugador)
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +54,9 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
 
         funcionalidadBotones()
 
+        if (!MiBluetooth.eresServidor){
+            MiBluetooth.enviarDispositivo(Dispositivo())
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -68,7 +75,7 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
             Musica.sonidoBoton()
             abrirCreador()
         }
-        binding.btnCancelarJugadorSeleccionarJugadores.setOnClickListener {
+        binding.lytCrearJugadorSeleccionarJugadores.setOnClickListener {
             Musica.sonidoBoton()
             cerrarCreador()
         }
@@ -94,26 +101,26 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
         }
         binding.btnAniadirSeleccionarJugadores.setOnClickListener {
             //Mostrar si es valido
-            if (ComprobarDisponibilidad()) {
+            if (comprobarDisponibilidadCrear()) {
                 Musica.sonidoBoton()
                 if (modificandoJugador == null){
                     val jugador = db.insertarJugador(binding.etNombreSeleccionarJugadores.text.toString(), esChico, gustos)
+                    jugador.preparado = true
                     listaTusJugadores.add(jugador)
+                    btnMeterJugador(jugador)
                 }else{
                     val jugador = db.modificarJugador(binding.etNombreSeleccionarJugadores.text.toString(), esChico, gustos, modificandoJugador!!.id!!)
                     listaTusJugadores.remove(modificandoJugador)
                     listaTusJugadores.add(jugador)
                     modificandoJugador = null
-                    binding.btnBorrarJugadorSeleccionarJugadores.visibility = View.GONE
                 }
                 binding.rvTusJugadoresSeleccionarJugadores.adapter = AdapterJugadoresSeleccionarJugadores(listaTusJugadores, botonesRv)
                 cerrarCreador()
-
             }else{
                 Musica.sonidoBotonMal()
             }
         }
-        binding.btnBorrarJugadorSeleccionarJugadores.setOnClickListener {
+        binding.btnEliminarJugadorSeleccionarJugadores.setOnClickListener {
             Musica.sonidoBoton()
             val builder = AlertDialog.Builder(this)
             builder.setTitle(R.string.enSerio)
@@ -126,12 +133,20 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
                         binding.rvTusJugadoresSeleccionarJugadores.adapter = AdapterJugadoresSeleccionarJugadores(listaTusJugadores, botonesRv)
                         cerrarCreador()
                     }.setCancelable(false).show()
-
-
         }
         binding.btnMultidispositivoSeleccionarJugadores.setOnClickListener {
-            listaTusJugadores
-            listaDispositivo
+            if (MiBluetooth.esBluetooth){
+                MiBluetooth.visibilizar(this)
+            } else{
+                Toast.makeText(this, getText(R.string.sin_bluetooth), Toast.LENGTH_LONG).show()
+            }
+        }
+        binding.btnComenzarSeleccionarJugadores.setOnClickListener {
+            if (MiBluetooth.eresServidor){
+
+            }else{
+
+            }
         }
     }
 
@@ -140,16 +155,17 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
             binding.etNombreSeleccionarJugadores.setText("")
         }else{
             binding.etNombreSeleccionarJugadores.setText(modificandoJugador!!.nombre)
-            binding.btnBorrarJugadorSeleccionarJugadores.visibility = View.VISIBLE
+            binding.btnEliminarJugadorSeleccionarJugadores.visibility = View.VISIBLE
         }
         binding.lytCrearJugadorSeleccionarJugadores.visibility = View.VISIBLE
 
     }
 
     private fun cerrarCreador() {
+        modificandoJugador = null
         binding.etNombreSeleccionarJugadores.setText("")
         binding.lytCrearJugadorSeleccionarJugadores.visibility = View.GONE
-        binding.btnBorrarJugadorSeleccionarJugadores.visibility = View.GONE
+        binding.btnEliminarJugadorSeleccionarJugadores.visibility = View.GONE
     }
 
     private fun actualizarGustos(gustos: Gustos) {
@@ -174,8 +190,7 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun ComprobarDisponibilidad(): Boolean {
+    private fun comprobarDisponibilidadCrear(): Boolean {
 
         if (binding.etNombreSeleccionarJugadores.text.toString().replace(" ", "").isEmpty()){
             Toast.makeText(this, R.string.nombreVacio, Toast.LENGTH_LONG).show()
@@ -191,27 +206,21 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
                 }
             }
         }
-
         return true
     }
 
-
     private fun cargarValores() {
         listaTusJugadores = db.getJugadores()
-        listaDispositivo.add(Dispositivo(mutableListOf()))
+        listaDispositivos.add(Dispositivo())
 
         botonesRv = object : BotonesRv{
             override fun btnAniadir(jugador: Jugador) {
-                if (MiBluetooth.eresServidor){
-                    jugador.preparado = true
-                    listaDispositivo[0].jugadores.add(jugador)
-                    ajustarRvs()
-                }else{
-
-                }
+                Musica.sonidoBoton()
+                btnMeterJugador(jugador)
             }
 
             override fun btnModificar(jugador: Jugador) {
+                Musica.sonidoBoton()
                 actualizarSexo(jugador.isChico)
                 actualizarGustos(jugador.gustos)
                 modificandoJugador = jugador
@@ -220,9 +229,10 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
             }
 
             override fun btnSacarJugador(jugador: Jugador) {
+                Musica.sonidoBoton()
                 if (MiBluetooth.eresServidor){
                     jugador.preparado = false
-                    listaDispositivo[0].jugadores.remove(jugador)
+                    listaDispositivos[0].jugadores.remove(jugador)
                     ajustarRvs()
                 }else{
 
@@ -232,6 +242,13 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
     }
 
     private fun ajustarViewIniciales() {
+
+        if (!MiBluetooth.eresServidor){
+            binding.btnMultidispositivoSeleccionarJugadores.visibility = View.GONE
+            binding.btnComenzarSeleccionarJugadores.visibility = View.GONE
+            binding.btnInfoMultidispositivoSeleccionarJugadores.visibility = View.GONE
+        }
+
         binding.rvJugadoresPreparadosSeleccionarJugadores.setHasFixedSize(true)
         binding.rvJugadoresPreparadosSeleccionarJugadores.layoutManager = LinearLayoutManager(this)
 
@@ -243,13 +260,135 @@ class SeleccionarJugadoresActivity : AppCompatActivity() {
 
     private fun ajustarRvs() {
         var nDispositivos = 0
-        for (dispositivo in listaDispositivo){
+        for (dispositivo in listaDispositivos){
             nDispositivos += dispositivo.jugadores.size
         }
         binding.textJugadoresPreparadosSeleccionarJugadores.text = getString(R.string.jugadoresPreparados) + " " + nDispositivos
         binding.rvTusJugadoresSeleccionarJugadores.adapter = AdapterJugadoresSeleccionarJugadores(listaTusJugadores, botonesRv)
-        binding.rvJugadoresPreparadosSeleccionarJugadores.adapter = AdapterDispositivosSeleccionarJugadores(this, listaDispositivo, botonesRv)
+        binding.rvJugadoresPreparadosSeleccionarJugadores.adapter = AdapterDispositivosSeleccionarJugadores(this, listaDispositivos, botonesRv)
+    }
+
+    private fun nuevoDispositivo(){
+        if (MiBluetooth.eresServidor){
+            MiBluetooth.numerar()
+            Thread.sleep(500)
+            MiBluetooth.enviarDispositivo(Dispositivo())
+            listaDispositivos.add(Dispositivo())
+            binding.rvJugadoresPreparadosSeleccionarJugadores.adapter = AdapterDispositivosSeleccionarJugadores(this, listaDispositivos, botonesRv)
+        }
 
     }
 
+    private fun btnMeterJugador(jugador: Jugador){
+        if (MiBluetooth.eresServidor){
+            meterJugador(jugador, 0)
+        }else{
+            MiBluetooth.meterJugador(jugador)
+        }
+    }
+
+    private fun meterJugador(jugador: Jugador, dispositivo: Int){
+        if (MiBluetooth.eresServidor){
+            if (comprobarDisponivilidadMeter(jugador)){
+                jugador.preparado = true
+                listaDispositivos[dispositivo].jugadores.add(jugador)
+                ajustarRvs()
+                MiBluetooth.meterJugador(jugador)
+            }else{
+                MiBluetooth.enviarMensaje(getString(R.string.nombreYaEnPartida), dispositivo)
+            }
+        }else{
+            val index = buscarNombre(listaTusJugadores, jugador.nombre)
+            if (index != -1){
+                listaTusJugadores[index].preparado = true
+            }
+            listaDispositivos[dispositivo].jugadores.add(jugador)
+            ajustarRvs()
+        }
+    }
+
+    private fun comprobarDisponivilidadMeter(jugador: Jugador): Boolean{
+        for (dis in listaDispositivos){
+            if (buscarNombre(dis.jugadores, jugador.nombre) != -1){
+                return false
+            }
+        }
+        return true
+    }
+
+    private fun buscarNombre(lista: MutableList<Jugador>, nombre: String): Int{
+        for ((i, jug) in lista.withIndex()){
+            if (jug.nombre == nombre){
+                return i
+            }
+        }
+        return -1
+    }
+
+    private fun quitarJugador(jugador: Jugador, dispositivo: Int){
+
+    }
+
+
+    //Recibe los cambios de estado de la conexión bluetooth
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEventEstado(estado: MiBluetooth.Estado) {
+
+        when(estado){
+            MiBluetooth.Estado.STATE_LISTENING -> Toast.makeText(this, "Listening", Toast.LENGTH_LONG).show()
+            MiBluetooth.Estado.STATE_CONNECTION_FAILED -> Toast.makeText(this, "Connection Failed", Toast.LENGTH_LONG).show()
+            MiBluetooth.Estado.STATE_CONNECTED -> Toast.makeText(this, "Connected", Toast.LENGTH_LONG).show()
+            else -> {}
+        }
+    }
+
+    //Recibe la información que que un nuevo jugador se ha conectado
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onEventDatosBluetooth(mensaje: MiBluetooth.Mensaje) {
+
+        when(mensaje.tipo){
+            MiBluetooth.Mensaje.TipoDatoTransmitido.POSICION ->{
+                MiBluetooth.conexionServidor?.posicion = mensaje.datos[0].toInt()
+            }
+            MiBluetooth.Mensaje.TipoDatoTransmitido.DISPOSITIVO ->{
+                nuevoDispositivo()
+            }
+            MiBluetooth.Mensaje.TipoDatoTransmitido.MENSAJE ->{
+                Toast.makeText(this, mensaje.datos[0], Toast.LENGTH_LONG).show()
+            }
+            MiBluetooth.Mensaje.TipoDatoTransmitido.METER_JUGADOR, MiBluetooth.Mensaje.TipoDatoTransmitido.QUITAR_JUGADOR->{
+                val dispositivo: Int
+                val nombre = mensaje.datos[0]
+                val esChico = mensaje.datos[1].toInt() > 0
+                val gusto = Gustos.values()[mensaje.datos[2].toInt()]
+                val jugador = Jugador(nombre, esChico, gusto)
+                if (MiBluetooth.eresServidor){
+                    dispositivo = mensaje.dispositivo
+                    jugador.posicion = dispositivo
+                }else{
+                    dispositivo = mensaje.datos[3].toInt()
+                }
+                if (mensaje.tipo == MiBluetooth.Mensaje.TipoDatoTransmitido.METER_JUGADOR){
+                    meterJugador(jugador, dispositivo)
+                }else{
+                    quitarJugador(jugador, dispositivo)
+                }
+
+            }
+            MiBluetooth.Mensaje.TipoDatoTransmitido.DISPOSITIVOS ->{}
+        }
+
+    }
+
+    //Se registra en EventBus
+    override fun onResume() {
+        super.onResume()
+        EventBus.getDefault().register(this)
+    }
+
+    //Cancela el registro en EventBus
+    override fun onPause() {
+        super.onPause()
+        EventBus.getDefault().unregister(this)
+    }
 }

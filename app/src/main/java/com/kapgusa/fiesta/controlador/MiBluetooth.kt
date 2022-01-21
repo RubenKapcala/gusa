@@ -13,10 +13,15 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.kapgusa.fiesta.R
+import com.kapgusa.fiesta.modelo.Dispositivo
+import com.kapgusa.fiesta.modelo.Gustos
+import com.kapgusa.fiesta.modelo.Jugador
+import com.kapgusa.fiesta.modelo.Transformable
 import org.greenrobot.eventbus.EventBus
 import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
+import java.io.Serializable
 import java.util.*
 
 
@@ -32,11 +37,18 @@ object MiBluetooth {
     //Estados en los que puede estar la conexión
     enum class Estado{STATE_LISTENING, STATE_CONNECTING, STATE_CONNECTED, STATE_CONNECTION_FAILED}
 
-    //Define el objeto que se está enviando en el mensaje
-    enum class TipoDatoTransmitido{}
+    data class Mensaje(
+        val datos: List<String>,
+        val dispositivo: Int,
+        val tipo: TipoDatoTransmitido
+    ): Serializable, Transformable{
+        //Define el objeto que se está enviando en el mensaje
+        enum class TipoDatoTransmitido{POSICION, DISPOSITIVO, MENSAJE, METER_JUGADOR, QUITAR_JUGADOR, DISPOSITIVOS}
+    }
 
     //Variables referentes a las conexiones
-    private var conexionServidor: SendReceive? = null //Conexión con un servidor
+    private var posicion = 0
+    var conexionServidor: SendReceive? = null //Conexión con un servidor
     private var conexionesCliente: MutableList<SendReceive?> = mutableListOf() //Conexiones con los clientes
     var bluetoothAdapter: BluetoothAdapter? = null
     var eresServidor = true //Nos indica si estás trabajando como servidor o como cliente
@@ -157,12 +169,6 @@ object MiBluetooth {
     }
 
 
-    //Permite enviar un mensaje a los dispositivos conectados
-    fun enviarDatos(dato: Any, tipo: TipoDatoTransmitido){
-
-    }
-
-
     //Desconecta de todos los dispositivos
     fun desconectarDispositivos(){
         conexionServidor?.cancelarConexion() //Cancela la conexión con el servidor
@@ -248,6 +254,8 @@ object MiBluetooth {
 
     //Crea objetos para gestionar los mensajes de un socket
     class SendReceive(bluetoothSocket: BluetoothSocket) : Thread() {
+
+        var posicion = 0
         private var socket = bluetoothSocket
         private var inputStream: InputStream
         private var outputStream: OutputStream
@@ -275,19 +283,10 @@ object MiBluetooth {
                         break
                     }
                     bytes = inputStream.read(buffer) //Lee el mensaje y devuelve la longitud
-                    var tempMsg = String(buffer, 0, bytes) //Lo convierte en String
-                    val datosMensaje = tempMsg.split(separador) //Separa el mensaje en partes
+                    val tempMsg = String(buffer, 0, bytes) //Lo convierte en String
 
-                    //Guarda la primera parte del mensaje en que informa que tipo de dato es
-                    val tipo = TipoDatoTransmitido.values()[datosMensaje[0].toInt()]
-                    tempMsg = datosMensaje[1] //Guarda la segunda parte del mensaje en un string
+                    recibirDatos(tempMsg)
 
-                    //Convierte el String(Json) en un objeto dependiendo del tipo que se obtuvo de
-                    //la primerra parte del mensaje
-                    when(tipo){
-
-                        else -> {}
-                    }
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -295,7 +294,12 @@ object MiBluetooth {
         }
 
         //Envía la cadena que le pasemos por el outputStream
-        fun write(bytes: ByteArray?) {
+        fun write(mensaje: String?) {
+            val stringBuffer = StringBuffer()
+            stringBuffer.append(posicion.toString()) //Pasa tipo de dato a Int y después a String
+            stringBuffer.append(separador) //Añade un separador
+            stringBuffer.append(mensaje) //Añade un separador
+            val bytes = stringBuffer.toString().toByteArray()
             try {
                 outputStream.write(bytes)
             } catch (e: IOException) {
@@ -312,6 +316,93 @@ object MiBluetooth {
                 socket.close() //Cierra el socket
             } catch (e: Exception) { }
         }
+    }
+
+    private fun recibirDatos(recivido: String) {
+        val mensajes = recivido.split(separador + separador) //Separa el string en cada mensaje
+
+        for (mensaje in mensajes){
+            val mensajeCompleto = mensaje.split(separador) //Separa el mensaje en partes
+
+            var dispositivo = 0
+            var tipo = Mensaje.TipoDatoTransmitido.DISPOSITIVO
+            val datosMensaje: MutableList<String> = mutableListOf()
+
+            for ((i, dato) in mensajeCompleto.withIndex()){
+                when(i){
+                    0 -> dispositivo = dato.toInt()
+                    1 -> tipo = Mensaje.TipoDatoTransmitido.values()[dato.toInt()]
+                    else -> datosMensaje.add(dato)
+                }
+            }
+            val mensajeRecivido = Mensaje(datosMensaje, dispositivo, tipo)
+            EventBus.getDefault().post(mensajeRecivido) //Informa que recibió ese objeto
+        }
+    }
+
+    //Permite enviar un mensaje a los dispositivos conectados
+    private fun enviarDatos(dato: Any, tipo: Mensaje.TipoDatoTransmitido){
+        val stringBuffer = StringBuffer()
+        stringBuffer.append(separador) //Añade un separador
+        stringBuffer.append(tipo.ordinal.toString()) //Pasa tipo de dato a Int y después a String
+        stringBuffer.append(separador) //Añade un separador
+        when(tipo){
+            Mensaje.TipoDatoTransmitido.METER_JUGADOR, Mensaje.TipoDatoTransmitido.QUITAR_JUGADOR ->{
+                val jugador = dato as Jugador
+                stringBuffer.append(jugador.nombre) //Añade el mensaje
+                stringBuffer.append(separador) //Añade otro separados
+                stringBuffer.append(if (jugador.isChico) "1" else "0") //Añade el mensaje
+                stringBuffer.append(separador) //Añade otro separados
+                stringBuffer.append(jugador.gustos.ordinal.toString()) //Añade el mensaje
+                stringBuffer.append(separador) //Añade otro separados
+                stringBuffer.append(jugador.posicion.toString()) //Añade el dispositivo que lo lanzó
+                stringBuffer.append(separador) //Añade otro separados
+            }
+            Mensaje.TipoDatoTransmitido.DISPOSITIVOS ->{}
+            else -> {}
+        }
+
+        if (eresServidor){ //Si funciona como servidor se lo envía a cada cliente
+            for (i in conexionesCliente){
+                i!!.write(stringBuffer.toString())
+            }
+        }else{ //Si funciona como cliente se lo envia al servidor
+            conexionServidor!!.write(stringBuffer.toString())
+        }
+    }
+
+    fun enviarDispositivo(dispositivo: Dispositivo){
+        enviarDatos(dispositivo, Mensaje.TipoDatoTransmitido.DISPOSITIVO)
+    }
+
+    fun numerar(){
+        for ((i, conexion) in conexionesCliente.withIndex()){
+            val stringBuffer = StringBuffer()
+            stringBuffer.append(separador) //Añade un separador
+            stringBuffer.append(Mensaje.TipoDatoTransmitido.POSICION.ordinal.toString()) //Pasa tipo de dato a Int y después a String
+            stringBuffer.append(separador) //Añade un separador
+            stringBuffer.append((i + 1).toString()) //Añade el mensaje
+            stringBuffer.append(separador) //Añade otro separados
+            conexion!!.write(stringBuffer.toString())
+        }
+    }
+
+    fun enviarMensaje(mensaje: String, dispositivo: Int){
+        val stringBuffer = StringBuffer()
+        stringBuffer.append(Mensaje.TipoDatoTransmitido.MENSAJE.ordinal.toString()) //Pasa tipo de dato a Int y después a String
+        stringBuffer.append(separador) //Añade un separador
+        stringBuffer.append(mensaje) //Añade el mensaje
+        stringBuffer.append(separador) //Añade otro separados
+        conexionesCliente[dispositivo - 1]!!.write(stringBuffer.toString())
+
+    }
+
+    fun meterJugador(jugador: Jugador){
+        enviarDatos(jugador, Mensaje.TipoDatoTransmitido.METER_JUGADOR)
+    }
+
+    fun quitarJugador(jugador: Jugador){
+        enviarDatos(jugador, Mensaje.TipoDatoTransmitido.QUITAR_JUGADOR)
     }
 
 }

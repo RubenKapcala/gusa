@@ -1,3 +1,5 @@
 package com.kapgusa.fiesta.modelo
 
-enum class Gustos {CHICOS, CHICAS, AMBOS}
+import java.io.Serializable
+
+enum class Gustos: Serializable {CHICOS, CHICAS, AMBOS}

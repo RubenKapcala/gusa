@@ -1,6 +1,7 @@
 package com.kapgusa.fiesta.modelo
 
 import com.kapgusa.fiesta.R
+import java.io.Serializable
 
 data class Reto(
         val texto: List<String?>,
@@ -12,7 +13,7 @@ data class Reto(
         var presencial: Boolean,
         val personalizado: Boolean,
         val id: Int = 0
-){
+): Serializable, Transformable {
     //Diferentes retos
     enum class TipoReto{BEBER, ALEATORIO, ESTRELLA, BAUL, PICANTE, PRENDA, EVENTO_INICIAL}
 

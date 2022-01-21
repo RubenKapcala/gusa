@@ -1,6 +1,5 @@
-package com.kapgusa.fiesta.vistas
+package com.kapgusa.fiesta.vistas.adaptadores
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.kapgusa.fiesta.R
 import com.kapgusa.fiesta.modelo.Gustos
 import com.kapgusa.fiesta.modelo.Jugador
-import com.kapgusa.fiesta.modelo.Mapa
+import com.kapgusa.fiesta.vistas.SeleccionarJugadoresActivity
 
 class AdapterJugadoresSeleccionarJugadores (private val dataSet: List<Jugador>, private val funciones: SeleccionarJugadoresActivity.BotonesRv) : RecyclerView.Adapter<AdapterJugadoresSeleccionarJugadores.ViewHolder>() {
 
@@ -24,7 +23,7 @@ class AdapterJugadoresSeleccionarJugadores (private val dataSet: List<Jugador>, 
     }
 
     //Crea la vista para el ViewHolder
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterJugadoresSeleccionarJugadores.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.jugador_seleccionar_jugadores, parent, false)
         )
@@ -56,7 +55,6 @@ class AdapterJugadoresSeleccionarJugadores (private val dataSet: List<Jugador>, 
         }else{
             holder.btnAniadir.setOnClickListener { funciones.btnAniadir(dataSet[position]) }
             holder.btnModificar.setOnClickListener { funciones.btnModificar(dataSet[position]) }
-
         }
     }
 

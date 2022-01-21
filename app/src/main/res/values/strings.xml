@@ -43,7 +43,7 @@
 
     <string name="nuevaPartida">NUEVA PARTIDA</string>
     <string name="opciones">OPCIONES</string>
-    <string name="tutorial">TUTORIAL</string>
+    <string name="buscarPartida">BUSCAR PARTIDA</string>
     <string name="personalizar">PERSONALIZAR</string>
 
     <string name="creadorMapas">CREADOR DE MAPAS</string>
@@ -129,6 +129,7 @@
     //--------------------------------------------------------------------------
 
     <string name="aniadir">AÑADIR</string>
+    <string name="eliminar">ELIMINAR</string>
     <string name="nombreJugador">Nombre del jugador</string>
     <string name="jugadoresPreparados">Jugadores preparados:</string>
     <string name="tusJugadores">Tus jugadores:</string>
@@ -137,10 +138,26 @@
     <string name="sexo">SEXO</string>
     <string name="gustos">GUSTOS</string>
     <string name="nombreRepetido">Ese nombre ya esta cogido, haber nacido antes.</string>
-    <string name="activarGps" translatable="false">Asegúrese que tiene activa la localización ya que algunos dispositivos orecisan de esta para la conexión bluetooth</string>
     <string name="descripcionMultidispositivo"><b><big>Multidispositivo: </big></b>Se conectará mediante bluetooth a otros dispositivos. Estos podrán añadir jugadores a la lista
     de preparados. Ese jugador realizará los turnos desde ese dispositivo.</string>
     <string name="nombreVacio">Ya sabemos que no eres nadie pero tienes que introducir un nombre</string>
+    <string name="nombreYaEnPartida">Ese nombre de jugador ya esta en la partida</string>
+
+
+    //--------------------------------------------------------------------------
+    //-----------------------Activity buscarPartida-----------------------------
+    //--------------------------------------------------------------------------
+
+    <string name="reintentar">reintentar</string>
+    <string name="dispisitivosEncontrados">DISPISITIVOS ENCONTRADOS</string>
+    <string name="yaBuscando">Ya se esta realizando la búsqueda</string>
+    <string name="partidasEncontradas">PARTIDAS ENCONTRADAS</string>
+    <string name="permisosNecesasios">Necesitas aceptar los permisos para poder usar la aplicación</string>
+    <string name="permisoAceptado">Permiso aceptado</string>
+    <string name="activarGps">Búsqueda fallida, compruebe que tiene activada la ubicación gps.</string>
+    <string name="sin_bluetooth">Dispositivo sin Bluetooth</string>
+    <string name="sin_bluetooth_activado">El dispositivo necesita tener bluetooth para poder usar esta opción</string>
+
 
 
     //--------------------------------------------------------------------------
@@ -153,8 +170,6 @@
     <string name="descripcion2" translatable="false">COMO \"CASA GUSA PICANTE\" PERO SIN PRUEBAS PICANTES… MÁS ABURRIDO VAMOS. PERO ESO NO EVITARÁ COGERNOS UN BUEN CIEGO. UN TABLERO CON UN POCO DE TODO Y BASTANTE EQUILIBRADO.</string>
     <string name="nombreMapa3" translatable="false">Sin tonterías</string>
     <string name="descripcion3">UN MODO DE JUEGO PARA LOS MÁS VALIENTES… MUCHOS RETOS PICANTES Y MUCHO BEBER.</string>
-
-
 
 
     //--------------------------------------------------------------------------

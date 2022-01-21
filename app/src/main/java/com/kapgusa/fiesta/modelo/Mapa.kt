@@ -10,6 +10,7 @@ import java.io.File
 import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
+import java.io.Serializable
 
 
 data class Mapa(
@@ -20,7 +21,7 @@ data class Mapa(
         val personalizado: Boolean,
         val id: Int = 0
 
-){
+): Serializable, Transformable {
 
     companion object {
         class Coordenada(val x: Int, val y: Int)

@@ -2,8 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.kapgusa.fiesta">
 
+    <!-- Solicitar permisos de Bluetooth heredados en dispositivos más antiguos. -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- Necesario para buscar dispositivos superiores a api 23. -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE" />
     <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
+
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
     <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
 
     <application
@@ -13,8 +25,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/miEstilo">
-        <activity
-            android:name=".vistas.TutorialActivity"
+        <activity android:name=".vistas.BuscarPartidaActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".vistas.SeleccionarJugadoresActivity"
@@ -30,16 +41,17 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".vistas.CrearMapasActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".vistas.JuegoActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
         <activity
             android:name=".vistas.MenuActivity"
             android:screenOrientation="landscape" />
         <activity
             android:name=".vistas.MainActivity"
-            android:screenOrientation="landscape">
+            android:screenOrientation="landscape"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

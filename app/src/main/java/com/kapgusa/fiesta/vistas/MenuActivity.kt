@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.kapgusa.fiesta.R
+import com.kapgusa.fiesta.controlador.MiBluetooth
 import com.kapgusa.fiesta.controlador.Musica
 import com.kapgusa.fiesta.databinding.ActivityMenuBinding
 import com.kapgusa.fiesta.modelo.bbdd.DbHelper
@@ -53,11 +54,16 @@ class MenuActivity : AppCompatActivity() {
             startActivity(botonOpciones)
         }
 
-        binding.btnTutorialMenu.setOnClickListener{
-            activarBotones(false)
+        binding.btnBuscarPartidaMenu.setOnClickListener{
             Musica.sonidoBoton()
-            val botonTutorial = Intent(this, TutorialActivity::class.java)
-            startActivity(botonTutorial)
+            if (MiBluetooth.esBluetooth){
+                activarBotones(false)
+                val botonTutorial = Intent(this, BuscarPartidaActivity::class.java)
+                startActivity(botonTutorial)
+            } else{
+                Toast.makeText(this, getText(R.string.sin_bluetooth), Toast.LENGTH_LONG).show()
+            }
+
         }
 
         binding.btnPersonalizarMenu.setOnClickListener{
@@ -90,7 +96,7 @@ class MenuActivity : AppCompatActivity() {
     private fun activarBotones(activar: Boolean) {
         binding.btnNuevaPatidaMenu.isEnabled = activar
         binding.btnOpcionesMenu.isEnabled = activar
-        binding.btnTutorialMenu.isEnabled = activar
+        binding.btnBuscarPartidaMenu.isEnabled = activar
         binding.btnCreadorMapasMenu.isEnabled = activar
         binding.btnCreadorRetosMenu.isEnabled = activar
     }
@@ -112,10 +118,6 @@ class MenuActivity : AppCompatActivity() {
                         Musica.sonidoBoton()
                     }.setCancelable(false).show()
         }
-    }
-
-    override fun onPause() {
-        super.onPause()
     }
 
     override fun onResume() {
